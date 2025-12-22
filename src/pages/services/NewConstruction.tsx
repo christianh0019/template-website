@@ -1,6 +1,5 @@
-import Link from 'react-router-dom'; // Incorrect import fix below
 import { Link as RouterLink } from 'react-router-dom';
-import { ArrowRight, CheckCircle, FileText } from 'lucide-react';
+import { FileText } from 'lucide-react';
 import SEO from '../../components/SEO';
 import ServiceSchema from '../../components/seo/ServiceSchema';
 import ServiceHero from '../../components/services/ServiceHero';
@@ -8,7 +7,6 @@ import ServiceFeatures from '../../components/services/ServiceFeatures';
 import ProcessSteps from '../../components/services/ProcessSteps';
 import RelatedProjects from '../../components/services/RelatedProjects';
 import ServiceFAQ from '../../components/services/ServiceFAQ';
-import PageHeader from '../../components/PageHeader';
 
 const NewConstruction = () => {
     // GEO Blueprint: Focus on "Entity-Service-Location Triad"
