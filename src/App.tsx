@@ -44,6 +44,8 @@ function App() {
             <Route path="process" element={<Process />} />
             <Route path="blog" element={<Placeholder title="Insights Blog" />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="booking" element={<Booking />} />
+            <Route path="thank-you" element={<ThankYou />} />
             <Route path="about" element={<About />} />
             <Route path="*" element={<Placeholder title="Page Not Found" />} />
           </Route>
