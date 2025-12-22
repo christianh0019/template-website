@@ -1,6 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Hammer, Home as HomeIcon, Layout, Ruler, Phone, CheckCircle, MapPin } from 'lucide-react';
+import { ArrowRight, Hammer, Home as HomeIcon, Layout, Ruler, Phone, CheckCircle } from 'lucide-react';
 import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 
