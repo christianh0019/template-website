@@ -57,9 +57,9 @@ const NewConstruction = () => {
             <ServiceHero
                 title="Custom Home Builders in Loveland & Fort Collins"
                 subtitle="Sustainable Design-Build Services for the Modern Legacy."
-                backgroundImage="https://images.unsplash.com/photo-1600596542815-e32c21216f95?q=80&w=2072&auto=format&fit=crop"
+                backgroundImage="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop"
                 primaryCtaText="Start Feasibility Study"
-                secondaryCtaText="Download 2025 Cost Guide"
+                secondaryCtaText="Download Cost Guide"
             />
 
             {/* PAS Framework: The Problem / Agitation - Softened & Humanized */}
@@ -132,12 +132,12 @@ const NewConstruction = () => {
                     <FileText className="w-12 h-12 text-primary mx-auto mb-6" />
                     <h2 className="text-3xl font-serif font-bold text-primary mb-4">Planning Your Budget?</h2>
                     <p className="text-lg text-slate-600 mb-8">
-                        Download our comprehensive <strong>2025 Cost to Build Guide</strong>. We break down hard costs, soft costs, and permit fees for Loveland, Fort Collins, and Windsor.
+                        Download our comprehensive <strong>Cost to Build Guide</strong>. We break down hard costs, soft costs, and permit fees for Loveland, Fort Collins, and Windsor.
                     </p>
                     <button className="bg-white border-2 border-primary text-primary px-8 py-4 font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-colors rounded-sm shadow-md">
                         Download Free Guide
                     </button>
-                    <p className="text-sm text-slate-500 mt-4 italic">Updated for Q1 2025 Market Rates</p>
+                    <p className="text-sm text-slate-500 mt-4 italic">Updated for Current Market Rates</p>
                 </div>
             </section>
 
