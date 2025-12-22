@@ -10,6 +10,7 @@ import Additions from './pages/services/Additions';
 import Locations from './pages/Locations';
 import LocationDetail from './pages/locations/LocationDetail';
 import Portfolio from './pages/Portfolio';
+import ProjectDetail from './pages/portfolio/ProjectDetail';
 import Process from './pages/Process';
 import About from './pages/About';
 import Contact from './pages/Contact';
@@ -37,6 +38,7 @@ function App() {
             <Route path="locations" element={<Locations />} />
             <Route path="locations/:city" element={<LocationDetail />} />
             <Route path="portfolio" element={<Portfolio />} />
+            <Route path="portfolio/:slug" element={<ProjectDetail />} />
             <Route path="process" element={<Process />} />
             <Route path="blog" element={<Placeholder title="Insights Blog" />} />
             <Route path="contact" element={<Contact />} />

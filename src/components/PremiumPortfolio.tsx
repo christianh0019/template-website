@@ -2,26 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const projects = [
-    {
-        title: "The Westlake Estate",
-        category: "Custom Build",
-        image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2071&auto=format&fit=crop",
-        link: "/portfolio/westlake"
-    },
-    {
-        title: "Mountain Modern Retreat",
-        category: "Whole Home Remodel",
-        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop",
-        link: "/portfolio/mountain-modern"
-    },
-    {
-        title: "Pearl Street Historic Reno",
-        category: "Restoration",
-        image: "https://images.unsplash.com/photo-1600607687644-c7171b42498f?q=80&w=2070&auto=format&fit=crop",
-        link: "/portfolio/pearl-street"
-    }
-];
+import { projects } from '../data/projects';
 
 const PremiumPortfolio = ({ showViewAll = true }: { showViewAll?: boolean }) => {
     return (
@@ -38,7 +19,7 @@ const PremiumPortfolio = ({ showViewAll = true }: { showViewAll?: boolean }) => 
                         {/* Background Image with Zoom Effect */}
                         <div
                             className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                            style={{ backgroundImage: `url(${project.image})` }}
+                            style={{ backgroundImage: `url(${project.mainImage})` }}
                         ></div>
 
                         {/* Overlay */}
@@ -50,7 +31,7 @@ const PremiumPortfolio = ({ showViewAll = true }: { showViewAll?: boolean }) => 
                                 <span className="text-accent text-sm font-bold tracking-widest uppercase mb-2 block opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
                                     {project.category}
                                 </span>
-                                <Link to={project.link} className="block group/link">
+                                <Link to={`/portfolio/${project.slug}`} className="block group/link">
                                     <h3 className="text-3xl font-serif font-bold text-white mb-4 flex items-center gap-4">
                                         {project.title}
                                         <ArrowUpRight className="opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 transform group-hover/link:translate-x-2 text-accent" />
