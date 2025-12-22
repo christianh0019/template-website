@@ -75,7 +75,7 @@ const NewConstruction = () => {
                             className="lg:w-1/2 relative"
                         >
                             <div className="relative z-10 rounded-lg overflow-hidden shadow-2xl">
-                                <img src="https://images.unsplash.com/photo-1621293954908-356db46db3d5?q=80&w=2070&auto=format&fit=crop" alt="Family reviewing plans" className="w-full h-auto" />
+                                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop" alt="Construction planning on site" className="w-full h-auto" />
                             </div>
                             {/* Decorative Element */}
                             <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-accent/20 rounded-full z-0 blur-2xl"></div>
