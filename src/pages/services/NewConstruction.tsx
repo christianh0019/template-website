@@ -1,5 +1,6 @@
 import { Link as RouterLink } from 'react-router-dom';
 import { FileText } from 'lucide-react';
+import { motion } from 'framer-motion';
 import SEO from '../../components/SEO';
 import ServiceSchema from '../../components/seo/ServiceSchema';
 import ServiceHero from '../../components/services/ServiceHero';
@@ -7,6 +8,7 @@ import ServiceFeatures from '../../components/services/ServiceFeatures';
 import ProcessSteps from '../../components/services/ProcessSteps';
 import RelatedProjects from '../../components/services/RelatedProjects';
 import ServiceFAQ from '../../components/services/ServiceFAQ';
+import ServiceTestimonial from '../../components/services/ServiceTestimonial';
 
 const NewConstruction = () => {
     // GEO Blueprint: Focus on "Entity-Service-Location Triad"
@@ -60,23 +62,47 @@ const NewConstruction = () => {
                 secondaryCtaText="Download 2025 Cost Guide"
             />
 
-            {/* PAS Framework: The Problem / Agitation */}
-            <section className="py-24 bg-white relative overflow-hidden">
-                <div className="container mx-auto px-6 max-w-4xl relative z-10">
-                    <span className="text-accent font-bold uppercase tracking-widest text-sm block mb-4">The Challenge</span>
-                    <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary mb-8 leading-tight">
-                        Building in Northern Colorado requires more than just a floor plan.
-                    </h2>
-                    <div className="prose prose-lg text-slate-600">
-                        <p className="mb-6">
-                            You envision a mountain-modern retreat or a legacy estate, but the path is often blocked by <strong>expensive tap fees, expansive clay soils, and complex zoning codes</strong>. Many projects stall in the permitting phase because the "builder" lacks the local regulatory knowledge to navigate Larimer or Weld County requirements.
-                        </p>
-                        <p className="font-medium text-primary text-xl">
-                            We don't just build homes; we engineer solutions to these complexities so you can focus on the vision.
-                        </p>
+            {/* PAS Framework: The Problem / Agitation - Softened & Humanized */}
+            <section className="py-32 bg-white relative">
+                <div className="container mx-auto px-6">
+                    <div className="flex flex-col lg:flex-row items-center gap-20">
+                        {/* Visual Anchor for Emotional Connection */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="lg:w-1/2 relative"
+                        >
+                            <div className="relative z-10 rounded-lg overflow-hidden shadow-2xl">
+                                <img src="https://images.unsplash.com/photo-1621293954908-356db46db3d5?q=80&w=2070&auto=format&fit=crop" alt="Family reviewing plans" className="w-full h-auto" />
+                            </div>
+                            {/* Decorative Element */}
+                            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-accent/20 rounded-full z-0 blur-2xl"></div>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="lg:w-1/2"
+                        >
+                            <span className="text-accent font-bold uppercase tracking-widest text-sm block mb-4">The Challenge</span>
+                            <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-8 leading-tight">
+                                Building a legacy shouldn't be a struggle.
+                            </h2>
+                            <div className="prose prose-lg text-slate-600 space-y-6">
+                                <p>
+                                    You envision a mountain-modern retreat or a multigenerational estate, but the path is often blocked by <strong>expensive tap fees, expansive clay soils, and complex zoning codes</strong>.
+                                </p>
+                                <p>
+                                    Many future homeowners feel overwhelmed by the technicalities before they even break ground. At Homestead, we believe the process should be as inspiring as the outcome. We engineer solutions to these complexities so you can focus on the vision.
+                                </p>
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
-                {/* Subtle pattern background could go here */}
             </section>
 
             {/* The Solution: Features Grid with Clusters */}
@@ -84,6 +110,14 @@ const NewConstruction = () => {
                 title="A Foundation of Expertise"
                 description="Our 'Operational Maturity' ensures that your investment is protected by rigorous process, transparent financials, and building science excellence."
                 features={features}
+            />
+
+            {/* Added: Specific Testimonial for Social Proof */}
+            <ServiceTestimonial
+                quote="We had heard horror stories about building custom homes—delays, budget blowouts, silica dust... Homestead was the complete opposite. Their fixed-price contract gave us peace of mind, and the CoConstruct app kept us updated daily."
+                author="The Sarah & Michael J."
+                location="Custom Build in Water Valley, Windsor"
+                image="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1888&auto=format&fit=crop"
             />
 
             {/* The Process: Operational Transparency */}
