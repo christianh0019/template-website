@@ -4,7 +4,6 @@ import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
     const location = useLocation();
 
     const navigation = [
