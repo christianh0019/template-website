@@ -1,94 +1,74 @@
-import { ArrowRight, CheckCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import SEO from '../../components/SEO';
-import PageHeader from '../../components/PageHeader';
+import ServiceHero from '../../components/services/ServiceHero';
+import ServiceFeatures from '../../components/services/ServiceFeatures';
+import ProcessSteps from '../../components/services/ProcessSteps';
+import RelatedProjects from '../../components/services/RelatedProjects';
+import ServiceFAQ from '../../components/services/ServiceFAQ';
 
 const NewConstruction = () => {
+    const features = [
+        "Net-Zero Ready Energy Efficiency",
+        "Smart Home Technology Integration",
+        "Full Design-Build Service",
+        "Lot Evaluation & Acquisition Assistance",
+        "Transparent Budgeting & Scheduling",
+        "10-Year Structural Warranty"
+    ];
+
+    const faqs = [
+        {
+            question: "What is your typical price per square foot?",
+            answer: "While every custom home is unique, our luxury custom builds typically hover around $350-$450 per sq. ft. depending on finishes and site conditions."
+        },
+        {
+            question: "Do you only build on lots you own?",
+            answer: "No, we are an 'On Your Lot' builder. We can build on land you already own, or help you find the perfect lot in Northern Colorado."
+        },
+        {
+            question: "How long does a custom home project take?",
+            answer: "From groundbreaking to move-in, most of our projects take between 10-14 months. Design and permitting can add 3-6 months prior to that."
+        },
+        {
+            question: "Can we use our own architect?",
+            answer: "Absolutely. We are happy to collaborate with your architect, or you can utilize our in-house design partners for a seamless design-build experience."
+        }
+    ];
+
     return (
         <>
             <SEO
-                title="Custom Home Builders Northern Colorado | New Construction"
-                description="Premier custom home builder in Loveland, Fort Collins, and Boulder. We specialize in luxury new construction on your lot or acreage."
+                title="Custom Home Builders in Loveland & Fort Collins | Homestead"
+                description="Award-winning custom home builder in Northern Colorado. We design and build luxury energy-efficient homes on your lot or ours."
                 canonical="https://homesteadhomebuilders.com/services/new-construction"
             />
 
-            <PageHeader
-                title="Custom Home Construction"
-                subtitle="Designing and building bespoke residences that reflect your lifestyle and legacy."
-                backgroundImage="https://images.unsplash.com/photo-1600596542815-e32c21216f95?q=80&w=2072&auto=format&fit=crop"
-                breadcrumbs={[
-                    { label: 'Home', path: '/' },
-                    { label: 'Services', path: '/services' },
-                    { label: 'New Construction', path: '/services/new-construction' }
-                ]}
+            <ServiceHero
+                title="Build Your Field of Dreams"
+                subtitle="Uncompromising quality for your forever home. Experience the difference of a true custom builder in Northern Colorado."
+                backgroundImage="https://images.unsplash.com/photo-1600596542815-3ad3091f67ed?q=80&w=2075&auto=format&fit=crop"
             />
 
-            {/* Answer-First Section (SEO) */}
-            <section className="py-24 bg-white">
-                <div className="container mx-auto px-6 max-w-4xl">
-                    <h2 className="text-3xl font-serif font-bold text-primary mb-6">What defines a comprehensive custom home build?</h2>
-                    <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                        A comprehensive custom home build differs from production building by offering you complete control over every aspect of the project—from site selection and architectural orientation to the finest interior details. At Homestead Home Builders, we manage the entire lifecycle: land feasibility, architectural design, engineering, permitting, and construction, ensuring a home that is uniquely tailored to your land and lifestyle.
-                    </p>
-                    <div className="p-8 bg-surface border-l-4 border-accent">
-                        <h3 className="text-xl font-bold text-primary mb-4">Our Specialty: Build On Your Lot</h3>
-                        <p className="text-slate-600">
-                            We specialize in acreage properties in Weld and Larimer counties. We understand the complexities of well/septic systems, soil engineering, and maximizing mountain views.
-                        </p>
-                    </div>
-                </div>
-            </section>
+            <ServiceFeatures
+                title="Designed for Your Lifestyle"
+                description="We don't just build houses; we craft environments tailored to how you live. From finding the perfect lot to the final light fixture, our team manages every detail unless you want to."
+                features={features}
+            />
 
-            {/* Features Grid */}
-            <section className="py-24 bg-surface">
+            <ProcessSteps />
+
+            <RelatedProjects category="Custom Build" />
+
+            <ServiceFAQ faqs={faqs} />
+
+            {/* Final CTA Strip */}
+            <div className="bg-primary py-16 text-center">
                 <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {[
-                            {
-                                title: "Architectural Design",
-                                desc: "We partner with top local architects to translate your vision into blueprints that optimize your site's topography and solar exposure."
-                            },
-                            {
-                                title: "High-Performance Build",
-                                desc: "We go beyond code with advanced insulation, air sealing, and energy-efficient systems for a home that is comfortable year-round."
-                            },
-                            {
-                                title: "Interior Selection",
-                                desc: "Our interior design partners guide you through selecting finishes, fixtures, and materials that create a cohesive and luxurious aesthetic."
-                            }
-                        ].map((item, i) => (
-                            <div key={i} className="bg-white p-8 hover:-translate-y-2 transition-transform duration-300 shadow-sm hover:shadow-lg">
-                                <CheckCircle className="text-accent w-10 h-10 mb-6" />
-                                <h3 className="text-xl font-serif font-bold text-primary mb-4">{item.title}</h3>
-                                <p className="text-slate-600 leading-relaxed">{item.desc}</p>
-                            </div>
-                        ))}
-                    </div>
+                    <h2 className="text-3xl font-serif font-bold text-white mb-6">Ready to Start the Conversation?</h2>
+                    <a href="/contact" className="inline-block bg-accent text-primary px-10 py-4 font-bold uppercase tracking-widest hover:bg-white transition-colors rounded-sm shadow-xl">
+                        Schedule Discovery Call
+                    </a>
                 </div>
-            </section>
-
-            {/* Process CTA */}
-            <section className="py-24 bg-white">
-                <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
-                    <div className="md:w-1/2">
-                        <img
-                            src="https://images.unsplash.com/photo-1598928636135-d146006ff4be?q=80&w=2070&auto=format&fit=crop"
-                            alt="Construction Framing"
-                            className="rounded-none shadow-2xl"
-                        />
-                    </div>
-                    <div className="md:w-1/2">
-                        <h2 className="text-4xl font-serif font-bold text-primary mb-6">Transparent & Timely Delivery</h2>
-                        <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-                            We use cloud-based project management software (CoConstruct) to give you 24/7 access to your build schedule, budget selections, and progress photos. You'll never be in the dark about your new home's progress.
-                        </p>
-                        <Link to="/process" className="text-primary font-bold border-b-2 border-accent pb-1 hover:text-accent transition-colors inline-flex items-center">
-                            See Our 4-Step Process <ArrowRight className="ml-2 w-4 h-4" />
-                        </Link>
-                    </div>
-                </div>
-            </section>
-
+            </div>
         </>
     );
 };
