@@ -14,6 +14,8 @@ import ProjectDetail from './pages/portfolio/ProjectDetail';
 import Process from './pages/Process';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Booking from './pages/Booking';
+import ThankYou from './pages/ThankYou';
 
 // Placeholder components for other routes to prevent errors
 const Placeholder = ({ title }: { title: string }) => (
