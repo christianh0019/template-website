@@ -1,4 +1,4 @@
-import { ArrowRight, Hammer, Home as HomeIcon, Layout, Ruler, Phone, CheckCircle } from 'lucide-react';
+import { ArrowRight, Hammer, Home as HomeIcon, Layout, Ruler, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import PageHeader from '../components/PageHeader';

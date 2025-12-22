@@ -1,5 +1,4 @@
-import { ArrowRight, Hammer, CheckCircle, RefreshCw } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Hammer, CheckCircle, RefreshCw } from 'lucide-react';
 import SEO from '../../components/SEO';
 import PageHeader from '../../components/PageHeader';
 
