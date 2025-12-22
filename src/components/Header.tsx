@@ -54,8 +54,6 @@ const Header = () => {
                         <div
                             key={item.name}
                             className="relative group h-full"
-                            onMouseEnter={() => setActiveDropdown(item.name)}
-                            onMouseLeave={() => setActiveDropdown(null)}
                         >
                             <Link
                                 to={item.path}
