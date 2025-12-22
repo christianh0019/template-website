@@ -2,6 +2,17 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Layout from './components/Layout';
 import Home from './pages/Home';
+import Services from './pages/Services';
+import NewConstruction from './pages/services/NewConstruction';
+import Remodeling from './pages/services/Remodeling';
+import BasementFinishing from './pages/services/BasementFinishing';
+import Additions from './pages/services/Additions';
+import Locations from './pages/Locations';
+import LocationDetail from './pages/locations/LocationDetail';
+import Portfolio from './pages/Portfolio';
+import Process from './pages/Process';
+import About from './pages/About';
+import Contact from './pages/Contact';
 
 // Placeholder components for other routes to prevent errors
 const Placeholder = ({ title }: { title: string }) => (
@@ -18,12 +29,18 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="about" element={<Placeholder title="About Us" />} />
-            <Route path="services" element={<Placeholder title="Our Services" />} />
-            <Route path="services/*" element={<Placeholder title="Service Detail" />} />
-            <Route path="portfolio" element={<Placeholder title="Our Portfolio" />} />
+            <Route path="services" element={<Services />} />
+            <Route path="services/new-construction" element={<NewConstruction />} />
+            <Route path="services/remodeling" element={<Remodeling />} />
+            <Route path="services/basement-finishing" element={<BasementFinishing />} />
+            <Route path="services/additions" element={<Additions />} />
+            <Route path="locations" element={<Locations />} />
+            <Route path="locations/:city" element={<LocationDetail />} />
+            <Route path="portfolio" element={<Portfolio />} />
+            <Route path="process" element={<Process />} />
             <Route path="blog" element={<Placeholder title="Insights Blog" />} />
-            <Route path="contact" element={<Placeholder title="Contact Us" />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="about" element={<About />} />
             <Route path="*" element={<Placeholder title="Page Not Found" />} />
           </Route>
         </Routes>

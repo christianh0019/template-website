@@ -23,7 +23,7 @@ const projects = [
     }
 ];
 
-const PremiumPortfolio = () => {
+const PremiumPortfolio = ({ showViewAll = true }: { showViewAll?: boolean }) => {
     return (
         <section className="py-0 relative">
             <div className="grid grid-cols-1 md:grid-cols-3 h-auto md:h-[600px]">
@@ -63,14 +63,16 @@ const PremiumPortfolio = () => {
             </div>
 
             {/* View All CTA */}
-            <div className="bg-primary py-24 text-center">
-                <Link
-                    to="/portfolio"
-                    className="inline-block px-12 py-5 border-2 border-white/20 text-white font-bold tracking-widest uppercase hover:bg-white hover:text-primary hover:border-white transition-all duration-300"
-                >
-                    View Full Portfolio
-                </Link>
-            </div>
+            {showViewAll && (
+                <div className="bg-primary py-24 text-center">
+                    <Link
+                        to="/portfolio"
+                        className="inline-block px-12 py-5 border-2 border-white/20 text-white font-bold tracking-widest uppercase hover:bg-white hover:text-primary hover:border-white transition-all duration-300"
+                    >
+                        View Full Portfolio
+                    </Link>
+                </div>
+            )}
         </section>
     );
 };
