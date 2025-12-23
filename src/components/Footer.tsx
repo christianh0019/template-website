@@ -90,7 +90,7 @@ const Footer = () => {
                 <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
                     <p>&copy; {new Date().getFullYear()} Homestead Home Builders. All rights reserved.</p>
                     <div className="flex gap-6">
-                        <Link to="/privacy" className="hover:text-white">Privacy Policy</Link>
+                        <Link to="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
                         <Link to="/sitemap" className="hover:text-white">Sitemap</Link>
                     </div>
                 </div>

@@ -27,6 +27,7 @@ import BlogPost from './pages/blog/BlogPost';
 import About from './pages/About';
 import Partners from './pages/Partners';
 import Careers from './pages/Careers';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import Contact from './pages/Contact';
 import Booking from './pages/Booking';
 import ThankYou from './pages/ThankYou';
@@ -82,6 +83,7 @@ function App() {
             <Route path="about" element={<About />} />
             <Route path="partners" element={<Partners />} />
             <Route path="careers" element={<Careers />} />
+            <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="*" element={<Placeholder title="Page Not Found" />} />
           </Route>
         </Routes>
