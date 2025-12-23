@@ -4,6 +4,7 @@ import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
     const location = useLocation();
 
     const navigation = [
@@ -28,6 +29,7 @@ const Header = () => {
                 { name: 'Boulder', path: '/locations/boulder' },
             ]
         },
+        { name: 'Pricing', path: '/resources/cost-guide-optin' },
         { name: 'Portfolio', path: '/portfolio' },
         { name: 'Process', path: '/process' },
         { name: 'About', path: '/about' },
@@ -35,6 +37,10 @@ const Header = () => {
     ];
 
     const isActive = (path: string) => location.pathname === path;
+
+    const toggleSubmenu = (name: string) => {
+        setOpenSubmenu(openSubmenu === name ? null : name);
+    };
 
     return (
         <header className="bg-white shadow-md fixed w-full z-50 font-sans">
@@ -76,13 +82,12 @@ const Header = () => {
                             )}
                         </div>
                     ))}
-                    <a
-                        href="tel:9707753796"
+                    <Link
+                        to="/contact"
                         className="flex items-center gap-2 px-6 py-3 bg-primary text-white font-bold rounded-sm hover:bg-secondary transition-colors text-sm uppercase tracking-widest"
                     >
-                        <Phone size={16} />
-                        970.775.3796
-                    </a>
+                        Request A Discovery Call
+                    </Link>
                 </nav>
 
                 {/* Mobile Menu Button */}
@@ -103,21 +108,35 @@ const Header = () => {
                 <div className="flex flex-col h-full overflow-y-auto px-6 pb-10">
                     {navigation.map((item) => (
                         <div key={item.name} className="border-b border-slate-100 py-4">
-                            <Link
-                                to={item.path}
-                                className="text-xl font-serif font-bold text-primary block mb-2"
-                                onClick={() => setIsOpen(false)}
-                            >
-                                {item.name}
-                            </Link>
+                            <div className="flex items-center justify-between">
+                                <Link
+                                    to={item.path}
+                                    className="text-xl font-serif font-bold text-primary block"
+                                    onClick={() => !item.children && setIsOpen(false)}
+                                >
+                                    {item.name}
+                                </Link>
+                                {item.children && (
+                                    <button
+                                        onClick={() => toggleSubmenu(item.name)}
+                                        className="p-2 text-slate-500"
+                                    >
+                                        <ChevronDown
+                                            size={20}
+                                            className={`transition-transform duration-300 ${openSubmenu === item.name ? 'rotate-180' : ''}`}
+                                        />
+                                    </button>
+                                )}
+                            </div>
+
                             {/* Mobile Submenu Items */}
                             {item.children && (
-                                <div className="pl-4 space-y-3 mt-2 border-l-2 border-accent/20">
+                                <div className={`pl-4 space-y-3 mt-2 border-l-2 border-accent/20 overflow-hidden transition-all duration-300 ${openSubmenu === item.name ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                                     {item.children.map((child) => (
                                         <Link
                                             key={child.name}
                                             to={child.path}
-                                            className="block text-slate-600 font-medium"
+                                            className="block text-slate-600 font-medium py-2"
                                             onClick={() => setIsOpen(false)}
                                         >
                                             {child.name}
@@ -133,7 +152,7 @@ const Header = () => {
                             className="block text-center w-full bg-accent text-primary py-4 font-bold uppercase tracking-widest rounded-sm"
                             onClick={() => setIsOpen(false)}
                         >
-                            Contact Us
+                            Request A Discovery Call
                         </Link>
                         <a
                             href="tel:9707753796"
