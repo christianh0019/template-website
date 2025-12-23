@@ -22,6 +22,8 @@ import Erie from './pages/locations/Erie';
 import Portfolio from './pages/Portfolio';
 import ProjectDetail from './pages/portfolio/ProjectDetail';
 import Process from './pages/Process';
+import Blog from './pages/Blog';
+import BlogPost from './pages/blog/BlogPost';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Booking from './pages/Booking';
@@ -64,7 +66,8 @@ function App() {
             <Route path="portfolio" element={<Portfolio />} />
             <Route path="portfolio/:slug" element={<ProjectDetail />} />
             <Route path="process" element={<Process />} />
-            <Route path="blog" element={<Placeholder title="Insights Blog" />} />
+            <Route path="blog" element={<Blog />} />
+            <Route path="blog/:slug" element={<BlogPost />} />
             <Route path="contact" element={<Contact />} />
             <Route path="booking" element={<Booking />} />
             <Route path="thank-you" element={<ThankYou />} />
