@@ -31,7 +31,7 @@ const BlogPost = () => {
                 url={`https://homesteadhomebuilders.com/blog/${post.slug}`}
             />
 
-            <article className="pt-20 min-h-screen bg-white">
+            <article className="min-h-screen bg-white">
                 {/* Header Section */}
                 <div className="bg-primary text-white py-16">
                     <div className="container mx-auto px-6 max-w-4xl">
