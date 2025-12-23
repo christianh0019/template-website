@@ -52,7 +52,11 @@ export const blogPosts: BlogPost[] = [
         content: [
             {
                 type: "p",
-                text: "Building a custom home is likely the largest financial investment of your life. Yet, most builders obscure the real numbers until you've already signed a contract. At Homestead, we believe in radical transparency. This guide breaks down exactly where your money goes when building in Loveland."
+                text: "Building a custom home is likely the largest financial investment of your life. Yet, most builders in **Northern Colorado** obscure the real numbers until you've already signed a contract. At Homestead, we believe in radical transparency."
+            },
+            {
+                type: "p",
+                text: "Whether you're looking at a lakefront lot in **Boyd Lake** or acreage near **Carter Lake**, this guide breaks down exactly where your money goes when building in Loveland. We've updated these figures for the **2025 construction market** to give you a realistic baseline."
             },
             {
                 type: "h2",
@@ -61,14 +65,14 @@ export const blogPosts: BlogPost[] = [
             },
             {
                 type: "p",
-                text: "While 'price per square foot' is a flawed metric due to variables in finish quality, it serves as a useful starting point for feasibility."
+                text: "While 'price per square foot' is a flawed metric due to massive variables in finish quality (marble vs. laminate), it serves as a useful starting point for initial feasibility studies."
             },
             {
                 type: "ul",
                 items: [
-                    "**Entry-Level Custom ($280 - $325/sq.ft.)**: Standard finishes, asphalt shingle roof, carpet/LVP floors, simple rooflines. Often semi-custom plans.",
-                    "**Mid-Range Custom ($325 - $400/sq.ft.)**: Hardwood floors, quartz countertops, clad wood windows, stone masonry accents, 3-car garage.",
-                    "**Luxury Custom ($400 - $550+/sq.ft.)**: Structural steel elements, floor-to-ceiling glass, radiant heating, smart home integration, premium landscaping."
+                    "**Entry-Level Custom ($280 - $325/sq.ft.)**: This typically includes standard finishes, asphalt shingle roofing, carpet or LVP flooring, and simple rooflines. These are often semi-custom plans adapted for your lot.",
+                    "**Mid-Range Custom ($325 - $400/sq.ft.)**: Expect site-finished hardwood floors, quartz countertops, clad wood windows, stone masonry accents, and a finished 3-car garage.",
+                    "**Luxury Custom ($400 - $550+/sq.ft.)**: The sky is the limit. Think structural steel elements, floor-to-ceiling glass walls, radiant in-floor heating, smart home integration, and premium landscaping packages."
                 ]
             },
             {
@@ -78,19 +82,19 @@ export const blogPosts: BlogPost[] = [
             },
             {
                 type: "p",
-                text: "Many homeowners focus solely on the lumber and labor (Hard Costs) and forget the 'Soft Costs'—the fees required before a shovel hits the ground. In Loveland, soft costs can equate to 15-20% of your total budget."
+                text: "Many homeowners focus solely on the lumber and labor (Hard Costs) and forget the 'Soft Costs'—the professional fees required before a shovel hits the ground. In Loveland, soft costs can equate to **15-20% of your total project budget**."
             },
             {
                 type: "h3",
-                text: "Common Soft Costs:"
+                text: "Common Soft Costs to Budget For:"
             },
             {
                 type: "ul",
                 items: [
-                    "**Architecture & Engineering**: $25,000 - $60,000+",
+                    "**Architecture & Engineering**: $25,000 - $60,000+ (Crucial for complex soils)",
                     "**Soils Report (Geotechnical)**: $2,500 - $4,000",
                     "**Survey & Site Plan**: $3,000 - $5,000",
-                    "**Interior Design Fees**: $150/hr or fixed flat fee"
+                    "**Interior Design Fees**: $150/hr or fixed flat fee packages"
                 ]
             },
             {
@@ -100,11 +104,11 @@ export const blogPosts: BlogPost[] = [
             },
             {
                 type: "p",
-                text: "One of the biggest surprises for new Builders in Loveland is the cost of water. Depending on your location, you will either pay City of Loveland Utilities or Fort Collins-Loveland Water District (FCLWD) fees."
+                text: "One of the biggest financial surprises for new builders in Loveland is the cost of water. Depending on your specific lot location, you will either pay **City of Loveland Utilities** or **Fort Collins-Loveland Water District (FCLWD)** fees."
             },
             {
                 type: "callout",
-                text: "Pro Tip: FCLWD tap fees have risen significantly in recent years. Always verify the current water raw water dedication requirements before purchasing a lot."
+                text: "Pro Tip: FCLWD tap fees have risen significantly in recent years due to water scarcity infrastructure projects. Always verify the current raw water dedication requirements before closing on a lot."
             },
             {
                 type: "image",
@@ -118,7 +122,11 @@ export const blogPosts: BlogPost[] = [
             },
             {
                 type: "p",
-                text: "Loveland's geology varies from the rocky foothills out west (requiring rock excavation) to the clay-heavy plains in the east (requiring over-excavation and structural floors). Site costs are not included in the square footage price and can range from $50,000 to $150,000+ depending on the lot's complexity."
+                text: "Loveland's geology varies wildly. You might encounter rocky foothills out west (requiring expensive **rock excavation**) or clay-heavy plains in the east (requiring **over-excavation** and structural floors)."
+            },
+            {
+                type: "p",
+                text: "Site costs are **never** included in the base square footage price and can range from $50,000 to $150,000+ depending on the lot's slope and soil complexity. Always perform a soil test during your due diligence period."
             }
         ],
         relatedServices: ["new-construction", "remodeling"]
@@ -148,7 +156,7 @@ export const blogPosts: BlogPost[] = [
         content: [
             {
                 type: "p",
-                text: "Old Town Fort Collins is the crown jewel of Northern Colorado living. The tree-lined streets and walkability to restaurants make it highly desirable. However, the housing stock—mostly built between 1900 and 1940—presents unique challenges for modern living."
+                text: "Old Town Fort Collins is widely considered the crown jewel of Northern Colorado living. The wide, tree-lined streets and walkability to **Old Town Square** restaurants make it highly desirable. However, the housing stock—mostly built between 1900 and 1940—presents unique challenges for modern living."
             },
             {
                 type: "h2",
@@ -157,14 +165,14 @@ export const blogPosts: BlogPost[] = [
             },
             {
                 type: "p",
-                text: "If your home is over 50 years old, it likely falls under some level of historic review. The City's goal is to maintain the 'historic fabric' of the neighborhood."
+                text: "If your home is over 50 years old, it likely falls under some level of historic review. The City's primary goal is to maintain the 'historic fabric' and streetscape of the neighborhood."
             },
             {
                 type: "ul",
                 items: [
-                    "**Street Facade**: Almost always protected. Changing windows or porches requires detailed review.",
-                    "**Siding**: Original wood siding must often be repaired rather than replaced.",
-                    "**Additions**: Must be 'subordinate' to the original structure. This usually means stepping back second stories or building to the rear."
+                    "**Street Facade**: This is almost always protected. Changing original windows, removing porches, or altering the roofline requires detailed review and often public hearings.",
+                    "**Siding Materials**: Original wood siding must often be repaired rather than replaced with modern vinyl or fiber cement, unless the deterioration is total.",
+                    "**Additions**: Any new square footage must be 'subordinate' to the original structure. This usually means stepping back second-story additions or building strictly to the rear."
                 ]
             },
             {
@@ -174,7 +182,7 @@ export const blogPosts: BlogPost[] = [
             },
             {
                 type: "p",
-                text: "Many Old Town homes were built on sandstone or unreinforced concrete foundations. Over 100 years, these often crumble or settle."
+                text: "Many Old Town homes were built on **sandstone** or unreinforced concrete foundations. Over 100 years, these porous materials often crumble, settle, or allow significant moisture intrusion."
             },
             {
                 type: "callout",
@@ -187,7 +195,7 @@ export const blogPosts: BlogPost[] = [
             },
             {
                 type: "p",
-                text: "Fort Collins has progressive codes regarding Accessory Dwelling Units (ADUs). Old Town's alley network makes it perfect for carriage houses. These can provide rental income or space for aging parents."
+                text: "Fort Collins has some of the most progressive codes in the state regarding **Accessory Dwelling Units (ADUs)**. Old Town's unique alley network makes it perfect for carriage houses. These can provide essential rental income or space for aging parents."
             },
             {
                 type: "image",

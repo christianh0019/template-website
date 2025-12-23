@@ -95,29 +95,29 @@ const BlogPost = () => {
                                 {post.content.map((block, index) => {
                                     switch (block.type) {
                                         case 'h2':
-                                            return <h2 key={index} id={block.id} className="scroll-mt-32 border-b border-slate-200 pb-2">{block.text}</h2>;
+                                            return <h2 key={index} id={block.id} className="scroll-mt-32 border-b border-slate-200 pb-4 mt-16 mb-8 text-3xl">{block.text}</h2>;
                                         case 'h3':
-                                            return <h3 key={index} id={block.id} className="scroll-mt-32">{block.text}</h3>;
+                                            return <h3 key={index} id={block.id} className="scroll-mt-32 mt-10 mb-4 text-2xl">{block.text}</h3>;
                                         case 'p':
-                                            return <p key={index} dangerouslySetInnerHTML={{ __html: block.text?.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') || '' }} />;
+                                            return <p key={index} className="mb-8 leading-relaxed text-slate-700 text-lg" dangerouslySetInnerHTML={{ __html: block.text?.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') || '' }} />;
                                         case 'ul':
                                             return (
-                                                <ul key={index} className="bg-white p-6 rounded-lg border border-slate-100 shadow-sm list-inside">
+                                                <ul key={index} className="bg-white p-8 rounded-lg border border-slate-100 shadow-sm list-disc list-inside space-y-4 mb-10 text-lg text-slate-700">
                                                     {block.items?.map((item, i) => (
-                                                        <li key={i} dangerouslySetInnerHTML={{ __html: item.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
+                                                        <li key={i} className="pl-2" dangerouslySetInnerHTML={{ __html: item.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
                                                     ))}
                                                 </ul>
                                             );
                                         case 'image':
                                             return (
-                                                <figure key={index} className="my-8">
-                                                    <img src={block.src} alt={block.alt} className="rounded-lg shadow-md w-full" />
-                                                    {block.alt && <figcaption className="text-center text-sm text-slate-500 mt-2 italic">{block.alt}</figcaption>}
+                                                <figure key={index} className="my-12">
+                                                    <img src={block.src} alt={block.alt} className="rounded-lg shadow-lg w-full" />
+                                                    {block.alt && <figcaption className="text-center text-sm text-slate-500 mt-4 italic">{block.alt}</figcaption>}
                                                 </figure>
                                             );
                                         case 'callout':
                                             return (
-                                                <div key={index} className="bg-yellow-50 border-l-4 border-yellow-400 p-6 my-8 italic text-slate-700 font-medium">
+                                                <div key={index} className="bg-yellow-50 border-l-4 border-yellow-400 p-8 my-10 italic text-slate-700 font-medium text-lg leading-relaxed shadow-sm rounded-r-lg">
                                                     {block.text}
                                                 </div>
                                             );
