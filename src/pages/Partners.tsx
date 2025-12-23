@@ -1,5 +1,4 @@
 
-import { Link } from 'react-router-dom';
 import { ArrowRight, Handshake, ShieldCheck, Ruler, ClipboardCheck, Users, Briefcase } from 'lucide-react';
 import SEO from '../components/SEO';
 import PageHeader from '../components/PageHeader';
@@ -64,9 +63,9 @@ const Partners = () => {
                                     </li>
                                 ))}
                             </ul>
-                            <Link to="/contact" className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 font-bold uppercase tracking-widest hover:bg-secondary transition-colors rounded-sm shadow-md">
+                            <a href="#partner-form" className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 font-bold uppercase tracking-widest hover:bg-secondary transition-colors rounded-sm shadow-md">
                                 Register a Client <ArrowRight size={18} />
-                            </Link>
+                            </a>
                         </div>
                         <div className="lg:w-1/2">
                             <img
@@ -109,9 +108,9 @@ const Partners = () => {
                                     </li>
                                 ))}
                             </ul>
-                            <Link to="/contact" className="inline-flex items-center gap-2 border-2 border-primary text-primary px-8 py-4 font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-colors rounded-sm">
+                            <a href="#partner-form" className="inline-flex items-center gap-2 border-2 border-primary text-primary px-8 py-4 font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-colors rounded-sm">
                                 Discuss a Project <ArrowRight size={18} />
-                            </Link>
+                            </a>
                         </div>
                         <div className="lg:w-1/2">
                             <img
@@ -167,9 +166,69 @@ const Partners = () => {
                     </div>
 
                     <div className="text-center">
-                        <Link to="/contact" className="inline-flex items-center gap-2 bg-accent text-primary px-10 py-5 font-bold uppercase tracking-widest hover:bg-white transition-colors rounded-sm shadow-xl">
+                        <a href="#partner-form" className="inline-flex items-center gap-2 bg-accent text-primary px-10 py-5 font-bold uppercase tracking-widest hover:bg-white transition-colors rounded-sm shadow-xl">
                             Join Bid List <ArrowRight size={18} />
-                        </Link>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            {/* Application Form Section */}
+            <section id="partner-form" className="py-24 bg-surface">
+                <div className="container mx-auto px-6 max-w-3xl">
+                    <div className="bg-white p-10 rounded-lg shadow-xl border-t-4 border-accent">
+                        <h2 className="text-3xl font-serif font-bold text-primary mb-2 text-center">Partnership Inquiry</h2>
+                        <p className="text-slate-600 text-center mb-10">Tell us about your business and how we can collaborate.</p>
+
+                        <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label className="block text-sm font-bold text-slate-700 mb-2">First Name</label>
+                                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none" placeholder="First Name" />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-bold text-slate-700 mb-2">Last Name</label>
+                                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none" placeholder="Last Name" />
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label className="block text-sm font-bold text-slate-700 mb-2">Company Name</label>
+                                    <input type="text" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none" placeholder="Company / Agency" />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-bold text-slate-700 mb-2">Partner Type</label>
+                                    <select className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
+                                        <option>Realtor / Broker</option>
+                                        <option>Architect / Designer</option>
+                                        <option>Subcontractor / Trade</option>
+                                        <option>Vendor / Supplier</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label className="block text-sm font-bold text-slate-700 mb-2">Email Address</label>
+                                    <input type="email" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none" placeholder="email@company.com" />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-bold text-slate-700 mb-2">Phone Number</label>
+                                    <input type="tel" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none" placeholder="(555) 555-5555" />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-bold text-slate-700 mb-2">How can we help you?</label>
+                                <textarea rows={4} className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none" placeholder="I have a client looking to build... / I am a licensed electrician..."></textarea>
+                            </div>
+
+                            <button type="submit" className="w-full bg-primary text-white font-bold uppercase tracking-widest py-4 hover:bg-secondary transition-colors shadow-lg">
+                                Submit Inquiry
+                            </button>
+                        </form>
                     </div>
                 </div>
             </section>
