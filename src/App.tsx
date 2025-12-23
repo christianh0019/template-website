@@ -34,6 +34,7 @@ import Booking from './pages/Booking';
 import ThankYou from './pages/ThankYou';
 import CostGuideOptIn from './pages/resources/CostGuideOptIn';
 import CostGuide from './pages/resources/CostGuide';
+import Resources from './pages/Resources';
 
 // Placeholder components for other routes to prevent errors
 const Placeholder = ({ title }: { title: string }) => (
@@ -81,6 +82,7 @@ function App() {
             <Route path="resources/cost-guide-optin" element={<CostGuideOptIn />} />
             <Route path="resources/cost-guide" element={<CostGuide />} />
             <Route path="resources/cost-guide" element={<CostGuide />} />
+            <Route path="resources" element={<Resources />} />
             <Route path="about" element={<About />} />
             <Route path="partners" element={<Partners />} />
             <Route path="careers" element={<Careers />} />

@@ -37,13 +37,13 @@ const Header = () => {
         },
         { name: 'Pricing', path: '/resources/cost-guide-optin' },
         { name: 'Portfolio', path: '/portfolio' },
-        { name: 'Process', path: '/process' },
-        { name: 'About', path: '/about' },
-        { name: 'Blog', path: '/blog' },
         {
             name: 'Resources',
-            path: '#', // No parent page
+            path: '/resources', // Updated to clickable parent page
             children: [
+                { name: 'About Us', path: '/about' },
+                { name: 'Our Process', path: '/process' },
+                { name: 'Blog', path: '/blog' },
                 { name: 'Partners', path: '/partners' },
                 { name: 'Careers', path: '/careers' },
             ]
