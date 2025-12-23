@@ -8,7 +8,10 @@ import Remodeling from './pages/services/Remodeling';
 import BasementFinishing from './pages/services/BasementFinishing';
 import Additions from './pages/services/Additions';
 import Locations from './pages/Locations';
-import LocationDetail from './pages/locations/LocationDetail';
+import Loveland from './pages/locations/Loveland';
+import FortCollins from './pages/locations/FortCollins';
+import Windsor from './pages/locations/Windsor';
+import Boulder from './pages/locations/Boulder';
 import Portfolio from './pages/Portfolio';
 import ProjectDetail from './pages/portfolio/ProjectDetail';
 import Process from './pages/Process';
@@ -40,7 +43,10 @@ function App() {
             <Route path="services/basement-finishing" element={<BasementFinishing />} />
             <Route path="services/additions" element={<Additions />} />
             <Route path="locations" element={<Locations />} />
-            <Route path="locations/:city" element={<LocationDetail />} />
+            <Route path="locations/loveland" element={<Loveland />} />
+            <Route path="locations/fort-collins" element={<FortCollins />} />
+            <Route path="locations/windsor" element={<Windsor />} />
+            <Route path="locations/boulder" element={<Boulder />} />
             <Route path="portfolio" element={<Portfolio />} />
             <Route path="portfolio/:slug" element={<ProjectDetail />} />
             <Route path="process" element={<Process />} />
