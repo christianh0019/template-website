@@ -39,10 +39,13 @@ const Placeholder = ({ title }: { title: string }) => (
   </div>
 );
 
+import ScrollToTop from './components/ScrollToTop';
+
 function App() {
   return (
     <HelmetProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
