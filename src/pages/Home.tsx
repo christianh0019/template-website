@@ -69,7 +69,7 @@ const Home = () => {
                 <div className="container mx-auto px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
                         {/* Sidebar Title */}
-                        <div className="lg:col-span-4 sticky top-32 h-fit">
+                        <div className="lg:col-span-4 lg:sticky lg:top-32 h-fit">
                             <span className="text-accent font-bold tracking-widest uppercase text-sm block mb-4">What We Do</span>
                             <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-8 leading-tight">Master Craftsmanship<br />For Every Scale.</h2>
                             <p className="text-slate-600 text-lg leading-relaxed mb-8">
