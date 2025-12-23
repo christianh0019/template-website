@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { ArrowRight, Award, Calendar, Users, Heart, CheckCircle } from 'lucide-react';
+import { Award, Users, Heart } from 'lucide-react';
 import SEO from '../components/SEO';
 import PageHeader from '../components/PageHeader';
 
