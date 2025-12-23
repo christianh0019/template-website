@@ -12,6 +12,13 @@ import Loveland from './pages/locations/Loveland';
 import FortCollins from './pages/locations/FortCollins';
 import Windsor from './pages/locations/Windsor';
 import Boulder from './pages/locations/Boulder';
+import Greeley from './pages/locations/Greeley';
+import Longmont from './pages/locations/Longmont';
+import Timnath from './pages/locations/Timnath';
+import Wellington from './pages/locations/Wellington';
+import Berthoud from './pages/locations/Berthoud';
+import Mead from './pages/locations/Mead';
+import Erie from './pages/locations/Erie';
 import Portfolio from './pages/Portfolio';
 import ProjectDetail from './pages/portfolio/ProjectDetail';
 import Process from './pages/Process';
@@ -47,6 +54,13 @@ function App() {
             <Route path="locations/fort-collins" element={<FortCollins />} />
             <Route path="locations/windsor" element={<Windsor />} />
             <Route path="locations/boulder" element={<Boulder />} />
+            <Route path="locations/greeley" element={<Greeley />} />
+            <Route path="locations/longmont" element={<Longmont />} />
+            <Route path="locations/timnath" element={<Timnath />} />
+            <Route path="locations/wellington" element={<Wellington />} />
+            <Route path="locations/berthoud" element={<Berthoud />} />
+            <Route path="locations/mead" element={<Mead />} />
+            <Route path="locations/erie" element={<Erie />} />
             <Route path="portfolio" element={<Portfolio />} />
             <Route path="portfolio/:slug" element={<ProjectDetail />} />
             <Route path="process" element={<Process />} />

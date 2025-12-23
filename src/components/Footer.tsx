@@ -74,56 +74,7 @@ const Footer = () => {
                     </div>
 
                     {/* Quick Links */}
-                    <div>
-                        <h3 className="text-white font-bold uppercase tracking-widest mb-6">Menu</h3>
-                        <ul className="space-y-3">
-                            {['Home', 'About Us', 'Services', 'Portfolio', 'Blog', 'Contact'].map((item) => (
-                                <li key={item}>
-                                    <Link to={`/${item.toLowerCase().replace(' ', '-')}`} className="hover:text-secondary transition-colors">
-                                        {item === 'Home' ? 'Home' : item}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
 
-                    {/* Services (Silo Links) */}
-                    <div>
-                        <h3 className="text-white font-bold uppercase tracking-widest mb-6">Services</h3>
-                        <ul className="space-y-3">
-                            <li><Link to="/services/new-construction" className="hover:text-secondary transition-colors">New Custom Homes</Link></li>
-                            <li><Link to="/services/remodeling" className="hover:text-secondary transition-colors">Whole Home Remodeling</Link></li>
-                            <li><Link to="/services/basement-finishing" className="hover:text-secondary transition-colors">Basement Finishing</Link></li>
-                            <li><Link to="/services/additions" className="hover:text-secondary transition-colors">Home Additions</Link></li>
-                            <li><Link to="/services/adu" className="hover:text-secondary transition-colors">ADUs & Guest Houses</Link></li>
-                        </ul>
-                    </div>
-
-                    {/* Contact / Areas */}
-                    <div>
-                        <h3 className="text-white font-bold uppercase tracking-widest mb-6">Contact</h3>
-                        <ul className="space-y-4">
-                            <li className="flex gap-3">
-                                <MapPin className="text-secondary flex-shrink-0" />
-                                <span>2444 E 13th St<br />Loveland, CO 80537</span>
-                            </li>
-                            <li className="flex gap-3">
-                                <Phone className="text-secondary flex-shrink-0" />
-                                <a href="tel:9707753796" className="hover:text-white">970.775.3796</a>
-                            </li>
-                            <li className="flex gap-3">
-                                <Mail className="text-secondary flex-shrink-0" />
-                                <a href="mailto:info@homesteadhomebuilders.com" className="hover:text-white">info@homesteadhomebuilders.com</a>
-                            </li>
-                        </ul>
-
-                        <div className="mt-8">
-                            <h4 className="text-white font-bold text-sm uppercase tracking-wide mb-2">Service Areas</h4>
-                            <p className="text-sm text-slate-500 leading-relaxed">
-                                Loveland, Fort Collins, Boulder, Greeley, Longmont, Windsor, Timnath, Wellington, Berthoud, Mead, Erie.
-                            </p>
-                        </div>
-                    </div>
 
                 </div>
 
