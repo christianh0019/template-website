@@ -35,6 +35,7 @@ const Header = () => {
                 { name: 'Erie', path: '/locations/erie' },
             ]
         },
+        { name: 'Pricing', path: '/resources/cost-guide-optin' },
         { name: 'Portfolio', path: '/portfolio' },
         { name: 'Process', path: '/process' },
         { name: 'About', path: '/about' },
@@ -43,7 +44,6 @@ const Header = () => {
             name: 'Resources',
             path: '#', // No parent page
             children: [
-                { name: 'Cost Guide', path: '/resources/cost-guide-optin' },
                 { name: 'Partners', path: '/partners' },
                 { name: 'Careers', path: '/careers' },
             ]
