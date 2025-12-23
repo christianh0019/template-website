@@ -39,8 +39,10 @@ const PremiumPortfolio = ({ showViewAll = true }: { showViewAll?: boolean }) => 
                                 <div className="block group/link">
                                     <h3 className="text-3xl font-serif font-bold text-white mb-4 flex items-center gap-4">
                                         {project.title}
-                                        <ArrowUpRight className="opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 transform group-hover/link:translate-x-2 text-accent" />
                                     </h3>
+                                    <span className="inline-flex items-center gap-2 text-white border-b border-accent pb-1 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0 text-sm font-bold tracking-widest uppercase">
+                                        Explore Project <ArrowUpRight className="text-accent" size={16} />
+                                    </span>
                                 </div>
                             </div>
                         </div>
