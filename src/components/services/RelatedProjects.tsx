@@ -7,7 +7,7 @@ interface RelatedProjectsProps {
     limit?: number;
 }
 
-const RelatedProjects = ({ category, limit = 3 }: RelatedProjectsProps) => {
+const RelatedProjects = ({ limit = 3 }: RelatedProjectsProps) => {
     // User request: Show all 3 deep dives on all pages, regardless of category
     const matchingProjects = projects.slice(0, limit);
 
