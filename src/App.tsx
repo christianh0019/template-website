@@ -26,6 +26,7 @@ import Blog from './pages/Blog';
 import BlogPost from './pages/blog/BlogPost';
 import About from './pages/About';
 import Partners from './pages/Partners';
+import Careers from './pages/Careers';
 import Contact from './pages/Contact';
 import Booking from './pages/Booking';
 import ThankYou from './pages/ThankYou';
@@ -80,7 +81,7 @@ function App() {
             <Route path="resources/cost-guide" element={<CostGuide />} />
             <Route path="about" element={<About />} />
             <Route path="partners" element={<Partners />} />
-            <Route path="careers" element={<Placeholder title="Careers at Homestead" />} />
+            <Route path="careers" element={<Careers />} />
             <Route path="*" element={<Placeholder title="Page Not Found" />} />
           </Route>
         </Routes>
