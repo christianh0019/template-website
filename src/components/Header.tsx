@@ -27,6 +27,13 @@ const Header = () => {
                 { name: 'Fort Collins', path: '/locations/fort-collins' },
                 { name: 'Windsor', path: '/locations/windsor' },
                 { name: 'Boulder', path: '/locations/boulder' },
+                { name: 'Greeley', path: '/locations/greeley' },
+                { name: 'Longmont', path: '/locations/longmont' },
+                { name: 'Timnath', path: '/locations/timnath' },
+                { name: 'Wellington', path: '/locations/wellington' },
+                { name: 'Berthoud', path: '/locations/berthoud' },
+                { name: 'Mead', path: '/locations/mead' },
+                { name: 'Erie', path: '/locations/erie' },
             ]
         },
         { name: 'Pricing', path: '/resources/cost-guide-optin' },
