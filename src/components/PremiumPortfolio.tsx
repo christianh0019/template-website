@@ -32,7 +32,7 @@ const PremiumPortfolio = ({ showViewAll = true }: { showViewAll?: boolean }) => 
 
                         {/* Content Content - Slides up on hover */}
                         <div className="absolute inset-0 p-12 flex flex-col justify-end pointer-events-none">
-                            <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                            <div className="">
                                 <span className="text-accent text-sm font-bold tracking-widest uppercase mb-2 block opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
                                     {project.category}
                                 </span>
@@ -40,7 +40,7 @@ const PremiumPortfolio = ({ showViewAll = true }: { showViewAll?: boolean }) => 
                                     <h3 className="text-3xl font-serif font-bold text-white mb-4 flex items-center gap-4">
                                         {project.title}
                                     </h3>
-                                    <span className="inline-flex items-center gap-2 text-white border-b border-accent pb-1 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0 text-sm font-bold tracking-widest uppercase">
+                                    <span className="inline-flex items-center gap-2 text-white border-b border-accent pb-1 text-sm font-bold tracking-widest uppercase mt-2">
                                         Explore Project <ArrowUpRight className="text-accent" size={16} />
                                     </span>
                                 </div>
