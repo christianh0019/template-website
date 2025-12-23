@@ -3,12 +3,13 @@ import { ArrowUpRight } from 'lucide-react';
 import { projects } from '../../data/projects';
 
 interface RelatedProjectsProps {
-    category: string; // "Custom Build", "Whole Home Remodel", etc.
+    category?: string; // "Custom Build", "Whole Home Remodel", etc.
     limit?: number;
 }
 
 const RelatedProjects = ({ category, limit = 3 }: RelatedProjectsProps) => {
-    const matchingProjects = projects.filter(p => p.category === category).slice(0, limit);
+    // User request: Show all 3 deep dives on all pages, regardless of category
+    const matchingProjects = projects.slice(0, limit);
 
     if (matchingProjects.length === 0) return null;
 
@@ -18,7 +19,7 @@ const RelatedProjects = ({ category, limit = 3 }: RelatedProjectsProps) => {
                 <div className="flex justify-between items-end mb-12">
                     <div>
                         <h2 className="text-3xl font-serif font-bold text-primary mb-2">Featured Projects</h2>
-                        <p className="text-slate-600">See examples of our {category} work.</p>
+                        <p className="text-slate-600">Explore our latest custom builds and renovations.</p>
                     </div>
                     <Link to="/portfolio" className="hidden md:block text-primary font-bold hover:text-accent transition-colors">
                         View Full Portfolio &rarr;
