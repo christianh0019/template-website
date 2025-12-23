@@ -16,6 +16,8 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Booking from './pages/Booking';
 import ThankYou from './pages/ThankYou';
+import CostGuideOptIn from './pages/resources/CostGuideOptIn';
+import CostGuide from './pages/resources/CostGuide';
 
 // Placeholder components for other routes to prevent errors
 const Placeholder = ({ title }: { title: string }) => (
@@ -46,6 +48,8 @@ function App() {
             <Route path="contact" element={<Contact />} />
             <Route path="booking" element={<Booking />} />
             <Route path="thank-you" element={<ThankYou />} />
+            <Route path="resources/cost-guide-optin" element={<CostGuideOptIn />} />
+            <Route path="resources/cost-guide" element={<CostGuide />} />
             <Route path="about" element={<About />} />
             <Route path="*" element={<Placeholder title="Page Not Found" />} />
           </Route>

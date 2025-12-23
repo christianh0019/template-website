@@ -60,6 +60,7 @@ const NewConstruction = () => {
                 backgroundImage="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop"
                 primaryCtaText="Start Feasibility Study"
                 secondaryCtaText="Download Cost Guide"
+                secondaryCtaLink="/resources/cost-guide-optin"
             />
 
             {/* PAS Framework: The Problem / Agitation - Softened & Humanized */}
@@ -134,9 +135,9 @@ const NewConstruction = () => {
                     <p className="text-lg text-slate-600 mb-8">
                         Download our comprehensive <strong>Cost to Build Guide</strong>. We break down hard costs, soft costs, and permit fees for Loveland, Fort Collins, and Windsor.
                     </p>
-                    <button className="bg-white border-2 border-primary text-primary px-8 py-4 font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-colors rounded-sm shadow-md">
+                    <RouterLink to="/resources/cost-guide-optin" className="inline-block bg-white border-2 border-primary text-primary px-8 py-4 font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-colors rounded-sm shadow-md">
                         Download Free Guide
-                    </button>
+                    </RouterLink>
                     <p className="text-sm text-slate-500 mt-4 italic">Updated for Current Market Rates</p>
                 </div>
             </section>
