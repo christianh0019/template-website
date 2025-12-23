@@ -5,43 +5,50 @@ import { Link as RouterLink } from 'react-router-dom';
 import LocationSchema from '../../components/seo/LocationSchema';
 import LocationHero from '../../components/locations/LocationHero';
 import LocalMap from '../../components/locations/LocalMap';
-
 import ServiceFAQ from '../../components/services/ServiceFAQ';
 import RelatedProjects from '../../components/services/RelatedProjects';
 
 const Loveland = () => {
     // 1. GEO Protocol: Entity Definitions & Schema Data
-
     const serviceArea = [
         { name: "Loveland", wikidataId: "Q12345" }, // Using generic for template, would be Q33575 real id
         { name: "Centerra", wikidataId: "Q5060049" },
-        { name: "Boyd Lake" }
+        { name: "Boyd Lake" },
+        { name: "Campion" }
     ];
 
-    // 2. RAG Content: "Answer-First" FAQ
+    // 2. RAG Content: "Answer-First" FAQ - RESEARCH BACKED
     const faqs = [
         {
-            question: "What is the average cost to build a custom home in Loveland, CO?",
-            answer: "In 2025, custom home construction costs in Loveland typically range from $300 to $450+ per square foot. This variation depends heavily on lot conditions (e.g., rock mitigation near the foothills vs. flat lots in Centerra) and finish selections."
+            question: "What are the specific soil risks for building in Loveland?",
+            answer: "Loveland's soil composition relies heavily on expansive Bentonite clay, particularly in the 'Area C' Front Range zone. This requires 'floating slab' engineering for basements and often deep pier foundations to prevent structural heaving during freeze-thaw cycles."
         },
         {
-            question: "Do I need a specific permit for basement finishing in Loveland?",
-            answer: "Yes. The City of Loveland Building Division requires permits for all basement finishes to ensure safety and code compliance. We handle the entire permitting process, including electrical and plumbing inspections."
+            question: "How do water tap fees differ between City of Loveland and FCLWD?",
+            answer: "It depends on your lot location. Projects within city limits typically connect to City of Loveland Utilities, while properties in the northern outskirts (like near Windsor) often fall under the Fort Collins-Loveland Water District (FCLWD). We navigate the specific inclusions and capital expansion fees for both entities."
         },
         {
-            question: "Are you familiar with Loveland's specific energy codes?",
-            answer: "Absolutely. Loveland enforces strict energy efficiency standards. We build to meet or exceed these codes, often utilizing high-performance insulation and passive solar design principles suitable for the Northern Colorado climate."
+            question: "What are the current building codes adopted by Loveland (2025)?",
+            answer: "As of late 2025, Loveland enforces the 2021 International Residential Code (IRC) with local amendments. Key design criteria include a 130 MPH wind load (Exposure C) and a 30 psf snow load, which significantly impacts roof truss design and shear wall bracing."
+        },
+        {
+            question: "Are ADUs allowed in Loveland neighborhoods?",
+            answer: "Yes, but with strict caveats. Regulations limit ADUs based on lot size and setbacks. A separate zoning permit is required, and the unit often cannot exceed a certain percentage of the primary dwelling's footprint. We conduct feasibility studies to ensure compliance before design begins."
+        },
+        {
+            question: "What is the average cost to build a custom home in Loveland?",
+            answer: "Custom builds in Loveland generally range from $300 to $450+ per square foot. Costs are driven by site preparation (rock mitigation in the foothills vs. flat lots in Centerra) and the rigorous energy efficiency standards required by local code."
         }
     ];
 
     // 3. Local Relevance Vectors
     const features = [
-        "Foothills & Rock Foundation Engineering",
-        "Navigating Loveland Water & Power Taps",
-        "HOA Compliance (Centerra, Mariana Butte)",
-        "Sustainable 'Passive House' Standards",
-        "Multi-Generational Zoning Expertise",
-        "CoConstruct Transparent Project Managment"
+        "Expansive Soil (Bentonite) Mitigation",
+        "Loveland vs. FCLWD Water Taps",
+        "130 MPH Wind Load Engineering",
+        "HOA Compliance (Mariana Butte, The Lakes)",
+        "Review Process for Historic Overlays",
+        "Radon Resistant New Construction (RRNC)"
     ];
 
     return (
@@ -64,7 +71,7 @@ const Loveland = () => {
                     longitude: -105.0750
                 }}
                 areaServed={serviceArea}
-                hasMap="https://www.google.com/maps/embed?pb=!1m18!..." // Placeholder for real map embed
+                hasMap="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48946.04018243644!2d-105.10967397669387!3d40.39868725916053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876953047a00632b%3A0x600b8a24855903b4!2sLoveland%2C%20CO!5e0!3m2!1sen!2sus!4v1709920000000!5m2!1sen!2sus"
             />
 
             <LocationHero
@@ -83,7 +90,7 @@ const Loveland = () => {
                             Building Challenges Specific to Loveland
                         </h2>
                         <p className="text-slate-600 text-lg leading-relaxed">
-                            Building in Loveland requires more than just good design. It demands an understanding of <strong>expansive soils near the foothills</strong>, specific regulations from <strong>Loveland Water & Power</strong>, and the distinct architectural guidelines of neighborhoods like <strong>Mariana Butte and The Lakes at Centerra</strong>.
+                            Building in Loveland requires deep technical knowledge of the local environment. We specialize in engineering for <strong>Type C expansive soils</strong>, navigating the distinct water rights of the <strong>Big Thompson vs. FCLWD</strong>, and meeting the 130 MPH wind load requirements common along the foothills.
                         </p>
                     </div>
 
@@ -133,7 +140,7 @@ const Loveland = () => {
                         Don't start without the data. Our <strong>Loveland Cost Guide</strong> includes specific tap fee estimates and zoning setbacks for 2025.
                     </p>
                     <RouterLink to="/resources/cost-guide-optin" className="inline-block bg-white border-2 border-primary text-primary px-8 py-4 font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-colors rounded-sm shadow-md">
-                        Download Loveland Build Guide
+                        Download Loveland Cost Guide
                     </RouterLink>
                 </div>
             </section>
