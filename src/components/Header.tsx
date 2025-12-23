@@ -8,7 +8,6 @@ const Header = () => {
     const location = useLocation();
 
     const navigation = [
-        { name: 'Home', path: '/' },
         {
             name: 'Services',
             path: '/services',
@@ -36,11 +35,19 @@ const Header = () => {
                 { name: 'Erie', path: '/locations/erie' },
             ]
         },
-        { name: 'Pricing', path: '/resources/cost-guide-optin' },
         { name: 'Portfolio', path: '/portfolio' },
         { name: 'Process', path: '/process' },
         { name: 'About', path: '/about' },
         { name: 'Blog', path: '/blog' },
+        {
+            name: 'Resources',
+            path: '#', // No parent page
+            children: [
+                { name: 'Cost Guide', path: '/resources/cost-guide-optin' },
+                { name: 'Partners', path: '/partners' },
+                { name: 'Careers', path: '/careers' },
+            ]
+        },
     ];
 
     const isActive = (path: string) => location.pathname === path;

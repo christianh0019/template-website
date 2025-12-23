@@ -70,7 +70,10 @@ function App() {
             <Route path="thank-you" element={<ThankYou />} />
             <Route path="resources/cost-guide-optin" element={<CostGuideOptIn />} />
             <Route path="resources/cost-guide" element={<CostGuide />} />
+            <Route path="resources/cost-guide" element={<CostGuide />} />
             <Route path="about" element={<About />} />
+            <Route path="partners" element={<Placeholder title="Strategic Partners" />} />
+            <Route path="careers" element={<Placeholder title="Careers at Homestead" />} />
             <Route path="*" element={<Placeholder title="Page Not Found" />} />
           </Route>
         </Routes>
