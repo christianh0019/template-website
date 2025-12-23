@@ -14,6 +14,12 @@ export interface ProjectData {
     };
     mainImage: string;
     gallery: string[];
+    testimonial?: {
+        videoThumbnail: string; // Placeholder for video thumbnail
+        videoUrl: string;       // Placeholder for video URL (e.g., YouTube/Vimeo)
+        quote: string;
+        author: string;
+    };
 }
 
 export const projects: ProjectData[] = [
@@ -36,7 +42,13 @@ export const projects: ProjectData[] = [
             "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=2070&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=2070&auto=format&fit=crop"
-        ]
+        ],
+        testimonial: {
+            videoThumbnail: "https://images.unsplash.com/photo-1516156008625-3a9d60bdd72e?q=80&w=2070&auto=format&fit=crop",
+            videoUrl: "#", // Placeholder
+            quote: "Homestead didn't just build a house; they engineered a way for us to live on the lake in a way we never thought possible.",
+            author: "The Anderson Family"
+        }
     },
     {
         slug: 'mountain-modern-retreat',
@@ -57,7 +69,13 @@ export const projects: ProjectData[] = [
             "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1600607687644-c7171b42498f?q=80&w=2070&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=2187&auto=format&fit=crop"
-        ]
+        ],
+        testimonial: {
+            videoThumbnail: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?q=80&w=2070&auto=format&fit=crop",
+            videoUrl: "#",
+            quote: "We were worried about managing a renovation from out of state, but the weekly video updates made us feel like we were on site every day.",
+            author: "Sarah & Mark J."
+        }
     },
     {
         slug: 'pearl-street-historic',
@@ -78,6 +96,12 @@ export const projects: ProjectData[] = [
             "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?q=80&w=2070&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1600566752355-35792bedcfe1?q=80&w=2070&auto=format&fit=crop",
             "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2074&auto=format&fit=crop"
-        ]
+        ],
+        testimonial: {
+            videoThumbnail: "https://images.unsplash.com/photo-1595846519845-68e298c2edd8?q=80&w=2070&auto=format&fit=crop",
+            videoUrl: "#",
+            quote: "Adding space to a historic home without ruining its character is an art form. Homestead truly are artists.",
+            author: "The Chen Family"
+        }
     }
 ];
