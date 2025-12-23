@@ -16,6 +16,11 @@ const PremiumPortfolio = ({ showViewAll = true }: { showViewAll?: boolean }) => 
                         transition={{ delay: index * 0.1 }}
                         className="group relative h-[400px] md:h-full overflow-hidden cursor-pointer"
                     >
+                        {/* Full Size Link Overlay */}
+                        <Link to={`/portfolio/${project.slug}`} className="absolute inset-0 z-20">
+                            <span className="sr-only">View {project.title}</span>
+                        </Link>
+
                         {/* Background Image with Zoom Effect */}
                         <div
                             className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
@@ -26,17 +31,17 @@ const PremiumPortfolio = ({ showViewAll = true }: { showViewAll?: boolean }) => 
                         <div className="absolute inset-0 bg-primary/40 group-hover:bg-primary/20 transition-colors duration-500"></div>
 
                         {/* Content Content - Slides up on hover */}
-                        <div className="absolute inset-0 p-12 flex flex-col justify-end">
+                        <div className="absolute inset-0 p-12 flex flex-col justify-end pointer-events-none">
                             <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
                                 <span className="text-accent text-sm font-bold tracking-widest uppercase mb-2 block opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
                                     {project.category}
                                 </span>
-                                <Link to={`/portfolio/${project.slug}`} className="block group/link">
+                                <div className="block group/link">
                                     <h3 className="text-3xl font-serif font-bold text-white mb-4 flex items-center gap-4">
                                         {project.title}
                                         <ArrowUpRight className="opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 transform group-hover/link:translate-x-2 text-accent" />
                                     </h3>
-                                </Link>
+                                </div>
                             </div>
                         </div>
                     </motion.div>
