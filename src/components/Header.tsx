@@ -107,19 +107,23 @@ const Header = () => {
             >
                 <div className="flex flex-col h-full overflow-y-auto px-6 pb-10">
                     {navigation.map((item) => (
-                        <div key={item.name} className="border-b border-slate-100 py-4">
-                            <div className="flex items-center justify-between">
+                        <div key={item.name} className="border-b border-slate-100 py-2">
+                            <div className="flex items-center justify-between min-h-[44px]">
                                 <Link
                                     to={item.path}
-                                    className="text-xl font-serif font-bold text-primary block"
-                                    onClick={() => !item.children && setIsOpen(false)}
+                                    className="text-xl font-serif font-bold text-primary block flex-grow py-2"
+                                    onClick={() => setIsOpen(false)}
                                 >
                                     {item.name}
                                 </Link>
                                 {item.children && (
                                     <button
-                                        onClick={() => toggleSubmenu(item.name)}
-                                        className="p-2 text-slate-500"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            toggleSubmenu(item.name);
+                                        }}
+                                        className="p-3 text-slate-500 hover:bg-slate-50 rounded-full transition-colors -mr-2"
+                                        aria-label="Toggle Submenu"
                                     >
                                         <ChevronDown
                                             size={20}
@@ -131,7 +135,7 @@ const Header = () => {
 
                             {/* Mobile Submenu Items */}
                             {item.children && (
-                                <div className={`pl-4 space-y-3 mt-2 border-l-2 border-accent/20 overflow-hidden transition-all duration-300 ${openSubmenu === item.name ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                                <div className={`pl-4 space-y-2 mt-1 border-l-2 border-accent/20 overflow-hidden transition-all duration-300 ${openSubmenu === item.name ? 'max-h-96 opacity-100 pb-4' : 'max-h-0 opacity-0'}`}>
                                     {item.children.map((child) => (
                                         <Link
                                             key={child.name}
