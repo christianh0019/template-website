@@ -41,11 +41,7 @@ const Header = () => {
             <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                 {/* Logo */}
                 <Link to="/" className="flex items-center gap-2 z-50">
-                    <img src="/logo.png" alt="Homestead Home Builders" className="h-12 w-auto" />
-                    <div className="hidden lg:block text-primary font-serif font-bold leading-tight">
-                        <span className="block text-xl">HOMESTEAD</span>
-                        <span className="block text-sm tracking-widest text-secondary">HOME BUILDERS</span>
-                    </div>
+                    <img src="/logo.png" alt="Homestead Home Builders" className="h-16 w-auto" />
                 </Link>
 
                 {/* Desktop Nav */}
