@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 
@@ -5,7 +6,7 @@ const Footer = () => {
     return (
         <footer className="bg-slate-900 text-slate-300 pt-20 pb-10">
             <div className="container mx-auto px-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
 
                     {/* Brand Col */}
                     <div>
@@ -47,7 +48,25 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Contact / Areas */}
+                    {/* Locations (New Column) */}
+                    <div>
+                        <h3 className="text-white font-bold uppercase tracking-widest mb-6">Service Areas</h3>
+                        <ul className="space-y-3 text-sm">
+                            <li><Link to="/locations/loveland" className="hover:text-secondary transition-colors">Loveland</Link></li>
+                            <li><Link to="/locations/fort-collins" className="hover:text-secondary transition-colors">Fort Collins</Link></li>
+                            <li><Link to="/locations/windsor" className="hover:text-secondary transition-colors">Windsor</Link></li>
+                            <li><Link to="/locations/boulder" className="hover:text-secondary transition-colors">Boulder</Link></li>
+                            <li><Link to="/locations/greeley" className="hover:text-secondary transition-colors">Greeley</Link></li>
+                            <li><Link to="/locations/longmont" className="hover:text-secondary transition-colors">Longmont</Link></li>
+                            <li><Link to="/locations/timnath" className="hover:text-secondary transition-colors">Timnath</Link></li>
+                            <li><Link to="/locations/berthoud" className="hover:text-secondary transition-colors">Berthoud</Link></li>
+                            <li><Link to="/locations/wellington" className="hover:text-secondary transition-colors">Wellington</Link></li>
+                            <li><Link to="/locations/mead" className="hover:text-secondary transition-colors">Mead</Link></li>
+                            <li><Link to="/locations/erie" className="hover:text-secondary transition-colors">Erie</Link></li>
+                        </ul>
+                    </div>
+
+                    {/* Contact */}
                     <div>
                         <h3 className="text-white font-bold uppercase tracking-widest mb-6">Contact</h3>
                         <ul className="space-y-4">
@@ -64,17 +83,7 @@ const Footer = () => {
                                 <a href="mailto:info@homesteadhomebuilders.com" className="hover:text-white">info@homesteadhomebuilders.com</a>
                             </li>
                         </ul>
-
-                        <div className="mt-8">
-                            <h4 className="text-white font-bold text-sm uppercase tracking-wide mb-2">Service Areas</h4>
-                            <p className="text-sm text-slate-500 leading-relaxed">
-                                Loveland, Fort Collins, Boulder, Greeley, Longmont, Windsor, Timnath, Wellington, Berthoud, Mead, Erie.
-                            </p>
-                        </div>
                     </div>
-
-                    {/* Quick Links */}
-
 
                 </div>
 
