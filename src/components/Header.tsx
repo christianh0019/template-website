@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, ChevronDown } from 'lucide-react';
+import { SITE_CONFIG } from '../config/site';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -61,7 +62,7 @@ const Header = () => {
             <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                 {/* Logo */}
                 <Link to="/" className="flex items-center gap-2 z-50">
-                    <img src="/logo.png" alt="Homestead Home Builders" className="h-16 w-auto" />
+                    <img src="/logo.png" alt={SITE_CONFIG.name} className="h-16 w-auto" />
                 </Link>
 
                 {/* Desktop Nav */}
@@ -173,7 +174,7 @@ const Header = () => {
                             Request A Discovery Call
                         </Link>
                         <a
-                            href="tel:9707753796"
+                            href={SITE_CONFIG.contact.phoneHref}
                             className="flex items-center justify-center gap-2 w-full border-2 border-primary text-primary py-4 font-bold uppercase tracking-widest rounded-sm"
                         >
                             <Phone size={20} />

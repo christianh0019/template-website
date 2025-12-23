@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { SITE_CONFIG } from '../config/site';
 
 interface SEOProps {
     title: string;
@@ -13,9 +14,9 @@ interface SEOProps {
 const SEO: React.FC<SEOProps> = ({
     title,
     description,
-    canonical = 'https://homesteadhomebuilders.com',
+    canonical = 'https://homesteadhomebuilders.com', // This should technically be dynamic too, but requires base URL config if flexible
     type = 'website',
-    name = 'Homestead Home Builders',
+    name = SITE_CONFIG.name,
     image = '/logo.png'
 }) => {
     return (
@@ -44,21 +45,21 @@ const SEO: React.FC<SEOProps> = ({
                 {JSON.stringify({
                     "@context": "https://schema.org",
                     "@type": "LocalBusiness",
-                    "name": "Homestead Home Builders",
+                    "name": SITE_CONFIG.name,
                     "image": image,
-                    "telephone": "970-775-3796",
-                    "email": "info@homesteadhomebuilders.com",
+                    "telephone": SITE_CONFIG.contact.phone,
+                    "email": SITE_CONFIG.contact.email,
                     "address": {
                         "@type": "PostalAddress",
-                        "streetAddress": "2444 E 13th St",
-                        "addressLocality": "Loveland",
-                        "addressRegion": "CO",
-                        "postalCode": "80537",
+                        "streetAddress": SITE_CONFIG.contact.address.street,
+                        "addressLocality": SITE_CONFIG.contact.address.city,
+                        "addressRegion": SITE_CONFIG.contact.address.state,
+                        "postalCode": SITE_CONFIG.contact.address.zip,
                         "addressCountry": "US"
                     },
                     "url": canonical,
                     "priceRange": "$$$",
-                    "areaServed": ["Loveland", "Fort Collins", "Boulder", "Weld County", "Larimer County"],
+                    "areaServed": SITE_CONFIG.serviceAreas.map(area => area.name),
                     "openingHoursSpecification": {
                         "@type": "OpeningHoursSpecification",
                         "dayOfWeek": [
@@ -72,8 +73,8 @@ const SEO: React.FC<SEOProps> = ({
                         "closes": "17:00"
                     },
                     "sameAs": [
-                        "https://www.facebook.com/homesteadhomebuilders",
-                        "https://www.instagram.com/homesteadhomebuilders"
+                        SITE_CONFIG.socials.facebook,
+                        SITE_CONFIG.socials.instagram
                     ]
                 })}
             </script>

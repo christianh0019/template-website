@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, Mail, MapPin, ChevronRight, Check } from 'lucide-react';
+import { SITE_CONFIG } from '../config/site';
 import SEO from '../components/SEO';
 import PageHeader from '../components/PageHeader';
 
@@ -74,22 +75,22 @@ const Contact = () => {
                                     <div className="bg-white p-3 rounded-full text-accent shadow-sm"><Phone size={24} /></div>
                                     <div>
                                         <h3 className="font-bold text-primary text-lg">Direct Line</h3>
-                                        <a href="tel:970-555-0123" className="text-slate-600 hover:text-accent font-medium">970-555-0123</a>
-                                        <p className="text-sm text-slate-500 mt-1">Mon-Fri, 8am - 5pm MST</p>
+                                        <a href={SITE_CONFIG.contact.phoneHref} className="text-slate-600 hover:text-accent font-medium">{SITE_CONFIG.contact.phone}</a>
+                                        <p className="text-sm text-slate-500 mt-1">Mon-Fri, 6am - 6pm MST</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-4">
                                     <div className="bg-white p-3 rounded-full text-accent shadow-sm"><Mail size={24} /></div>
                                     <div>
                                         <h3 className="font-bold text-primary text-lg">Email Support</h3>
-                                        <a href="mailto:info@homestead.com" className="text-slate-600 hover:text-accent font-medium">info@homestead.com</a>
+                                        <a href={`mailto:${SITE_CONFIG.contact.email}`} className="text-slate-600 hover:text-accent font-medium">{SITE_CONFIG.contact.email}</a>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-4">
                                     <div className="bg-white p-3 rounded-full text-accent shadow-sm"><MapPin size={24} /></div>
                                     <div>
                                         <h3 className="font-bold text-primary text-lg">Studio</h3>
-                                        <p className="text-slate-600">123 Construction Way, Suite 100<br />Loveland, CO 80538</p>
+                                        <p className="text-slate-600">{SITE_CONFIG.contact.address.street}<br />{SITE_CONFIG.contact.address.city}, {SITE_CONFIG.contact.address.state} {SITE_CONFIG.contact.address.zip}</p>
                                     </div>
                                 </div>
                             </div>

@@ -1,5 +1,6 @@
 
 import SEO from '../components/SEO';
+import { SITE_CONFIG } from '../config/site';
 import PageHeader from '../components/PageHeader';
 
 const PrivacyPolicy = () => {
@@ -29,8 +30,8 @@ const PrivacyPolicy = () => {
                         </p>
 
                         <p>
-                            Homestead Home Builders ("we," "our," or "us") respects your privacy and is committed to protecting it through our compliance with this policy.
-                            This policy describes the types of information we may collect from you or that you may provide when you visit the website homesteadhomebuilders.com (our "Website")
+                            {SITE_CONFIG.name} ("we," "our," or "us") respects your privacy and is committed to protecting it through our compliance with this policy.
+                            This policy describes the types of information we may collect from you or that you may provide when you visit our website (our "Website")
                             and our practices for collecting, using, maintaining, protecting, and disclosing that information.
                         </p>
 
@@ -85,10 +86,10 @@ const PrivacyPolicy = () => {
                             To ask questions or comment about this privacy policy and our privacy practices, contact us at:
                         </p>
                         <p>
-                            <strong>Homestead Home Builders</strong><br />
-                            Loveland, CO<br />
-                            Email: hello@homesteadhomebuilders.com<br />
-                            Phone: (970) 775-3796
+                            <strong>{SITE_CONFIG.name}</strong><br />
+                            {SITE_CONFIG.contact.address.city}, {SITE_CONFIG.contact.address.state}<br />
+                            Email: {SITE_CONFIG.contact.email}<br />
+                            Phone: {SITE_CONFIG.contact.phone}
                         </p>
                     </div>
                 </div>

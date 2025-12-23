@@ -1,6 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { SITE_CONFIG } from '../config/site';
 
 const Footer = () => {
     return (
@@ -11,14 +12,14 @@ const Footer = () => {
                     {/* Brand Col */}
                     <div>
                         <Link to="/" className="inline-block mb-6 bg-white p-3 rounded-lg shadow-lg">
-                            <img src="/logo.png" alt="Homestead Home Builders" className="h-12 w-auto" />
+                            <img src="/logo.png" alt={SITE_CONFIG.name} className="h-12 w-auto" />
                         </Link>
                         <p className="mb-6 leading-relaxed">
-                            Serving Weld, Larimer, and Boulder counties since 1990. We build quality custom homes tailored to your lifestyle and land.
+                            Serving {SITE_CONFIG.serviceAreas[0].name}, {SITE_CONFIG.serviceAreas[1].name}, and surrounding areas since {SITE_CONFIG.foundingYear}. We build quality custom homes tailored to your lifestyle and land.
                         </p>
                         <div className="flex gap-4">
-                            <a href="https://facebook.com" className="hover:text-white transition-colors"><Facebook size={24} /></a>
-                            <a href="https://instagram.com" className="hover:text-white transition-colors"><Instagram size={24} /></a>
+                            <a href={SITE_CONFIG.socials.facebook} className="hover:text-white transition-colors"><Facebook size={24} /></a>
+                            <a href={SITE_CONFIG.socials.instagram} className="hover:text-white transition-colors"><Instagram size={24} /></a>
                         </div>
                     </div>
 
@@ -40,11 +41,11 @@ const Footer = () => {
                     <div>
                         <h3 className="text-white font-bold uppercase tracking-widest mb-6">Services</h3>
                         <ul className="space-y-3">
-                            <li><Link to="/services/new-construction" className="hover:text-secondary transition-colors">New Custom Homes</Link></li>
-                            <li><Link to="/services/remodeling" className="hover:text-secondary transition-colors">Whole Home Remodeling</Link></li>
-                            <li><Link to="/services/basement-finishing" className="hover:text-secondary transition-colors">Basement Finishing</Link></li>
-                            <li><Link to="/services/additions" className="hover:text-secondary transition-colors">Home Additions</Link></li>
-                            <li><Link to="/services/adu" className="hover:text-secondary transition-colors">ADUs & Guest Houses</Link></li>
+                            {SITE_CONFIG.services.map((service) => (
+                                <li key={service.path}>
+                                    <Link to={service.path} className="hover:text-secondary transition-colors">{service.name}</Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
 
@@ -52,17 +53,11 @@ const Footer = () => {
                     <div>
                         <h3 className="text-white font-bold uppercase tracking-widest mb-6">Service Areas</h3>
                         <ul className="space-y-3 text-sm">
-                            <li><Link to="/locations/loveland" className="hover:text-secondary transition-colors">Loveland</Link></li>
-                            <li><Link to="/locations/fort-collins" className="hover:text-secondary transition-colors">Fort Collins</Link></li>
-                            <li><Link to="/locations/windsor" className="hover:text-secondary transition-colors">Windsor</Link></li>
-                            <li><Link to="/locations/boulder" className="hover:text-secondary transition-colors">Boulder</Link></li>
-                            <li><Link to="/locations/greeley" className="hover:text-secondary transition-colors">Greeley</Link></li>
-                            <li><Link to="/locations/longmont" className="hover:text-secondary transition-colors">Longmont</Link></li>
-                            <li><Link to="/locations/timnath" className="hover:text-secondary transition-colors">Timnath</Link></li>
-                            <li><Link to="/locations/berthoud" className="hover:text-secondary transition-colors">Berthoud</Link></li>
-                            <li><Link to="/locations/wellington" className="hover:text-secondary transition-colors">Wellington</Link></li>
-                            <li><Link to="/locations/mead" className="hover:text-secondary transition-colors">Mead</Link></li>
-                            <li><Link to="/locations/erie" className="hover:text-secondary transition-colors">Erie</Link></li>
+                            {SITE_CONFIG.serviceAreas.map((area) => (
+                                <li key={area.path}>
+                                    <Link to={area.path} className="hover:text-secondary transition-colors">{area.name}</Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
 
@@ -72,15 +67,15 @@ const Footer = () => {
                         <ul className="space-y-4">
                             <li className="flex gap-3">
                                 <MapPin className="text-secondary flex-shrink-0" />
-                                <span>2444 E 13th St<br />Loveland, CO 80537</span>
+                                <span>{SITE_CONFIG.contact.address.street}<br />{SITE_CONFIG.contact.address.city}, {SITE_CONFIG.contact.address.state} {SITE_CONFIG.contact.address.zip}</span>
                             </li>
                             <li className="flex gap-3">
                                 <Phone className="text-secondary flex-shrink-0" />
-                                <a href="tel:9707753796" className="hover:text-white">970.775.3796</a>
+                                <a href={SITE_CONFIG.contact.phoneHref} className="hover:text-white">{SITE_CONFIG.contact.phone}</a>
                             </li>
                             <li className="flex gap-3">
                                 <Mail className="text-secondary flex-shrink-0" />
-                                <a href="mailto:info@homesteadhomebuilders.com" className="hover:text-white">info@homesteadhomebuilders.com</a>
+                                <a href={`mailto:${SITE_CONFIG.contact.email}`} className="hover:text-white">{SITE_CONFIG.contact.email}</a>
                             </li>
                         </ul>
                     </div>
@@ -88,7 +83,7 @@ const Footer = () => {
                 </div>
 
                 <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-                    <p>&copy; {new Date().getFullYear()} Homestead Home Builders. All rights reserved.</p>
+                    <p>&copy; {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.</p>
                     <div className="flex gap-6">
                         <Link to="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
                         <Link to="/sitemap" className="hover:text-white">Sitemap</Link>

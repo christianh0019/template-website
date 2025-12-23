@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Hammer, Home as HomeIcon, Layout, Ruler, Phone, CheckCircle } from 'lucide-react';
 import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
+import { SITE_CONFIG } from '../config/site';
 import ProcessSection from '../components/ProcessSection';
 import TestimonialCarousel from '../components/TestimonialCarousel';
 import PremiumPortfolio from '../components/PremiumPortfolio';
@@ -10,8 +11,8 @@ const Home = () => {
     return (
         <>
             <SEO
-                title="Custom Home Builders Loveland CO | Homestead Home Builders"
-                description="Homestead Home Builders offers custom home construction, remodeling, and additions in Loveland, Fort Collins, and Boulder. Over 30 years of experience."
+                title={`Custom Home Builders ${SITE_CONFIG.contact.address.city} ${SITE_CONFIG.contact.address.state} | ${SITE_CONFIG.name}`}
+                description={`${SITE_CONFIG.name} offers custom home construction, remodeling, and additions in ${SITE_CONFIG.serviceAreas[0].name}, ${SITE_CONFIG.serviceAreas[1].name}, and ${SITE_CONFIG.serviceAreas[3].name}. Over 30 years of experience.`}
             />
 
             {/* Premium Hero Section */}
@@ -30,7 +31,7 @@ const Home = () => {
                             Northern Colorado's Premier Builder
                         </span>
                         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-8 leading-tight text-white drop-shadow-2xl">
-                            Building Legacies,<br />One Home at a Time.
+                            {SITE_CONFIG.tagline.split("Custom")[0]}<br />One Home at a Time.
                         </h1>
                         <p className="text-xl md:text-2xl mb-12 text-slate-200 max-w-2xl mx-auto font-light leading-relaxed">
                             We craft bespoke homes and transformative remodels that capture your vision and elevate your lifestyle.
@@ -148,7 +149,7 @@ const Home = () => {
                             <span className="text-accent font-bold tracking-widest uppercase text-sm mb-4 block">Our Heritage</span>
                             <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-8 leading-tight">Rooted in Northern Colorado,<br />Built on Trust.</h2>
                             <p className="text-slate-600 text-lg mb-8 leading-relaxed">
-                                We started in 1990 with a simple mission: build quality you can see. Today, Homestead Home Builders is Northern Colorado's most trusted partner for complex custom builds and seamless renovations.
+                                We started in {SITE_CONFIG.foundingYear} with a simple mission: build quality you can see. Today, {SITE_CONFIG.name} is Northern Colorado's most trusted partner for complex custom builds and seamless renovations.
                             </p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {[
@@ -220,9 +221,9 @@ const Home = () => {
                         <Link to="/contact" className="px-12 py-5 bg-accent text-primary font-bold hover:bg-white transition-colors uppercase tracking-widest shadow-xl">
                             Book Consultation
                         </Link>
-                        <a href="tel:9707753796" className="flex items-center gap-3 px-12 py-5 border-2 border-white/20 text-white font-bold hover:bg-white/10 transition-colors uppercase tracking-widest backdrop-blur-sm">
+                        <a href={SITE_CONFIG.contact.phoneHref} className="flex items-center gap-3 px-12 py-5 border-2 border-white/20 text-white font-bold hover:bg-white/10 transition-colors uppercase tracking-widest backdrop-blur-sm">
                             <Phone size={20} />
-                            970.775.3796
+                            {SITE_CONFIG.contact.phone}
                         </a>
                     </div>
                 </div>
