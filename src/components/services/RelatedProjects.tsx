@@ -46,7 +46,7 @@ const RelatedProjects = ({ limit = 3 }: RelatedProjectsProps) => {
                                     </h3>
                                 </Link>
                                 <p className="text-slate-200 text-sm line-clamp-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100 opacity-0 group-hover:opacity-100">
-                                    {project.challenge.substring(0, 100)}...
+                                    {project.motivation.substring(0, 100)}...
                                 </p>
                             </div>
                         </div>
