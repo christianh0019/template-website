@@ -93,6 +93,8 @@ function App() {
 
           {/* Funnel Routes (No Main Config) */}
           <Route path="application" element={<Application />} />
+          <Route path="booking" element={<Booking />} />
+          <Route path="thank-you" element={<ThankYou />} />
         </Routes>
       </BrowserRouter>
     </HelmetProvider>
