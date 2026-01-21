@@ -78,7 +78,7 @@ function App() {
             <Route path="blog" element={<Blog />} />
             <Route path="blog/:slug" element={<BlogPost />} />
             <Route path="contact" element={<Contact />} />
-            <Route path="application" element={<Application />} />
+            {/* <Route path="application" element={<Application />} />  moved outside layout */}
             <Route path="booking" element={<Booking />} />
             <Route path="thank-you" element={<ThankYou />} />
             <Route path="resources/cost-guide-optin" element={<CostGuideOptIn />} />
@@ -92,6 +92,9 @@ function App() {
             <Route path="sitemap" element={<Sitemap />} />
             <Route path="*" element={<Placeholder title="Page Not Found" />} />
           </Route>
+
+          {/* Funnel Routes (No Main Config) */}
+          <Route path="application" element={<Application />} />
         </Routes>
       </BrowserRouter>
     </HelmetProvider>

@@ -2,6 +2,9 @@ import { useRef } from 'react';
 import ApplicationSurvey from '../components/ApplicationSurvey';
 import { ArrowDown, Star } from 'lucide-react';
 import SEO from '../components/SEO';
+import FunnelHeader from '../components/FunnelHeader';
+import FunnelFooter from '../components/FunnelFooter';
+import PortfolioGallery from '../components/PortfolioGallery';
 
 const Application = () => {
     const surveyRef = useRef<HTMLDivElement>(null);
@@ -18,14 +21,9 @@ const Application = () => {
                 canonical="https://homesteadhomebuilders.com/application"
             />
 
-            <div className="min-h-screen bg-slate-50 flex flex-col">
-                {/* Simplified Header just for logo presence if PageHeader is too heavy, 
-                    but leveraging existing layout wrapper in App.tsx might be enough. 
-                    If this page uses MainLayout, it has a header. 
-                    For now, we'll let the standard layout handle header/footer 
-                    unless we want a strict funnel with no nav. 
-                */}
+            <FunnelHeader />
 
+            <div className="min-h-screen bg-slate-50 flex flex-col pt-20"> {/* pt-20 to account for fixed header */}
                 <div className="flex-grow pt-12 pb-20 px-6">
                     <div className="container mx-auto">
                         <div className="max-w-4xl mx-auto">
@@ -59,7 +57,7 @@ const Application = () => {
                             </div>
 
                             {/* Survey Container */}
-                            <div ref={surveyRef} className="scroll-mt-24">
+                            <div ref={surveyRef} className="scroll-mt-32"> {/* Increased scroll margin for header */}
                                 <ApplicationSurvey />
                             </div>
 
@@ -67,18 +65,25 @@ const Application = () => {
                             <div className="mt-24 pt-12 border-t border-slate-200 text-center">
                                 <p className="text-slate-400 text-sm font-bold uppercase tracking-widest mb-8">Trusted Suppliers & Partners</p>
                                 <div className="flex flex-wrap justify-center gap-8 opacity-50 grayscale">
-                                    {/* Placeholders for partner logos */}
-                                    <div className="h-8 w-24 bg-slate-200 rounded"></div>
-                                    <div className="h-8 w-24 bg-slate-200 rounded"></div>
-                                    <div className="h-8 w-24 bg-slate-200 rounded"></div>
-                                    <div className="h-8 w-24 bg-slate-200 rounded"></div>
+                                    {/* Placeholders for partner logos - using text for now to be cleaner */}
+                                    <div className="font-serif font-bold text-xl text-slate-400">Pella Windows</div>
+                                    <div className="font-serif font-bold text-xl text-slate-400">Kohler</div>
+                                    <div className="font-serif font-bold text-xl text-slate-400">James Hardie</div>
+                                    <div className="font-serif font-bold text-xl text-slate-400">Sherwin Williams</div>
                                 </div>
                             </div>
 
                         </div>
                     </div>
                 </div>
+
+                {/* Portfolio Section */}
+                <div className="bg-white border-t border-slate-200">
+                    <PortfolioGallery />
+                </div>
             </div>
+
+            <FunnelFooter />
         </>
     );
 };
