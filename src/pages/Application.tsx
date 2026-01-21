@@ -39,13 +39,11 @@ const Application = () => {
                                     <span className="text-sm font-bold text-slate-800">Rated 4.9/5 by Homeowners</span>
                                 </div>
 
-                                <h1 className="text-4xl md:text-6xl font-serif font-bold text-primary mb-6 leading-tight">
-                                    Build Your Dream Home <br />
-                                    <span className="text-[#2B70B6]">Without The Stress.</span>
+                                <h1 className="text-3xl md:text-5xl font-serif font-bold text-primary mb-6 leading-tight">
+                                    We Help Northern Colorado Families Build Their Dream Home <span className="text-[#2B70B6]">On-Budget, On-Time, and For a Fair Price!</span>
                                 </h1>
-                                <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-8 leading-relaxed">
-                                    We accept a limited number of custom builds each year to ensure the highest quality.
-                                    Complete the quick survey below to see if we're the right fit for your vision.
+                                <p className="text-base md:text-lg text-slate-600 max-w-3xl mx-auto mb-8 leading-relaxed">
+                                    This short survey helps us understand your project and determine whether a free Clarity Consultation is the right next step. We only work with a limited number of homeowners each year to ensure every project receives focused attention, accurate planning, and clear communication.
                                 </p>
 
                                 <button
