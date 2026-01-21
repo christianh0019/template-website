@@ -58,7 +58,15 @@ const Booking = () => {
                             <div className="text-center w-full max-w-md">
                                 <div className="border-2 border-dashed border-slate-300 rounded-lg p-12 bg-white mb-6">
                                     <p className="text-slate-400 font-bold mb-4">[ Calendar Widget Loading... ]</p>
-                                    <p className="text-xs text-slate-400">Integration: Embed Calendly or Cal.com iframe here.</p>
+                                    {/* Verification of data passing */}
+                                    {new URLSearchParams(window.location.search).get('email') && (
+                                        <div className="text-xs text-green-600 font-mono mt-2 bg-green-50 p-2 rounded">
+                                            Pre-filling for: <br />
+                                            {new URLSearchParams(window.location.search).get('full_name')} <br />
+                                            {new URLSearchParams(window.location.search).get('email')}
+                                        </div>
+                                    )}
+                                    <p className="text-xs text-slate-400 mt-4">Integration: Embed Calendly or Cal.com iframe here.</p>
                                 </div>
 
                                 {/* Demo Button to simulate successful booking */}

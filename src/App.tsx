@@ -30,6 +30,7 @@ import Careers from './pages/Careers';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Sitemap from './pages/Sitemap';
 import Contact from './pages/Contact';
+import Application from './pages/Application';
 import Booking from './pages/Booking';
 import ThankYou from './pages/ThankYou';
 import CostGuideOptIn from './pages/resources/CostGuideOptIn';
@@ -77,6 +78,7 @@ function App() {
             <Route path="blog" element={<Blog />} />
             <Route path="blog/:slug" element={<BlogPost />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="application" element={<Application />} />
             <Route path="booking" element={<Booking />} />
             <Route path="thank-you" element={<ThankYou />} />
             <Route path="resources/cost-guide-optin" element={<CostGuideOptIn />} />
