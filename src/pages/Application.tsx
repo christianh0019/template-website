@@ -23,7 +23,7 @@ const Application = () => {
 
             <FunnelHeader />
 
-            <div className="min-h-screen bg-slate-50 flex flex-col pt-20"> {/* pt-20 to account for fixed header */}
+            <div className="min-h-screen bg-slate-50 flex flex-col pt-24"> {/* pt-24 to account for fixed header (h-24) */}
                 <div className="flex-grow pt-12 pb-20 px-6">
                     <div className="container mx-auto">
                         <div className="max-w-4xl mx-auto">
