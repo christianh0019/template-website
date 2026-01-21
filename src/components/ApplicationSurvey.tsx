@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, ArrowLeft, Check, AlertCircle, Home, MapPin, DollarSign, Calendar, User, Loader2 } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Check, AlertCircle, Home, MapPin, DollarSign, Calendar, User, Loader2, HelpCircle, MessagesSquare } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 interface ApplicationSurveyProps {
@@ -7,18 +7,20 @@ interface ApplicationSurveyProps {
 }
 
 const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'https://services.leadconnectorhq.com/hooks/placeholder' }) => {
+    const TOTAL_STEPS = 7;
     const [step, setStep] = useState(1);
     const [disqualified, setDisqualified] = useState(false);
     const [formData, setFormData] = useState({
         projectType: '',
-        landStatus: '',
+        timeline: '', // Swapped order to match user request if needed, but keeping field names consistent
         budget: '',
-        timeline: '',
+        landStatus: '',
+        familiarity: '',
+        commitment: '',
         firstName: '',
         lastName: '',
         email: '',
         phone: '',
-        notes: ''
     });
 
     const navigate = useNavigate();
@@ -28,13 +30,10 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
         setFormData(prev => ({ ...prev, [field]: value }));
 
         // Qualification Logic
-        if (field === 'budget') {
-            const lowBudgetOptions = ["Under $500k", "$500k - $750k"];
-            if (lowBudgetOptions.includes(value)) {
-                // Determine if we want to disqualify or just flag. 
-                // For now, let's disqualify to match the agency flow behavior
-                // setDisqualified(true); // Uncomment to enable strict disqualification
-                // return;
+        if (field === 'commitment') {
+            if (value === "I’m mostly price shopping") {
+                setDisqualified(true);
+                return;
             }
         }
 
@@ -101,7 +100,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
     const goBack = () => {
         if (disqualified) {
             setDisqualified(false);
-            setStep(1);
+            setStep(TOTAL_STEPS - 1); // Go back to the step before disqualification (Commitment)
         } else {
             setStep(prev => Math.max(1, prev - 1));
         }
@@ -115,7 +114,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
                 </div>
                 <h2 className="text-2xl font-serif font-bold text-primary mb-4">We might not be the best fit.</h2>
                 <p className="text-slate-600 mb-8">
-                    Based on typical project costs in our area, our starting price point is usually above the budget you selected. We want to be respectful of your time and resources.
+                    Our Clarity Consultation is designed for homeowners ready to move forward with a professional planning process. Since you're primarily price shopping right now, we recommend gathering more quotes to find a builder that aligns with your needs.
                 </p>
                 <button
                     onClick={goBack}
@@ -134,11 +133,11 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
                 <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
                     <div
                         className="h-full bg-[#2B70B6] transition-all duration-500 ease-out"
-                        style={{ width: `${(step / 5) * 100}%` }}
+                        style={{ width: `${(step / TOTAL_STEPS) * 100}%` }}
                     ></div>
                 </div>
                 <div className="mt-4 flex justify-between items-center text-sm font-bold text-slate-500">
-                    <span className="text-[#2B70B6] uppercase tracking-widest text-xs">Step {step} of 5</span>
+                    <span className="text-[#2B70B6] uppercase tracking-widest text-xs">Step {step} of {TOTAL_STEPS}</span>
                     {step > 1 && (
                         <button onClick={goBack} className="flex items-center gap-1 hover:text-primary transition-colors">
                             <ArrowLeft size={16} /> Back
@@ -151,14 +150,14 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
             {step === 1 && (
                 <div className="bg-white p-8 md:p-12 rounded-lg shadow-xl border border-slate-100 animate-fadeIn">
                     <div className="flex items-center gap-4 mb-8">
-                        <div className="p-3 bg-primary/5 rounded-lg text-primary">
+                        <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
                             <Home size={28} />
                         </div>
                         <h1 className="text-3xl font-serif font-bold text-primary">What type of project are you planning?</h1>
                     </div>
 
                     <div className="space-y-4">
-                        {['Custom Home Build', 'Whole Home Remodel', 'Large Addition', 'Other'].map((option) => (
+                        {['Custom home build', 'Major renovation / addition', 'Tear-down and rebuild', 'Not sure yet, still exploring'].map((option) => (
                             <button
                                 key={option}
                                 onClick={() => handleSelection('projectType', option)}
@@ -172,17 +171,67 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
                 </div>
             )}
 
-            {/* Step 2: Land Status */}
+            {/* Step 2: Timeline */}
             {step === 2 && (
                 <div className="bg-white p-8 md:p-12 rounded-lg shadow-xl border border-slate-100 animate-fadeIn">
                     <div className="flex items-center gap-4 mb-8">
-                        <div className="p-3 bg-primary/5 rounded-lg text-primary">
+                        <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
+                            <Calendar size={28} />
+                        </div>
+                        <h2 className="text-3xl font-serif font-bold text-primary">When are you hoping to begin construction?</h2>
+                    </div>
+                    <div className="space-y-4">
+                        {["Within 6 months", "6–12 months", "12–24 months", "Just researching"].map((option) => (
+                            <button
+                                key={option}
+                                onClick={() => handleSelection('timeline', option)}
+                                className="w-full text-left p-6 rounded border transition-all duration-200 group flex justify-between items-center bg-white border-slate-200 hover:border-[#2B70B6] hover:shadow-md"
+                            >
+                                <span className="text-lg font-bold text-slate-700 group-hover:text-primary">{option}</span>
+                                <ArrowRight className="text-slate-300 group-hover:text-[#2B70B6] transition-colors" size={20} />
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {/* Step 3: Budget */}
+            {step === 3 && (
+                <div className="bg-white p-8 md:p-12 rounded-lg shadow-xl border border-slate-100 animate-fadeIn">
+                    <div className="flex items-center gap-4 mb-8">
+                        <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
+                            <DollarSign size={28} />
+                        </div>
+                        <h2 className="text-3xl font-serif font-bold text-primary">What investment range do you anticipate for your project?</h2>
+                    </div>
+                    <div className="space-y-4">
+                        {["$750k – $1M", "$1M – $1.5M", "$1.5M – $2M", "$2M+", "Not sure yet"].map((option) => (
+                            <button
+                                key={option}
+                                onClick={() => handleSelection('budget', option)}
+                                className="w-full text-left p-6 rounded border transition-all duration-200 group flex justify-between items-center bg-white border-slate-200 hover:border-[#2B70B6] hover:shadow-md"
+                            >
+                                <span className="text-lg font-bold text-slate-700 group-hover:text-primary">{option}</span>
+                                <div className={`w-6 h-6 rounded-full border-2 ${formData.budget === option ? 'border-[#2B70B6] bg-[#2B70B6]' : 'border-slate-200'} flex items-center justify-center`}>
+                                    {formData.budget === option && <Check size={14} className="text-white" />}
+                                </div>
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {/* Step 4: Land Status */}
+            {step === 4 && (
+                <div className="bg-white p-8 md:p-12 rounded-lg shadow-xl border border-slate-100 animate-fadeIn">
+                    <div className="flex items-center gap-4 mb-8">
+                        <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
                             <MapPin size={28} />
                         </div>
-                        <h2 className="text-3xl font-serif font-bold text-primary">Do you have land / property?</h2>
+                        <h2 className="text-3xl font-serif font-bold text-primary">Have you already secured land?</h2>
                     </div>
                     <div className="grid grid-cols-1 gap-4">
-                        {["Yes, I own the land", "I am currently looking", "No, I need help finding land", "Rebuilding on existing lot"].map((option) => (
+                        {["Yes", "In the process", "Not yet"].map((option) => (
                             <button
                                 key={option}
                                 onClick={() => handleSelection('landStatus', option)}
@@ -195,47 +244,21 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
                 </div>
             )}
 
-            {/* Step 3: Budget */}
-            {step === 3 && (
+            {/* Step 5: Familiarity */}
+            {step === 5 && (
                 <div className="bg-white p-8 md:p-12 rounded-lg shadow-xl border border-slate-100 animate-fadeIn">
                     <div className="flex items-center gap-4 mb-8">
-                        <div className="p-3 bg-primary/5 rounded-lg text-primary">
-                            <DollarSign size={28} />
+                        <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
+                            <HelpCircle size={28} />
                         </div>
-                        <h2 className="text-3xl font-serif font-bold text-primary">What is your estimated budget?</h2>
+                        <h2 className="text-3xl font-serif font-bold text-primary">How familiar are you with the pre-construction process?</h2>
                     </div>
                     <div className="space-y-4">
-                        {["Under $500k", "$500k - $750k", "$750k - $1M", "$1M - $2M", "$2M+"].map((option) => (
+                        {["Very familiar", "Somewhat familiar", "Not familiar, looking for guidance"].map((option) => (
                             <button
                                 key={option}
-                                onClick={() => handleSelection('budget', option)}
-                                className="w-full text-left p-6 rounded border transition-all duration-200 group flex justify-between items-center bg-white border-slate-200 hover:border-accent hover:shadow-md"
-                            >
-                                <span className="text-lg font-bold text-slate-700 group-hover:text-primary">{option}</span>
-                                <div className={`w-6 h-6 rounded-full border-2 ${formData.budget === option ? 'border-[#2B70B6] bg-[#2B70B6]' : 'border-slate-200'} flex items-center justify-center`}>
-                                    {formData.budget === option && <Check size={14} className="text-white" />}
-                                </div>
-                            </button>
-                        ))}
-                    </div>
-                </div>
-            )}
-
-            {/* Step 4: Timeline */}
-            {step === 4 && (
-                <div className="bg-white p-8 md:p-12 rounded-lg shadow-xl border border-slate-100 animate-fadeIn">
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="p-3 bg-primary/5 rounded-lg text-primary">
-                            <Calendar size={28} />
-                        </div>
-                        <h2 className="text-3xl font-serif font-bold text-primary">When are you hoping to start?</h2>
-                    </div>
-                    <div className="space-y-4">
-                        {["Immediately", "3-6 Months", "6-12 Months", "12+ Months", "Just researching"].map((option) => (
-                            <button
-                                key={option}
-                                onClick={() => handleSelection('timeline', option)}
-                                className="w-full text-left p-6 rounded border transition-all duration-200 group flex justify-between items-center bg-white border-slate-200 hover:border-accent hover:shadow-md"
+                                onClick={() => handleSelection('familiarity', option)}
+                                className="w-full text-left p-6 rounded border transition-all duration-200 group flex justify-between items-center bg-white border-slate-200 hover:border-[#2B70B6] hover:shadow-md"
                             >
                                 <span className="text-lg font-bold text-slate-700 group-hover:text-primary">{option}</span>
                                 <ArrowRight className="text-slate-300 group-hover:text-[#2B70B6] transition-colors" size={20} />
@@ -245,11 +268,46 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
                 </div>
             )}
 
-            {/* Step 5: Contact Details */}
-            {step === 5 && (
+            {/* Step 6: Soft Commitment / Filter */}
+            {step === 6 && (
                 <div className="bg-white p-8 md:p-12 rounded-lg shadow-xl border border-slate-100 animate-fadeIn">
                     <div className="flex items-center gap-4 mb-8">
-                        <div className="p-3 bg-primary/5 rounded-lg text-primary">
+                        <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
+                            <MessagesSquare size={28} />
+                        </div>
+                        <div>
+                            <h2 className="text-2xl font-serif font-bold text-primary mb-2">One final check...</h2>
+                        </div>
+                    </div>
+
+                    <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+                        Our Build Clarity Consultation is a professional planning conversation with our team, not a sales pitch. Does this align with what you’re looking for?
+                    </p>
+
+                    <div className="space-y-4">
+                        {[
+                            "Yes, that’s exactly what I want",
+                            "I’m open to learning more",
+                            "I’m mostly price shopping"
+                        ].map((option) => (
+                            <button
+                                key={option}
+                                onClick={() => handleSelection('commitment', option)}
+                                className="w-full text-left p-6 rounded border transition-all duration-200 group flex justify-between items-center bg-white border-slate-200 hover:border-[#2B70B6] hover:shadow-md"
+                            >
+                                <span className="text-lg font-bold text-slate-700 group-hover:text-primary">{option}</span>
+                                <ArrowRight className="text-slate-300 group-hover:text-[#2B70B6] transition-colors" size={20} />
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {/* Step 7: Contact Details */}
+            {step === 7 && (
+                <div className="bg-white p-8 md:p-12 rounded-lg shadow-xl border border-slate-100 animate-fadeIn">
+                    <div className="flex items-center gap-4 mb-8">
+                        <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
                             <User size={28} />
                         </div>
                         <div>

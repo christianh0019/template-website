@@ -1,18 +1,11 @@
-import { useRef } from 'react';
 import ApplicationSurvey from '../components/ApplicationSurvey';
-import { ArrowDown, Star } from 'lucide-react';
+import { Star } from 'lucide-react';
 import SEO from '../components/SEO';
 import FunnelHeader from '../components/FunnelHeader';
 import FunnelFooter from '../components/FunnelFooter';
 import PortfolioGallery from '../components/PortfolioGallery';
 
 const Application = () => {
-    const surveyRef = useRef<HTMLDivElement>(null);
-
-    const scrollToSurvey = () => {
-        surveyRef.current?.scrollIntoView({ behavior: 'smooth' });
-    };
-
     return (
         <>
             <SEO
@@ -36,7 +29,7 @@ const Application = () => {
                                             <Star key={i} size={16} className="fill-[#2B70B6] text-[#2B70B6]" />
                                         ))}
                                     </div>
-                                    <span className="text-sm font-bold text-slate-800">Rated 4.9/5 by Homeowners</span>
+                                    <span className="text-sm font-bold text-slate-800">Rated 4.9/5 by 100+ Homeowners</span>
                                 </div>
 
                                 <h1 className="text-3xl md:text-5xl font-serif font-bold text-primary mb-6 leading-tight">
@@ -45,17 +38,10 @@ const Application = () => {
                                 <p className="text-base md:text-lg text-slate-600 max-w-3xl mx-auto mb-8 leading-relaxed">
                                     This short survey helps us understand your project and determine whether a free Clarity Consultation is the right next step. We only work with a limited number of homeowners each year to ensure every project receives focused attention, accurate planning, and clear communication.
                                 </p>
-
-                                <button
-                                    onClick={scrollToSurvey}
-                                    className="inline-flex items-center gap-2 text-primary font-bold uppercase tracking-widest hover:text-[#2B70B6] transition-colors"
-                                >
-                                    Start Application <ArrowDown size={20} className="animate-bounce" />
-                                </button>
                             </div>
 
                             {/* Survey Container */}
-                            <div ref={surveyRef} className="scroll-mt-32"> {/* Increased scroll margin for header */}
+                            <div className="scroll-mt-32"> {/* Increased scroll margin for header */}
                                 <ApplicationSurvey />
                             </div>
 
