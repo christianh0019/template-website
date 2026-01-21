@@ -1,86 +1,95 @@
-import { Calendar } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Star, CheckCircle } from 'lucide-react';
+import FunnelHeader from '../components/FunnelHeader';
+import FunnelFooter from '../components/FunnelFooter';
 import SEO from '../components/SEO';
-import PageHeader from '../components/PageHeader';
 
 const Booking = () => {
-    const navigate = useNavigate();
-
-    // Mock callback for when a user completes booking (in reality this would be handled by Calendly's event listener)
-    const handleMockBookingComplete = () => {
-        navigate('/thank-you');
+    // Helper to get cookie by name
+    const getCookie = (name: string) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop()?.split(';').shift();
     };
+
+    useEffect(() => {
+        // Load the form embed script
+        const script = document.createElement('script');
+        script.src = "https://link.msgsndr.com/js/form_embed.js";
+        script.async = true;
+        document.body.appendChild(script);
+
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
 
     return (
         <>
             <SEO
-                title="Schedule Consultation | Homestead Home Builders"
-                description="Book your initial project discovery call with our team."
+                title="Schedule Your Discovery Call | Homestead Home Builders"
+                description="Book your complimentary Build Clarity Consultation."
                 canonical="https://homesteadhomebuilders.com/booking"
             />
 
-            <PageHeader
-                title="Schedule Your Call"
-                subtitle="Select a time that works best for your discovery session."
-                backgroundImage="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2031&auto=format&fit=crop"
-                breadcrumbs={[
-                    { label: 'Inquiry', path: '/contact' },
-                    { label: 'Booking', path: '/booking' }
-                ]}
-            />
+            <FunnelHeader />
 
-            <section className="py-20 bg-surface">
-                <div className="container mx-auto px-6 max-w-5xl">
-                    <div className="bg-white rounded-lg shadow-xl overflow-hidden min-h-[600px] flex flex-col md:flex-row">
+            <div className="min-h-screen bg-slate-50 flex flex-col pt-24">
+                <div className="flex-grow pt-12 pb-20 px-6">
+                    <div className="container mx-auto">
+                        <div className="max-w-4xl mx-auto">
 
-                        {/* Information Side */}
-                        <div className="md:w-1/3 bg-primary p-10 text-white">
-                            <Calendar className="w-12 h-12 text-accent mb-6" />
-                            <h2 className="text-2xl font-serif font-bold mb-4">Discovery Session</h2>
-                            <div className="space-y-4 text-slate-300 text-sm leading-relaxed">
-                                <p>During this 30-minute call, we will:</p>
-                                <ul className="list-disc pl-5 space-y-2">
-                                    <li>Review your project scope and vision</li>
-                                    <li>Discuss land feasibility or lot acquisition</li>
-                                    <li>Provide a preliminary budget range estimation</li>
-                                    <li>Explain our design-build process</li>
-                                </ul>
-                                <div className="pt-8 border-t border-slate-700 mt-8">
-                                    <p className="font-bold text-white mb-2">Preparing for our call:</p>
-                                    <p>Please have any inspiration photos or lot surveys handy if available.</p>
+                            {/* Hero Section */}
+                            <div className="text-center mb-12">
+                                <div className="inline-flex items-center gap-2 bg-[#2B70B6]/5 border border-[#2B70B6]/20 px-4 py-2 rounded-full mb-8 animate-fadeIn">
+                                    <div className="flex gap-0.5">
+                                        {[1, 2, 3, 4, 5].map((i) => (
+                                            <Star key={i} size={16} className="fill-[#2B70B6] text-[#2B70B6]" />
+                                        ))}
+                                    </div>
+                                    <span className="text-sm font-bold text-slate-800">Application Received!</span>
                                 </div>
-                            </div>
-                        </div>
 
-                        {/* Calendar Side */}
-                        <div className="md:w-2/3 p-4 flex flex-col items-center justify-center bg-slate-50 relative">
-                            {/* Placeholder for Calendly/Cal.com Embed */}
-                            <div className="text-center w-full max-w-md">
-                                <div className="border-2 border-dashed border-slate-300 rounded-lg p-12 bg-white mb-6">
-                                    <p className="text-slate-400 font-bold mb-4">[ Calendar Widget Loading... ]</p>
-                                    {/* Verification of data passing */}
-                                    {new URLSearchParams(window.location.search).get('email') && (
-                                        <div className="text-xs text-green-600 font-mono mt-2 bg-green-50 p-2 rounded">
-                                            Pre-filling for: <br />
-                                            {new URLSearchParams(window.location.search).get('full_name')} <br />
-                                            {new URLSearchParams(window.location.search).get('email')}
+                                <h1 className="text-3xl md:text-5xl font-serif font-bold text-primary mb-6 leading-tight">
+                                    Let's Discuss Your Vision on a <br />
+                                    <span className="text-[#2B70B6]">Free Discovery Call.</span>
+                                </h1>
+                                <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+                                    This 15-minute conversation is the perfect next step to get your questions answered and see if we're the right team for your project. No pressure, just clarity.
+                                </p>
+
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto text-left mb-12">
+                                    {[
+                                        "Review your project goals",
+                                        "Discuss budget & timeline feasibility",
+                                        "Outline next steps for your build"
+                                    ].map((benefit, i) => (
+                                        <div key={i} className="flex items-center gap-3 bg-white p-4 rounded border border-slate-100 shadow-sm">
+                                            <div className="p-1 bg-[#2B70B6]/10 rounded-full">
+                                                <CheckCircle size={16} className="text-[#2B70B6]" />
+                                            </div>
+                                            <span className="text-sm font-bold text-slate-700">{benefit}</span>
                                         </div>
-                                    )}
-                                    <p className="text-xs text-slate-400 mt-4">Integration: Embed Calendly or Cal.com iframe here.</p>
+                                    ))}
                                 </div>
-
-                                {/* Demo Button to simulate successful booking */}
-                                <button
-                                    onClick={handleMockBookingComplete}
-                                    className="bg-accent text-primary px-8 py-3 font-bold uppercase tracking-widest rounded hover:bg-primary hover:text-white transition-colors shadow-lg"
-                                >
-                                    (Demo) Confirm Booking
-                                </button>
                             </div>
+
+                            {/* Booking Widget */}
+                            <div className="bg-white rounded-lg shadow-xl border border-slate-100 overflow-hidden">
+                                <iframe
+                                    src="https://api.leadconnectorhq.com/widget/booking/xPaYSZulboJxxCpHa9dY"
+                                    style={{ width: '100%', border: 'none', overflow: 'hidden' }}
+                                    scrolling="no"
+                                    id="EQQGeUU49pxoPjjuBmng_1769023798226"
+                                ></iframe>
+                            </div>
+
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+
+            <FunnelFooter />
         </>
     );
 };

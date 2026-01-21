@@ -21,6 +21,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
         lastName: '',
         email: '',
         phone: '',
+        preferredContact: '',
     });
 
     const navigate = useNavigate();
@@ -312,7 +313,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
                         </div>
                         <div>
                             <h2 className="text-2xl font-serif font-bold text-primary">Last step.</h2>
-                            <p className="text-slate-600">Where should we send your project analysis?</p>
+                            <p className="text-slate-600">How can we contact you?</p>
                         </div>
                     </div>
 
@@ -351,15 +352,31 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
                             />
                         </div>
 
-                        <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-2">Phone Number</label>
-                            <input
-                                required
-                                type="tel"
-                                className="w-full px-4 py-3 rounded border border-slate-300 focus:outline-none focus:border-[#2B70B6] focus:ring-1 focus:ring-[#2B70B6] bg-white"
-                                placeholder="(555) 123-4567"
-                                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                            />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label className="block text-sm font-bold text-slate-700 mb-2">Phone Number</label>
+                                <input
+                                    required
+                                    type="tel"
+                                    className="w-full px-4 py-3 rounded border border-slate-300 focus:outline-none focus:border-[#2B70B6] focus:ring-1 focus:ring-[#2B70B6] bg-white"
+                                    placeholder="(555) 123-4567"
+                                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-bold text-slate-700 mb-2">Preferred Contact Method</label>
+                                <select
+                                    required
+                                    className="w-full px-4 py-3 rounded border border-slate-300 focus:outline-none focus:border-[#2B70B6] focus:ring-1 focus:ring-[#2B70B6] bg-white"
+                                    onChange={(e) => setFormData({ ...formData, preferredContact: e.target.value })}
+                                    defaultValue=""
+                                >
+                                    <option value="" disabled>Select an option</option>
+                                    <option value="Phone Call">Phone Call</option>
+                                    <option value="Text Message">Text Message</option>
+                                    <option value="Email">Email</option>
+                                </select>
+                            </div>
                         </div>
 
                         <button
