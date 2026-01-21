@@ -133,12 +133,12 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
             <div className="mb-10">
                 <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
                     <div
-                        className="h-full bg-accent transition-all duration-500 ease-out"
+                        className="h-full bg-[#2B70B6] transition-all duration-500 ease-out"
                         style={{ width: `${(step / 5) * 100}%` }}
                     ></div>
                 </div>
                 <div className="mt-4 flex justify-between items-center text-sm font-bold text-slate-500">
-                    <span className="text-accent uppercase tracking-widest text-xs">Step {step} of 5</span>
+                    <span className="text-[#2B70B6] uppercase tracking-widest text-xs">Step {step} of 5</span>
                     {step > 1 && (
                         <button onClick={goBack} className="flex items-center gap-1 hover:text-primary transition-colors">
                             <ArrowLeft size={16} /> Back
@@ -162,10 +162,10 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
                             <button
                                 key={option}
                                 onClick={() => handleSelection('projectType', option)}
-                                className="w-full text-left p-6 rounded border transition-all duration-200 group flex justify-between items-center bg-white border-slate-200 hover:border-accent hover:shadow-md"
+                                className="w-full text-left p-6 rounded border transition-all duration-200 group flex justify-between items-center bg-white border-slate-200 hover:border-[#2B70B6] hover:shadow-md"
                             >
                                 <span className="text-lg font-bold text-slate-700 group-hover:text-primary">{option}</span>
-                                <ArrowRight className="text-slate-300 group-hover:text-accent transition-colors" size={20} />
+                                <ArrowRight className="text-slate-300 group-hover:text-[#2B70B6] transition-colors" size={20} />
                             </button>
                         ))}
                     </div>
@@ -186,7 +186,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
                             <button
                                 key={option}
                                 onClick={() => handleSelection('landStatus', option)}
-                                className="p-6 rounded border text-left font-bold transition-all bg-white border-slate-200 text-slate-600 hover:border-accent hover:text-primary hover:shadow-md"
+                                className="p-6 rounded border text-left font-bold transition-all bg-white border-slate-200 text-slate-600 hover:border-[#2B70B6] hover:text-primary hover:shadow-md"
                             >
                                 {option}
                             </button>
@@ -212,8 +212,8 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
                                 className="w-full text-left p-6 rounded border transition-all duration-200 group flex justify-between items-center bg-white border-slate-200 hover:border-accent hover:shadow-md"
                             >
                                 <span className="text-lg font-bold text-slate-700 group-hover:text-primary">{option}</span>
-                                <div className={`w-6 h-6 rounded-full border-2 ${formData.budget === option ? 'border-accent bg-accent' : 'border-slate-200'} flex items-center justify-center`}>
-                                    {formData.budget === option && <Check size={14} className="text-primary" />}
+                                <div className={`w-6 h-6 rounded-full border-2 ${formData.budget === option ? 'border-[#2B70B6] bg-[#2B70B6]' : 'border-slate-200'} flex items-center justify-center`}>
+                                    {formData.budget === option && <Check size={14} className="text-white" />}
                                 </div>
                             </button>
                         ))}
@@ -238,7 +238,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
                                 className="w-full text-left p-6 rounded border transition-all duration-200 group flex justify-between items-center bg-white border-slate-200 hover:border-accent hover:shadow-md"
                             >
                                 <span className="text-lg font-bold text-slate-700 group-hover:text-primary">{option}</span>
-                                <ArrowRight className="text-slate-300 group-hover:text-accent transition-colors" size={20} />
+                                <ArrowRight className="text-slate-300 group-hover:text-[#2B70B6] transition-colors" size={20} />
                             </button>
                         ))}
                     </div>
@@ -265,7 +265,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
                                 <input
                                     required
                                     type="text"
-                                    className="w-full px-4 py-3 rounded border border-slate-300 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent bg-white"
+                                    className="w-full px-4 py-3 rounded border border-slate-300 focus:outline-none focus:border-[#2B70B6] focus:ring-1 focus:ring-[#2B70B6] bg-white"
                                     placeholder="John"
                                     onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                                 />
@@ -275,7 +275,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
                                 <input
                                     required
                                     type="text"
-                                    className="w-full px-4 py-3 rounded border border-slate-300 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent bg-white"
+                                    className="w-full px-4 py-3 rounded border border-slate-300 focus:outline-none focus:border-[#2B70B6] focus:ring-1 focus:ring-[#2B70B6] bg-white"
                                     placeholder="Doe"
                                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                                 />
@@ -287,7 +287,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
                             <input
                                 required
                                 type="email"
-                                className="w-full px-4 py-3 rounded border border-slate-300 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent bg-white"
+                                className="w-full px-4 py-3 rounded border border-slate-300 focus:outline-none focus:border-[#2B70B6] focus:ring-1 focus:ring-[#2B70B6] bg-white"
                                 placeholder="john@example.com"
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             />
@@ -298,7 +298,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
                             <input
                                 required
                                 type="tel"
-                                className="w-full px-4 py-3 rounded border border-slate-300 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent bg-white"
+                                className="w-full px-4 py-3 rounded border border-slate-300 focus:outline-none focus:border-[#2B70B6] focus:ring-1 focus:ring-[#2B70B6] bg-white"
                                 placeholder="(555) 123-4567"
                                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                             />
@@ -307,7 +307,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full bg-accent text-primary font-bold uppercase tracking-widest py-4 rounded hover:bg-primary hover:text-white transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                            className="w-full bg-[#2B70B6] text-white font-bold uppercase tracking-widest py-4 rounded hover:bg-[#2B4677] hover:text-white transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                         >
                             {loading ? (
                                 <>

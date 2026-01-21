@@ -30,10 +30,10 @@ const Application = () => {
 
                             {/* Hero Section */}
                             <div className="text-center mb-16">
-                                <div className="inline-flex items-center gap-2 bg-yellow-50 border border-yellow-100 px-4 py-2 rounded-full mb-8 animate-fadeIn">
+                                <div className="inline-flex items-center gap-2 bg-[#2B70B6]/5 border border-[#2B70B6]/20 px-4 py-2 rounded-full mb-8 animate-fadeIn">
                                     <div className="flex gap-0.5">
                                         {[1, 2, 3, 4, 5].map((i) => (
-                                            <Star key={i} size={16} className="fill-yellow-400 text-yellow-400" />
+                                            <Star key={i} size={16} className="fill-[#2B70B6] text-[#2B70B6]" />
                                         ))}
                                     </div>
                                     <span className="text-sm font-bold text-slate-800">Rated 4.9/5 by Homeowners</span>
@@ -41,7 +41,7 @@ const Application = () => {
 
                                 <h1 className="text-4xl md:text-6xl font-serif font-bold text-primary mb-6 leading-tight">
                                     Build Your Dream Home <br />
-                                    <span className="text-accent">Without The Stress.</span>
+                                    <span className="text-[#2B70B6]">Without The Stress.</span>
                                 </h1>
                                 <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-8 leading-relaxed">
                                     We accept a limited number of custom builds each year to ensure the highest quality.
@@ -50,7 +50,7 @@ const Application = () => {
 
                                 <button
                                     onClick={scrollToSurvey}
-                                    className="inline-flex items-center gap-2 text-primary font-bold uppercase tracking-widest hover:text-accent transition-colors"
+                                    className="inline-flex items-center gap-2 text-primary font-bold uppercase tracking-widest hover:text-[#2B70B6] transition-colors"
                                 >
                                     Start Application <ArrowDown size={20} className="animate-bounce" />
                                 </button>
