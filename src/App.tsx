@@ -79,8 +79,6 @@ function App() {
             <Route path="blog/:slug" element={<BlogPost />} />
             <Route path="contact" element={<Contact />} />
             {/* <Route path="application" element={<Application />} />  moved outside layout */}
-            <Route path="booking" element={<Booking />} />
-            <Route path="thank-you" element={<ThankYou />} />
             <Route path="resources/cost-guide-optin" element={<CostGuideOptIn />} />
             <Route path="resources/cost-guide" element={<CostGuide />} />
             <Route path="resources/cost-guide" element={<CostGuide />} />

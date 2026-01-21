@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Star, CheckCircle } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 import FunnelHeader from '../components/FunnelHeader';
 import FunnelFooter from '../components/FunnelFooter';
 import SEO from '../components/SEO';
@@ -37,11 +37,7 @@ const Booking = () => {
                             {/* Hero Section */}
                             <div className="text-center mb-12">
                                 <div className="inline-flex items-center gap-2 bg-[#2B70B6]/5 border border-[#2B70B6]/20 px-4 py-2 rounded-full mb-8 animate-fadeIn">
-                                    <div className="flex gap-0.5">
-                                        {[1, 2, 3, 4, 5].map((i) => (
-                                            <Star key={i} size={16} className="fill-[#2B70B6] text-[#2B70B6]" />
-                                        ))}
-                                    </div>
+                                    <CheckCircle size={16} className="text-[#2B70B6]" />
                                     <span className="text-sm font-bold text-slate-800">Application Received!</span>
                                 </div>
 
