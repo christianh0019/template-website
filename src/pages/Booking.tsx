@@ -3,6 +3,7 @@ import { CheckCircle } from 'lucide-react';
 import FunnelHeader from '../components/FunnelHeader';
 import FunnelFooter from '../components/FunnelFooter';
 import SEO from '../components/SEO';
+import FunnelTracking from '../components/FunnelTracking';
 
 const Booking = () => {
 
@@ -31,6 +32,7 @@ const Booking = () => {
                 description="Book your complimentary Build Clarity Consultation."
                 canonical="https://homesteadhomebuilders.com/booking"
             />
+            <FunnelTracking />
 
             <FunnelHeader />
 

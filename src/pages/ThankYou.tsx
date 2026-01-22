@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle } from 'lucide-react';
 import SEO from '../components/SEO';
+import FunnelTracking from '../components/FunnelTracking';
 
 const ThankYou = () => {
     useEffect(() => {
@@ -17,6 +18,7 @@ const ThankYou = () => {
                 description="We look forward to speaking with you about your custom home project."
                 canonical="https://homesteadhomebuilders.com/thank-you"
             />
+            <FunnelTracking />
             {/* Simple centered layout */}
             <div className="min-h-screen bg-surface flex items-center justify-center p-6">
                 <div className="bg-white p-12 rounded-lg shadow-xl max-w-2xl text-center">
