@@ -15,6 +15,7 @@ export default {
             fontFamily: {
                 sans: ['Inter', 'sans-serif'],
                 serif: ['Playfair Display', 'serif'],
+                script: ['Great Vibes', 'cursive'],
             },
             backgroundImage: {
                 'hero-pattern': "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop')",

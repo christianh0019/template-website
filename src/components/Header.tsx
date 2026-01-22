@@ -63,7 +63,7 @@ const Header = () => {
                 {/* Logo */}
                 <Link to="/" className="flex flex-col items-start gap-0.5 z-50">
                     <img src="/logo.png" alt={SITE_CONFIG.name} className="h-12 w-auto" />
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500 hidden md:block">Quality You Can See, People You Can Trust</span>
+                    <span className="font-script text-lg text-slate-600 hidden md:block pl-1">Quality You Can See, People You Can Trust</span>
                 </Link>
 
                 {/* Desktop Nav */}
