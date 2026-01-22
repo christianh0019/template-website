@@ -4,6 +4,7 @@ import SEO from '../components/SEO';
 import FunnelHeader from '../components/FunnelHeader';
 import FunnelFooter from '../components/FunnelFooter';
 import ProjectSpotlights from '../components/ProjectSpotlights';
+import SocialProof from '../components/SocialProof';
 
 const Application = () => {
     return (
@@ -65,6 +66,9 @@ const Application = () => {
                 <div className="bg-white border-t border-slate-200">
                     <ProjectSpotlights />
                 </div>
+
+                {/* Social Proof */}
+                <SocialProof />
             </div>
 
             <FunnelFooter />
