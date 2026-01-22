@@ -12,6 +12,9 @@ const FunnelFooter = () => {
                     <span className="text-slate-300">|</span>
                     <a href="/terms" className="hover:text-primary transition-colors">Terms of Service</a>
                 </div>
+                <div className="mt-6 flex justify-center">
+                    <img src="/images/bbb-logo.png" alt="BBB Accredited Business" className="h-8 md:h-10 w-auto opacity-70 grayscale hover:grayscale-0 transition-all duration-300" />
+                </div>
             </div>
         </footer>
     );

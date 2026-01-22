@@ -21,6 +21,9 @@ const Footer = () => {
                             <a href={SITE_CONFIG.socials.facebook} className="hover:text-white transition-colors"><Facebook size={24} /></a>
                             <a href={SITE_CONFIG.socials.instagram} className="hover:text-white transition-colors"><Instagram size={24} /></a>
                         </div>
+                        <div className="mt-6">
+                            <img src="/images/bbb-logo.png" alt="BBB Accredited Business" className="h-10 w-auto opacity-80" />
+                        </div>
                     </div>
 
                     {/* Quick Links */}

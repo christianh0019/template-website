@@ -36,6 +36,15 @@ const projects = [
         description: "Efficient luxury on acreage. This plan balances budget and style with durable LVP flooring, quartz countertops, and a highly efficient HVAC system.",
         image: "/images/spotlights/spotlight-4.jpg",
         tags: ["Acreage Build", "Energy Efficient"]
+    },
+    {
+        id: 5,
+        title: "The Timberline Retreat",
+        location: "Loveland, CO",
+        sqft: "4,100 Sq. Ft.",
+        description: "A stunning mountain-modern sanctuary blending rustic stone work with sophisticated architectural lines. Features grand entertainment spaces and a private primary wing.",
+        image: "/images/spotlights/spotlight-5.jpg",
+        tags: ["Mountain Modern", "Luxury Living"]
     }
 ];
 
