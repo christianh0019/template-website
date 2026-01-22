@@ -3,7 +3,7 @@ import { Star } from 'lucide-react';
 import SEO from '../components/SEO';
 import FunnelHeader from '../components/FunnelHeader';
 import FunnelFooter from '../components/FunnelFooter';
-import PortfolioGallery from '../components/PortfolioGallery';
+import ProjectSpotlights from '../components/ProjectSpotlights';
 
 const Application = () => {
     return (
@@ -63,7 +63,7 @@ const Application = () => {
 
                 {/* Portfolio Section */}
                 <div className="bg-white border-t border-slate-200">
-                    <PortfolioGallery />
+                    <ProjectSpotlights />
                 </div>
             </div>
 
