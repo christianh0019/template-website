@@ -30,6 +30,7 @@ const Home = () => {
                         <span className="inline-block py-1 px-3 border border-accent/20 bg-accent/10 rounded-full text-accent font-bold tracking-widest uppercase text-sm mb-6 backdrop-blur-sm">
                             Northern Colorado's Premier Builder
                         </span>
+                        <div className="font-script text-3xl md:text-5xl text-white/90 mb-2">Quality you can see, people you can trust</div>
                         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-8 leading-tight text-white drop-shadow-2xl">
                             {SITE_CONFIG.tagline.split("Custom")[0]}<br />One Home at a Time.
                         </h1>

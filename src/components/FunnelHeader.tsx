@@ -6,7 +6,6 @@ const FunnelHeader = () => {
             <div className="container mx-auto px-6 h-full flex items-center justify-center">
                 <div className="flex flex-col items-center justify-center">
                     <img src="/logo.png" alt="Homestead Home Builders" className="h-14 w-auto mb-1" />
-                    <span className="font-script text-xl text-slate-600">Quality You Can See, People You Can Trust</span>
                 </div>
             </div>
         </header>

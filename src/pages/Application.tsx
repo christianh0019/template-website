@@ -33,6 +33,8 @@ const Application = () => {
                                     <span className="text-sm font-bold text-slate-800">Rated 4.9/5 by 100+ Homeowners</span>
                                 </div>
 
+                                <div className="font-script text-2xl md:text-4xl text-[#2B70B6] mb-4">Quality you can see, people you can trust</div>
+
                                 <h1 className="text-3xl md:text-5xl font-serif font-bold text-primary mb-6 leading-tight">
                                     We Help Northern Colorado Families Build Their Dream Home <span className="text-[#2B70B6]">On-Budget, On-Time, and For a Fair Price!</span>
                                 </h1>
