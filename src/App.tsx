@@ -46,12 +46,14 @@ const Placeholder = ({ title }: { title: string }) => (
 );
 
 import ScrollToTop from './components/ScrollToTop';
+import MetaPixel from './components/MetaPixel';
 
 function App() {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <ScrollToTop />
+        <MetaPixel />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />

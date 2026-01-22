@@ -8,6 +8,11 @@ const Booking = () => {
 
 
     useEffect(() => {
+        // Facebook Lead Event
+        if (window.fbq) {
+            window.fbq('track', 'Lead');
+        }
+
         // Load the form embed script
         const script = document.createElement('script');
         script.src = "https://link.msgsndr.com/js/form_embed.js";

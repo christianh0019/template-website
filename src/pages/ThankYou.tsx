@@ -1,8 +1,15 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle } from 'lucide-react';
 import SEO from '../components/SEO';
 
 const ThankYou = () => {
+    useEffect(() => {
+        if (window.fbq) {
+            window.fbq('track', 'Schedule');
+        }
+    }, []);
+
     return (
         <>
             <SEO
