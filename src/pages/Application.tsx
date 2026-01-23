@@ -44,7 +44,7 @@ const Application = () => {
                             </div>
 
                             {/* Survey Container */}
-                            <div className="scroll-mt-32"> {/* Increased scroll margin for header */}
+                            <div id="application-survey" className="scroll-mt-32"> {/* Increased scroll margin for header */}
                                 <ApplicationSurvey />
                             </div>
 
@@ -67,6 +67,14 @@ const Application = () => {
                 {/* Portfolio Section */}
                 <div className="bg-white border-t border-slate-200">
                     <ProjectSpotlights />
+                    <div className="bg-white pb-20 text-center">
+                        <button
+                            onClick={() => document.getElementById('application-survey')?.scrollIntoView({ behavior: 'smooth' })}
+                            className="px-8 py-4 bg-accent text-primary font-bold uppercase tracking-widest hover:bg-slate-100 border-2 border-transparent hover:border-accent transition-all shadow-lg hover:shadow-xl"
+                        >
+                            Book Your Build Clarity Consultation
+                        </button>
+                    </div>
                 </div>
 
                 {/* Social Proof */}

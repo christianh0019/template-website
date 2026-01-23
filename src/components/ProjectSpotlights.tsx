@@ -23,7 +23,7 @@ const projects = [
         id: 6,
         title: "The Black Forest Estate",
         location: "Monument, CO",
-        sqft: "5,200 Sq. Ft.",
+        sqft: "3,200 Sq. Ft.",
         description: "An expansive custom estate set amongst towering pines. Featuring a dramatic entry timber truss, stone wainscoting, and a detached workshop.",
         image: "/images/spotlights/spotlight-6.png",
         tags: ["Custom Estate", "Timber Frame"],
