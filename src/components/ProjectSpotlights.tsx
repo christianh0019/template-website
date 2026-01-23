@@ -89,8 +89,8 @@ const ProjectSpotlights = () => {
                                     ))}
                                 </div>
                                 {project.status === "Under Construction" && (
-                                    <div className="absolute top-4 right-4">
-                                        <span className="bg-accent text-primary text-xs font-bold px-3 py-1 rounded-full shadow-sm uppercase tracking-wider">
+                                    <div className="absolute top-2 right-2 md:top-4 md:right-4">
+                                        <span className="bg-[#2B70B6] text-white text-[10px] md:text-xs font-bold px-2 py-0.5 md:px-3 md:py-1 rounded-full shadow-sm uppercase tracking-wider">
                                             Under Construction
                                         </span>
                                     </div>

@@ -70,7 +70,7 @@ const Application = () => {
                     <div className="bg-white pb-20 text-center">
                         <button
                             onClick={() => document.getElementById('application-survey')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="px-8 py-4 bg-accent text-primary font-bold uppercase tracking-widest hover:bg-slate-100 border-2 border-transparent hover:border-accent transition-all shadow-lg hover:shadow-xl"
+                            className="px-8 py-4 bg-[#2B70B6] text-white font-bold uppercase tracking-widest hover:bg-white hover:text-[#2B70B6] border-2 border-transparent hover:border-[#2B70B6] transition-all shadow-lg hover:shadow-xl rounded-full"
                         >
                             Book Your Build Clarity Consultation
                         </button>
