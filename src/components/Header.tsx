@@ -99,7 +99,7 @@ const Header = () => {
                     ))}
                     <Link
                         to="/contact"
-                        className="flex items-center gap-2 px-6 py-3 bg-primary text-white font-bold rounded-sm hover:bg-secondary transition-colors text-sm uppercase tracking-widest"
+                        className="flex items-center gap-2 px-6 py-3 bg-[#2B70B6] text-white font-bold rounded-full hover:bg-secondary transition-colors text-sm uppercase tracking-widest"
                     >
                         Request A Discovery Call
                     </Link>
@@ -168,7 +168,7 @@ const Header = () => {
                     <div className="mt-8 space-y-4">
                         <Link
                             to="/contact"
-                            className="block text-center w-full bg-accent text-primary py-4 font-bold uppercase tracking-widest rounded-sm"
+                            className="block text-center w-full bg-[#2B70B6] text-white py-4 font-bold uppercase tracking-widest rounded-full"
                             onClick={() => setIsOpen(false)}
                         >
                             Request A Discovery Call

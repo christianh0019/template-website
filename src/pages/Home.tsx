@@ -18,7 +18,7 @@ const Home = () => {
             {/* Premium Hero Section */}
             <section className="relative h-screen min-h-[700px] flex items-center justify-center bg-primary text-white overflow-hidden">
                 {/* Parallax Background */}
-                <div className="absolute inset-0 bg-hero-pattern bg-cover bg-center bg-fixed opacity-50 z-0 scale-105 animate-slow-zoom"></div>
+                <div className="absolute inset-0 bg-[url('/images/spotlights/spotlight-6.png')] bg-cover bg-center bg-fixed opacity-50 z-0 scale-105 animate-slow-zoom"></div>
                 <div className="absolute inset-0 bg-gradient-to-b from-primary/30 to-primary/90 z-10"></div>
 
                 <div className="container mx-auto px-6 relative z-20 text-center max-w-5xl">
@@ -27,12 +27,9 @@ const Home = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <span className="inline-block py-1 px-3 border border-[#2B70B6]/50 bg-[#2B70B6]/20 rounded-full text-white font-bold tracking-widest uppercase text-sm mb-6 backdrop-blur-sm">
-                            Northern Colorado's Premier Builder
-                        </span>
                         <div className="font-script text-3xl md:text-5xl text-[#2B70B6] mb-2">Quality you can see, people you can trust</div>
                         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-8 leading-tight text-white drop-shadow-2xl">
-                            {SITE_CONFIG.tagline.split("Custom")[0]}<br />One Home at a Time.
+                            Northern Colorado's Best<br />Custom Home Builder
                         </h1>
                         <p className="text-xl md:text-2xl mb-12 text-slate-200 max-w-2xl mx-auto font-light leading-relaxed">
                             We craft bespoke homes and transformative remodels that capture your vision and elevate your lifestyle.
