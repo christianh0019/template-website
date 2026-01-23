@@ -27,10 +27,10 @@ const Home = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <span className="inline-block py-1 px-3 border border-accent/20 bg-accent/10 rounded-full text-accent font-bold tracking-widest uppercase text-sm mb-6 backdrop-blur-sm">
+                        <span className="inline-block py-1 px-3 border border-[#2B70B6]/50 bg-[#2B70B6]/20 rounded-full text-white font-bold tracking-widest uppercase text-sm mb-6 backdrop-blur-sm">
                             Northern Colorado's Premier Builder
                         </span>
-                        <div className="font-script text-3xl md:text-5xl text-white/90 mb-2">Quality you can see, people you can trust</div>
+                        <div className="font-script text-3xl md:text-5xl text-[#2B70B6] mb-2">Quality you can see, people you can trust</div>
                         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-8 leading-tight text-white drop-shadow-2xl">
                             {SITE_CONFIG.tagline.split("Custom")[0]}<br />One Home at a Time.
                         </h1>
@@ -45,10 +45,10 @@ const Home = () => {
                         transition={{ delay: 0.4, duration: 0.8 }}
                         className="flex flex-col sm:flex-row gap-6 justify-center"
                     >
-                        <Link to="/contact" className="group px-10 py-5 bg-accent hover:bg-white hover:text-primary transition-all duration-300 text-primary font-bold tracking-widest uppercase shadow-xl hover:shadow-2xl">
+                        <Link to="/contact" className="group px-10 py-5 bg-[#2B70B6] hover:bg-white hover:text-[#2B70B6] transition-all duration-300 text-white font-bold tracking-widest uppercase shadow-xl hover:shadow-2xl rounded-full">
                             Start Your Project
                         </Link>
-                        <Link to="/portfolio" className="group px-10 py-5 border border-white/30 backdrop-blur-sm hover:bg-white hover:text-primary transition-all duration-300 text-white font-bold tracking-widest uppercase flex items-center gap-3">
+                        <Link to="/portfolio" className="group px-10 py-5 border border-white/30 backdrop-blur-sm hover:bg-white hover:text-[#2B70B6] transition-all duration-300 text-white font-bold tracking-widest uppercase flex items-center gap-3 rounded-full">
                             View Our Work <ArrowRight className="group-hover:translate-x-1 transition-transform" />
                         </Link>
                     </motion.div>
