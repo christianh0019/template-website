@@ -69,12 +69,12 @@ const Home = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
                         {/* Sidebar Title */}
                         <div className="lg:col-span-4 lg:sticky lg:top-32 h-fit">
-                            <span className="text-accent font-bold tracking-widest uppercase text-sm block mb-4">What We Do</span>
+                            <span className="text-[#2B70B6] font-bold tracking-widest uppercase text-sm block mb-4">What We Do</span>
                             <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-8 leading-tight">Master Craftsmanship<br />For Every Scale.</h2>
                             <p className="text-slate-600 text-lg leading-relaxed mb-8">
                                 From concept to completion, we handle every aspect of your residential construction project with precision, transparency, and architectural integrity.
                             </p>
-                            <Link to="/services" className="inline-flex items-center text-primary font-bold border-b-2 border-accent pb-1 hover:text-accent transition-colors">
+                            <Link to="/services" className="inline-flex items-center text-primary font-bold border-b-2 border-[#2B70B6] pb-1 hover:text-[#2B70B6] transition-colors">
                                 Explore All Services <ArrowRight className="ml-2 w-4 h-4" />
                             </Link>
                         </div>
@@ -108,10 +108,10 @@ const Home = () => {
                                 }
                             ].map((service, index) => (
                                 <div key={index} className="group p-10 bg-surface hover:bg-primary transition-colors duration-500">
-                                    <service.icon size={48} className="text-accent mb-8" />
+                                    <service.icon size={48} className="text-[#2B70B6] mb-8" />
                                     <h3 className="text-2xl font-serif font-bold text-primary group-hover:text-white mb-4 transition-colors">{service.title}</h3>
                                     <p className="text-slate-600 group-hover:text-slate-300 mb-8 leading-relaxed transition-colors">{service.desc}</p>
-                                    <Link to={service.link} className="text-primary group-hover:text-accent font-bold inline-flex items-center uppercase tracking-widest text-xs transition-colors">
+                                    <Link to={service.link} className="text-primary group-hover:text-[#2B70B6] font-bold inline-flex items-center uppercase tracking-widest text-xs transition-colors">
                                         Learn More <ArrowRight size={14} className="ml-2 group-hover:translate-x-1 transition-transform" />
                                     </Link>
                                 </div>
@@ -131,20 +131,20 @@ const Home = () => {
                 <div className="container mx-auto px-6">
                     <div className="flex flex-col lg:flex-row items-center gap-20">
                         <div className="lg:w-1/2 relative">
-                            <div className="absolute -top-10 -left-10 w-40 h-40 bg-accent/20 rounded-full blur-3xl"></div>
+                            <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#2B70B6]/20 rounded-full blur-3xl"></div>
                             <img
                                 src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop"
                                 alt="Luxury Custom Home Interior"
                                 className="w-full h-auto shadow-2xl relative z-10"
                             />
                             <div className="absolute -bottom-10 -right-10 bg-primary p-10 text-white z-20 hidden md:block">
-                                <span className="block text-4xl font-serif font-bold text-accent mb-1">30+</span>
+                                <span className="block text-4xl font-serif font-bold text-[#2B70B6] mb-1">30+</span>
                                 <span className="uppercase tracking-widest text-sm">Years Experience</span>
                             </div>
                         </div>
 
                         <div className="lg:w-1/2">
-                            <span className="text-accent font-bold tracking-widest uppercase text-sm mb-4 block">Our Heritage</span>
+                            <span className="text-[#2B70B6] font-bold tracking-widest uppercase text-sm mb-4 block">Our Heritage</span>
                             <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-8 leading-tight">Rooted in Northern Colorado,<br />Built on Trust.</h2>
                             <p className="text-slate-600 text-lg mb-8 leading-relaxed">
                                 We started in {SITE_CONFIG.foundingYear} with a simple mission: build quality you can see. Today, {SITE_CONFIG.name} is Northern Colorado's most trusted partner for complex custom builds and seamless renovations.
@@ -157,7 +157,7 @@ const Home = () => {
                                     "Award-Winning Designs"
                                 ].map((item, i) => (
                                     <div key={i} className="flex items-center gap-3">
-                                        <div className="w-2 h-2 rounded-full bg-accent"></div>
+                                        <div className="w-2 h-2 rounded-full bg-[#2B70B6]"></div>
                                         <span className="font-bold text-primary">{item}</span>
                                     </div>
                                 ))}
@@ -199,7 +199,7 @@ const Home = () => {
                         ].map((faq, i) => (
                             <div key={i} className="bg-white p-8 border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
                                 <h3 className="text-lg font-bold text-primary mb-3 flex items-start gap-3">
-                                    <CheckCircle className="text-accent w-5 h-5 flex-shrink-0 mt-1" />
+                                    <CheckCircle className="text-[#2B70B6] w-5 h-5 flex-shrink-0 mt-1" />
                                     {faq.q}
                                 </h3>
                                 <p className="text-slate-600 leading-relaxed pl-8">{faq.a}</p>
@@ -210,13 +210,13 @@ const Home = () => {
             </section>
 
             {/* Final CTA Section */}
-            <section className="py-32 bg-primary text-white text-center relative overflow-hidden">
+            <section className="py-32 bg-[#2B4677] text-white text-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
                 <div className="container mx-auto px-6 relative z-10">
                     <h2 className="text-5xl md:text-6xl font-serif font-bold mb-8">Ready to Start Your Legacy?</h2>
                     <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">Schedule a free consultation to discuss your project, budget, and timeline with our expert team.</p>
                     <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                        <Link to="/contact" className="px-12 py-5 bg-accent text-primary font-bold hover:bg-white transition-colors uppercase tracking-widest shadow-xl">
+                        <Link to="/contact" className="px-12 py-5 bg-[#2B70B6] text-white font-bold hover:bg-white hover:text-[#2B70B6] transition-colors uppercase tracking-widest shadow-xl rounded-full">
                             Book Consultation
                         </Link>
                         <a href={SITE_CONFIG.contact.phoneHref} className="flex items-center gap-3 px-12 py-5 border-2 border-white/20 text-white font-bold hover:bg-white/10 transition-colors uppercase tracking-widest backdrop-blur-sm">
