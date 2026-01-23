@@ -138,7 +138,7 @@ const SocialProof = () => {
             <div className="mt-16 text-center">
                 <button
                     onClick={() => document.getElementById('application-survey')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="px-8 py-4 bg-[#2B70B6] text-white font-bold uppercase tracking-widest hover:bg-white hover:text-[#2B70B6] border-2 border-transparent hover:border-[#2B70B6] transition-all shadow-lg hover:shadow-xl rounded-full"
+                    className="px-6 py-3 text-sm md:px-8 md:py-4 md:text-base bg-[#2B70B6] text-white font-bold uppercase tracking-widest hover:bg-white hover:text-[#2B70B6] border-2 border-transparent hover:border-[#2B70B6] transition-all shadow-lg hover:shadow-xl rounded-full"
                 >
                     Book Your Build Clarity Consultation
                 </button>

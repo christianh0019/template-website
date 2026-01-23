@@ -79,7 +79,7 @@ const ProjectSpotlights = () => {
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                                    className={`w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ${project.title === "The Prairie Horizon" ? "brightness-110" : ""}`}
                                 />
                                 <div className="absolute top-4 left-4 flex gap-2">
                                     {project.tags.map(tag => (
@@ -89,7 +89,7 @@ const ProjectSpotlights = () => {
                                     ))}
                                 </div>
                                 {project.status === "Under Construction" && (
-                                    <div className="absolute top-2 right-2 md:top-4 md:right-4">
+                                    <div className="absolute bottom-2 right-2 md:bottom-4 md:right-4">
                                         <span className="bg-[#2B70B6] text-white text-[10px] md:text-xs font-bold px-2 py-0.5 md:px-3 md:py-1 rounded-full shadow-sm uppercase tracking-wider">
                                             Under Construction
                                         </span>
