@@ -27,9 +27,9 @@ const Home = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="font-script text-3xl md:text-5xl text-[#2B70B6] mb-2">Quality you can see, people you can trust</div>
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-8 leading-tight text-white drop-shadow-2xl">
-                            Northern Colorado's Best<br />Custom Home Builder
+                        <div className="font-script text-3xl md:text-5xl text-blue-100 mb-2 drop-shadow-md">Quality you can see, people you can trust</div>
+                        <h1 style={{ textWrap: "balance" }} className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-8 leading-tight text-white drop-shadow-2xl">
+                            Northern Colorado's Best Custom Home Builder
                         </h1>
                         <p className="text-xl md:text-2xl mb-12 text-slate-200 max-w-2xl mx-auto font-light leading-relaxed">
                             We craft bespoke homes and transformative remodels that capture your vision and elevate your lifestyle.
