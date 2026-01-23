@@ -2,13 +2,31 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-import { projects } from '../data/projects';
 
 const PremiumPortfolio = ({ showViewAll = true }: { showViewAll?: boolean }) => {
     return (
         <section className="py-0 relative">
             <div className="grid grid-cols-1 md:grid-cols-3 h-auto md:h-[600px]">
-                {projects.map((project, index) => (
+                {[
+                    {
+                        title: "The Timberline Retreat",
+                        category: "Mountain Modern",
+                        mainImage: "/images/spotlights/spotlight-5.jpg",
+                        slug: "timberline-retreat"
+                    },
+                    {
+                        title: "The Stone Creek Estate",
+                        category: "Luxury Estate",
+                        mainImage: "/images/spotlights/spotlight-2.png",
+                        slug: "stone-creek-estate"
+                    },
+                    {
+                        title: "The Black Forest Estate",
+                        category: "Custom Estate",
+                        mainImage: "/images/spotlights/spotlight-6.png",
+                        slug: "black-forest-estate"
+                    }
+                ].map((project, index) => (
                     <motion.div
                         key={index}
                         initial={{ opacity: 0 }}
@@ -33,15 +51,15 @@ const PremiumPortfolio = ({ showViewAll = true }: { showViewAll?: boolean }) => 
                         {/* Content Content - Slides up on hover */}
                         <div className="absolute inset-0 p-12 flex flex-col justify-end pointer-events-none">
                             <div className="">
-                                <span className="text-accent text-sm font-bold tracking-widest uppercase mb-2 block opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                <span className="text-[#2B70B6] text-sm font-bold tracking-widest uppercase mb-2 block opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
                                     {project.category}
                                 </span>
                                 <div className="block group/link">
                                     <h3 className="text-3xl font-serif font-bold text-white mb-4 flex items-center gap-4">
                                         {project.title}
                                     </h3>
-                                    <span className="inline-flex items-center gap-2 text-white border-b border-accent pb-1 text-sm font-bold tracking-widest uppercase mt-2">
-                                        Explore Project <ArrowUpRight className="text-accent" size={16} />
+                                    <span className="inline-flex items-center gap-2 text-white border-b border-[#2B70B6] pb-1 text-sm font-bold tracking-widest uppercase mt-2">
+                                        Explore Project <ArrowUpRight className="text-[#2B70B6]" size={16} />
                                     </span>
                                 </div>
                             </div>
