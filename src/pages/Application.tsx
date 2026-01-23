@@ -53,7 +53,7 @@ const Application = () => {
                                 <p className="text-slate-400 text-sm font-bold uppercase tracking-widest mb-8">Trusted Suppliers & Partners</p>
                                 <div className="flex flex-wrap justify-center gap-8 opacity-50 grayscale">
                                     {/* Placeholders for partner logos - using text for now to be cleaner */}
-                                    <div className="font-serif font-bold text-xl text-slate-400">Pella Windows</div>
+                                    <div className="font-serif font-bold text-xl text-slate-400">Marvin Windows</div>
                                     <div className="font-serif font-bold text-xl text-slate-400">Kohler</div>
                                     <div className="font-serif font-bold text-xl text-slate-400">James Hardie</div>
                                     <div className="font-serif font-bold text-xl text-slate-400">Sherwin Williams</div>
