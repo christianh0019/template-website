@@ -39,12 +39,12 @@ const TestimonialCarousel = () => {
     return (
         <section className="py-32 bg-primary text-white relative overflow-hidden">
             {/* Background Decor */}
-            <div className="absolute top-0 left-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+            <div className="absolute top-0 left-0 w-64 h-64 bg-[#2B70B6]/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-16">
-                    <Star className="w-8 h-8 text-accent mx-auto mb-4" fill="currentColor" />
+                    <Star className="w-8 h-8 text-[#2B70B6] mx-auto mb-4" fill="currentColor" />
                     <h2 className="text-4xl font-serif font-bold">Client Experiences</h2>
                 </div>
 
@@ -58,12 +58,12 @@ const TestimonialCarousel = () => {
                             transition={{ duration: 0.5 }}
                             className="text-center"
                         >
-                            <Quote className="w-16 h-16 text-accent/20 mx-auto mb-8" />
+                            <Quote className="w-16 h-16 text-[#2B70B6]/30 mx-auto mb-8" />
                             <p className="text-2xl md:text-3xl font-serif italic leading-relaxed mb-10 text-slate-200">
                                 "{testimonials[current].text}"
                             </p>
                             <div>
-                                <h4 className="text-xl font-bold text-accent">{testimonials[current].author}</h4>
+                                <h4 className="text-xl font-bold text-[#2B70B6]">{testimonials[current].author}</h4>
                                 <p className="text-sm tracking-widest uppercase text-slate-400 mt-2">{testimonials[current].location}</p>
                             </div>
                         </motion.div>
@@ -71,10 +71,10 @@ const TestimonialCarousel = () => {
 
                     {/* Controls */}
                     <div className="flex justify-center gap-4 mt-12">
-                        <button onClick={prev} className="p-3 border border-slate-700 hover:border-accent hover:text-accent rounded-full transition-colors">
+                        <button onClick={prev} className="p-3 border border-slate-700 hover:border-[#2B70B6] hover:text-[#2B70B6] rounded-full transition-colors">
                             <ChevronLeft size={24} />
                         </button>
-                        <button onClick={next} className="p-3 border border-slate-700 hover:border-accent hover:text-accent rounded-full transition-colors">
+                        <button onClick={next} className="p-3 border border-slate-700 hover:border-[#2B70B6] hover:text-[#2B70B6] rounded-full transition-colors">
                             <ChevronRight size={24} />
                         </button>
                     </div>
