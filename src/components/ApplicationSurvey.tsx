@@ -6,7 +6,7 @@ interface ApplicationSurveyProps {
     webhookUrl?: string;
 }
 
-const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'https://services.leadconnectorhq.com/hooks/placeholder' }) => {
+const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
     const TOTAL_STEPS = 7;
     const [step, setStep] = useState(1);
     const [disqualified, setDisqualified] = useState(false);
@@ -41,47 +41,64 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
         setStep(prev => prev + 1);
     };
 
-    // Helper to get cookie by name without external dependencies
-    const getCookie = (name: string) => {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop()?.split(';').shift();
-    };
+
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
 
-        // Capture common ad tracking cookies if present
-        const fbp = getCookie('_fbp');
-        const fbc = getCookie('_fbc');
+        const fullName = [formData.firstName, formData.lastName].filter(Boolean).join(' ');
+
+        // Parse Budget (Simple extraction for estimate)
+        let estimatedBudget = 0;
+        if (formData.budget.includes('750k')) estimatedBudget = 750000;
+        if (formData.budget.includes('1M')) estimatedBudget = 1000000;
+        if (formData.budget.includes('1.5M')) estimatedBudget = 1500000;
+        if (formData.budget.includes('2M+')) estimatedBudget = 2000000;
+
+        // Construct Sales Note
+        const salesNote = `${fullName} is planning a ${formData.projectType || 'Project'} (${formData.timeline}) with a budget range of ${formData.budget}. Land Status: ${formData.landStatus}. Familiarity: ${formData.familiarity}. Commitment Level: ${formData.commitment}. Contact via: ${formData.preferredContact}.`;
 
         const payload = {
-            ...formData,
-            fbp,
-            fbc,
-            source: 'website_application'
+            client: "Herman Boonstra - Homestead Home Builders",
+            source: "Partner Application",
+            timestamp: new Date().toISOString(),
+            is_qualified: !disqualified, // If they reached this step, they aren't disqualified
+            quality_tier: "Qualified",
+            contact: {
+                name: fullName,
+                email: formData.email,
+                phone: formData.phone,
+                agreedToTerms: true
+            },
+            sales_note: salesNote,
+            project: {
+                city: "Northern Colorado", // Default context
+                totalBudget: estimatedBudget,
+                landOwned: formData.landStatus === 'Yes',
+                timeline: formData.timeline,
+                type: formData.projectType
+            },
+            headers: {
+                host: window.location.host,
+                userAgent: navigator.userAgent,
+                referer: document.referrer
+            }
         };
 
         try {
-            // For template demonstration, we might strictly log to console if URL is placeholder
-            if (webhookUrl.includes('placeholder')) {
-                console.log('Mock Submission Payload:', payload);
-                // Simulate delay
-                await new Promise(resolve => setTimeout(resolve, 1500));
-            } else {
-                await fetch(webhookUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload),
-                });
-            }
+            // Updated Webhook
+            const targetUrl = 'https://services.leadconnectorhq.com/hooks/cG3cesDKIajoyQPNPYZK/webhook-trigger/61e5d2ad-bff6-4dda-afe3-89b988885e8a';
+
+            await fetch(targetUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
 
             // Redirect to Booking
             const params = new URLSearchParams();
-            if (formData.firstName || formData.lastName) {
-                params.append('full_name', [formData.firstName, formData.lastName].filter(Boolean).join(' '));
-            }
+            if (fullName) params.append('full_name', fullName);
             if (formData.email) params.append('email', formData.email);
             if (formData.phone) params.append('phone', formData.phone);
 
@@ -92,7 +109,12 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = ({ webhookUrl = 'htt
 
         } catch (error) {
             console.error('Error submitting form:', error);
-            alert('Something went wrong. Please try again.');
+            // alert('Something went wrong. Please try again.'); // Silent fail safe for tracking
+
+            // Still redirect on error to not block user
+            const params = new URLSearchParams();
+            if (fullName) params.append('full_name', fullName);
+            navigate({ pathname: '/booking', search: params.toString() });
         } finally {
             setLoading(false);
         }
