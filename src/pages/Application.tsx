@@ -16,8 +16,8 @@ const Application = () => {
 
             <FunnelHeader />
 
-            <div className="min-h-screen bg-slate-50 flex flex-col pt-24"> {/* pt-24 to account for fixed header (h-24) */}
-                <div className="flex-grow pt-12 pb-20 px-6">
+            <div className="min-h-screen bg-slate-50 flex flex-col pt-14">
+                <div className="flex-grow pt-8 pb-20 px-6">
                     <div className="container mx-auto">
                         <div className="max-w-4xl mx-auto">
 
@@ -61,7 +61,7 @@ const Application = () => {
                             </div>
 
                             {/* Survey Container */}
-                            <div id="application-survey" className="scroll-mt-32"> {/* Increased scroll margin for header */}
+                            <div id="application-survey" className="scroll-mt-16">
                                 <ApplicationSurvey />
                             </div>
 

@@ -115,21 +115,20 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
     return (
         <div className="w-full max-w-2xl mx-auto">
             {/* Progress Bar */}
-            <div className="mb-10">
-                <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div className="mb-5">
+                <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
                     <div
                         className="h-full bg-[#2B70B6] transition-all duration-500 ease-out"
                         style={{ width: `${(step / TOTAL_STEPS) * 100}%` }}
                     ></div>
                 </div>
-                <div className="mt-4 flex justify-between items-center text-sm font-bold text-slate-500">
-                    <span className="text-[#2B70B6] uppercase tracking-widest text-xs">Step {step} of {TOTAL_STEPS}</span>
-                    {step > 1 && (
-                        <button onClick={goBack} className="flex items-center gap-1 hover:text-primary transition-colors">
-                            <ArrowLeft size={16} /> Back
+                {step > 1 && (
+                    <div className="mt-2 flex justify-end">
+                        <button onClick={goBack} className="flex items-center gap-1 text-xs font-bold text-slate-400 hover:text-primary transition-colors">
+                            <ArrowLeft size={13} /> Back
                         </button>
-                    )}
-                </div>
+                    </div>
+                )}
             </div>
 
             {/* Step 1: Project Type */}
