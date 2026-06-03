@@ -204,7 +204,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
                             <div>
                                 <label className="block text-xs font-bold text-white/60 mb-1.5 uppercase tracking-wide">First Name</label>
                                 <input required type="text"
-                                    className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white/8 text-white placeholder-white/30 focus:outline-none focus:border-[#4a9eff] focus:ring-1 focus:ring-[#4a9eff] transition-colors"
+                                    className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#4a9eff] focus:ring-1 focus:ring-[#4a9eff] transition-colors"
                                     placeholder="John"
                                     onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                                 />
@@ -212,7 +212,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
                             <div>
                                 <label className="block text-xs font-bold text-white/60 mb-1.5 uppercase tracking-wide">Last Name</label>
                                 <input required type="text"
-                                    className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white/8 text-white placeholder-white/30 focus:outline-none focus:border-[#4a9eff] focus:ring-1 focus:ring-[#4a9eff] transition-colors"
+                                    className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#4a9eff] focus:ring-1 focus:ring-[#4a9eff] transition-colors"
                                     placeholder="Doe"
                                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                                 />
@@ -222,7 +222,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
                         <div>
                             <label className="block text-xs font-bold text-white/60 mb-1.5 uppercase tracking-wide">Email Address</label>
                             <input required type="email"
-                                className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white/8 text-white placeholder-white/30 focus:outline-none focus:border-[#4a9eff] focus:ring-1 focus:ring-[#4a9eff] transition-colors"
+                                className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#4a9eff] focus:ring-1 focus:ring-[#4a9eff] transition-colors"
                                 placeholder="john@example.com"
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             />
@@ -232,7 +232,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
                             <div>
                                 <label className="block text-xs font-bold text-white/60 mb-1.5 uppercase tracking-wide">Phone Number</label>
                                 <input required type="tel"
-                                    className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white/8 text-white placeholder-white/30 focus:outline-none focus:border-[#4a9eff] focus:ring-1 focus:ring-[#4a9eff] transition-colors"
+                                    className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#4a9eff] focus:ring-1 focus:ring-[#4a9eff] transition-colors"
                                     placeholder="(555) 123-4567"
                                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                 />
@@ -240,13 +240,13 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
                             <div>
                                 <label className="block text-xs font-bold text-white/60 mb-1.5 uppercase tracking-wide">Preferred Contact</label>
                                 <select required defaultValue=""
-                                    className="w-full px-4 py-3 rounded-lg border border-white/15 bg-[#0d1f3c] text-white focus:outline-none focus:border-[#4a9eff] focus:ring-1 focus:ring-[#4a9eff] transition-colors"
+                                    className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white text-slate-900 focus:outline-none focus:border-[#4a9eff] focus:ring-1 focus:ring-[#4a9eff] transition-colors"
                                     onChange={(e) => setFormData({ ...formData, preferredContact: e.target.value })}
                                 >
-                                    <option value="" disabled className="bg-[#0d1f3c]">Select an option</option>
-                                    <option value="Phone Call" className="bg-[#0d1f3c]">Phone Call</option>
-                                    <option value="Text Message" className="bg-[#0d1f3c]">Text Message</option>
-                                    <option value="Email" className="bg-[#0d1f3c]">Email</option>
+                                    <option value="" disabled className="bg-white">Select an option</option>
+                                    <option value="Phone Call" className="bg-white">Phone Call</option>
+                                    <option value="Text Message" className="bg-white">Text Message</option>
+                                    <option value="Email" className="bg-white">Email</option>
                                 </select>
                             </div>
                         </div>
