@@ -114,8 +114,8 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
 
     return (
         <div className="w-full max-w-2xl mx-auto">
-            {/* Progress Bar */}
-            <div className="mb-5">
+            {/* Progress bar — flush top of card */}
+            <div className="bg-white rounded-t-lg border border-b-0 border-slate-100 shadow-xl px-8 pt-4 pb-3">
                 <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
                     <div
                         className="h-full bg-[#2B70B6] transition-all duration-500 ease-out"
@@ -133,7 +133,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
 
             {/* Step 1: Project Type */}
             {step === 1 && (
-                <div className="bg-white p-8 md:p-12 rounded-lg shadow-xl border border-slate-100 animate-fadeIn">
+                <div className="bg-white p-8 md:p-12 rounded-b-lg shadow-xl border border-t-0 border-slate-100 animate-fadeIn">
                     <div className="flex items-center gap-4 mb-8">
                         <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
                             <Home size={28} />
@@ -158,7 +158,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
 
             {/* Step 2: Timeline */}
             {step === 2 && (
-                <div className="bg-white p-8 md:p-12 rounded-lg shadow-xl border border-slate-100 animate-fadeIn">
+                <div className="bg-white p-8 md:p-12 rounded-b-lg shadow-xl border border-t-0 border-slate-100 animate-fadeIn">
                     <div className="flex items-center gap-4 mb-8">
                         <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
                             <Calendar size={28} />
@@ -182,7 +182,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
 
             {/* Step 3: Budget */}
             {step === 3 && (
-                <div className="bg-white p-8 md:p-12 rounded-lg shadow-xl border border-slate-100 animate-fadeIn">
+                <div className="bg-white p-8 md:p-12 rounded-b-lg shadow-xl border border-t-0 border-slate-100 animate-fadeIn">
                     <div className="flex items-center gap-4 mb-8">
                         <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
                             <DollarSign size={28} />
@@ -206,7 +206,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
 
             {/* Step 4: Land Status */}
             {step === 4 && (
-                <div className="bg-white p-8 md:p-12 rounded-lg shadow-xl border border-slate-100 animate-fadeIn">
+                <div className="bg-white p-8 md:p-12 rounded-b-lg shadow-xl border border-t-0 border-slate-100 animate-fadeIn">
                     <div className="flex items-center gap-4 mb-8">
                         <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
                             <MapPin size={28} />
@@ -229,7 +229,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
 
             {/* Step 5: Contact Details */}
             {step === 5 && (
-                <div className="bg-white p-8 md:p-12 rounded-lg shadow-xl border border-slate-100 animate-fadeIn">
+                <div className="bg-white p-8 md:p-12 rounded-b-lg shadow-xl border border-t-0 border-slate-100 animate-fadeIn">
                     <div className="flex items-center gap-4 mb-8">
                         <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
                             <User size={28} />

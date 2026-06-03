@@ -43,16 +43,16 @@ const Application = () => {
                                 </div>
 
                                 {/* Home images strip */}
-                                <div className="grid grid-cols-3 gap-2 md:gap-3 mb-5 max-w-lg mx-auto">
-                                    {['home1.png', 'home2.png', 'home3.png'].map((img) => (
-                                        <div key={img} className="rounded-lg overflow-hidden h-20 md:h-28 shadow-sm">
-                                            <img
-                                                src={`/images/${img}`}
-                                                alt="Custom home"
-                                                className="w-full h-full object-cover"
-                                            />
-                                        </div>
-                                    ))}
+                                <div className="flex justify-center items-center mb-5 -space-x-5">
+                                    <div className="w-28 md:w-36 h-20 md:h-24 rounded-xl overflow-hidden shadow-md rotate-[-5deg] relative z-0 flex-shrink-0">
+                                        <img src="/images/home1.png" alt="Custom home" className="w-full h-full object-cover" />
+                                    </div>
+                                    <div className="w-32 md:w-40 h-22 md:h-28 rounded-xl overflow-hidden shadow-xl relative z-10 flex-shrink-0">
+                                        <img src="/images/home2.png" alt="Custom home" className="w-full h-full object-cover" />
+                                    </div>
+                                    <div className="w-28 md:w-36 h-20 md:h-24 rounded-xl overflow-hidden shadow-md rotate-[5deg] relative z-0 flex-shrink-0">
+                                        <img src="/images/home3.png" alt="Custom home" className="w-full h-full object-cover" />
+                                    </div>
                                 </div>
 
                                 <p className="text-sm md:text-base text-slate-600 max-w-xl mx-auto leading-relaxed">
