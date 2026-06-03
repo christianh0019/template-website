@@ -27,19 +27,14 @@ const Application = () => {
                                     We'll Build Your Dream Home In Northern Colorado
                                 </h1>
 
-                                {/* Trust bullets */}
-                                <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 mb-5">
-                                    {[
-                                        '100% On-Time & On-Budget',
-                                        '100% Transparent Open Book Policy',
-                                    ].map((item) => (
-                                        <div key={item} className="flex items-center gap-2">
-                                            <svg className="w-5 h-5 text-[#2B70B6] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                            </svg>
-                                            <span className="text-sm md:text-base font-semibold text-slate-700">{item}</span>
-                                        </div>
-                                    ))}
+                                {/* Trust bullet */}
+                                <div className="flex justify-center mb-5">
+                                    <div className="flex items-center gap-2">
+                                        <svg className="w-5 h-5 text-[#2B70B6] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                        </svg>
+                                        <span className="text-sm md:text-base font-semibold text-slate-700">100% Transparent Open Book Policy</span>
+                                    </div>
                                 </div>
 
                                 {/* Home images strip */}
@@ -56,7 +51,7 @@ const Application = () => {
                                 </div>
 
                                 <p className="text-sm md:text-base text-slate-600 max-w-xl mx-auto leading-relaxed">
-                                    Fill out this short survey to see if you qualify for a free consultation.
+                                    Fill out this short survey below to book your design consultation and feasibility study.
                                 </p>
                             </div>
 
