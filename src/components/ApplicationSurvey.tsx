@@ -139,7 +139,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
                         <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
                             <Home size={28} />
                         </div>
-                        <h1 className="text-3xl font-serif font-bold text-primary">What type of project are you planning?</h1>
+                        <h1 className="text-xl font-serif font-bold text-primary">What type of project are you planning?</h1>
                     </div>
 
                     <div className="space-y-4">
@@ -164,7 +164,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
                         <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
                             <Calendar size={28} />
                         </div>
-                        <h2 className="text-3xl font-serif font-bold text-primary">When are you hoping to begin construction?</h2>
+                        <h2 className="text-xl font-serif font-bold text-primary">When are you hoping to begin construction?</h2>
                     </div>
                     <div className="space-y-4">
                         {["Within 6 months", "6–12 months", "12–24 months", "Just researching"].map((option) => (
@@ -188,7 +188,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
                         <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
                             <DollarSign size={28} />
                         </div>
-                        <h2 className="text-3xl font-serif font-bold text-primary">What investment range do you anticipate for your project?</h2>
+                        <h2 className="text-xl font-serif font-bold text-primary">What investment range do you anticipate for your project?</h2>
                     </div>
                     <div className="space-y-4">
                         {["$750k – $1M", "$1M – $1.5M", "$1.5M – $2M", "$2M+", "Not sure yet"].map((option) => (
@@ -212,7 +212,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
                         <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
                             <MapPin size={28} />
                         </div>
-                        <h2 className="text-3xl font-serif font-bold text-primary">Have you already secured land?</h2>
+                        <h2 className="text-xl font-serif font-bold text-primary">Have you already secured land?</h2>
                     </div>
                     <div className="grid grid-cols-1 gap-4">
                         {["Yes", "In the process", "Not yet"].map((option) => (

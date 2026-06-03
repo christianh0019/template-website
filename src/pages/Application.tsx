@@ -22,11 +22,40 @@ const Application = () => {
                         <div className="max-w-4xl mx-auto">
 
                             {/* Hero Section */}
-                            <div className="text-center mb-16">
-                                <h1 className="text-3xl md:text-5xl font-serif font-bold text-primary mb-6 leading-tight">
-                                    We Help Northern Colorado Families Build Their Dream Home <span className="text-[#2B70B6]">On-Budget, On-Time, and For a Fair Price!</span>
+                            <div className="text-center mb-10">
+                                <h1 className="text-3xl md:text-5xl font-serif font-bold text-primary mb-5 leading-tight">
+                                    Build Your Dream Home In Northern Colorado
                                 </h1>
-                                <p className="text-base md:text-lg text-slate-600 max-w-3xl mx-auto mb-8 leading-relaxed">
+
+                                {/* Trust bullets */}
+                                <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 mb-5">
+                                    {[
+                                        '100% On-Time & On-Budget',
+                                        '100% Transparent Open Book Policy',
+                                    ].map((item) => (
+                                        <div key={item} className="flex items-center gap-2">
+                                            <svg className="w-5 h-5 text-[#2B70B6] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                            </svg>
+                                            <span className="text-sm md:text-base font-semibold text-slate-700">{item}</span>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {/* Home images strip */}
+                                <div className="grid grid-cols-3 gap-2 md:gap-3 mb-5 max-w-lg mx-auto">
+                                    {['home1.png', 'home2.png', 'home3.png'].map((img) => (
+                                        <div key={img} className="rounded-lg overflow-hidden h-20 md:h-28 shadow-sm">
+                                            <img
+                                                src={`/images/${img}`}
+                                                alt="Custom home"
+                                                className="w-full h-full object-cover"
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <p className="text-sm md:text-base text-slate-600 max-w-xl mx-auto leading-relaxed">
                                     Fill out this short survey to see if you qualify for a free consultation.
                                 </p>
                             </div>
