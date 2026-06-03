@@ -45,13 +45,13 @@ const Application = () => {
                                 {/* Home images strip */}
                                 <div className="flex justify-center items-center mb-5 -space-x-5">
                                     <div className="w-28 md:w-36 h-20 md:h-24 rounded-xl overflow-hidden shadow-md rotate-[-5deg] relative z-0 flex-shrink-0">
-                                        <img src="/images/home1.png" alt="Custom home" className="w-full h-full object-cover" />
+                                        <img src="/images/home1.png" alt="Custom home" className="w-full h-full object-cover object-top" />
                                     </div>
                                     <div className="w-32 md:w-40 h-22 md:h-28 rounded-xl overflow-hidden shadow-xl relative z-10 flex-shrink-0">
-                                        <img src="/images/home2.png" alt="Custom home" className="w-full h-full object-cover" />
+                                        <img src="/images/home2.png" alt="Custom home" className="w-full h-full object-cover object-top" />
                                     </div>
                                     <div className="w-28 md:w-36 h-20 md:h-24 rounded-xl overflow-hidden shadow-md rotate-[5deg] relative z-0 flex-shrink-0">
-                                        <img src="/images/home3.png" alt="Custom home" className="w-full h-full object-cover" />
+                                        <img src="/images/home3.png" alt="Custom home" className="w-full h-full object-cover object-top" />
                                     </div>
                                 </div>
 

@@ -29,22 +29,18 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
         setStep(prev => prev + 1);
     };
 
-
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
 
         const fullName = [formData.firstName, formData.lastName].filter(Boolean).join(' ');
 
-        // Parse Budget (Simple extraction for estimate)
         let estimatedBudget = 0;
         if (formData.budget.includes('750k')) estimatedBudget = 750000;
         if (formData.budget.includes('1M')) estimatedBudget = 1000000;
         if (formData.budget.includes('1.5M')) estimatedBudget = 1500000;
         if (formData.budget.includes('2M+')) estimatedBudget = 2000000;
 
-        // Construct Sales Note
         const salesNote = `${fullName} is planning a ${formData.projectType || 'Project'} (${formData.timeline}) with a budget range of ${formData.budget}. Land Status: ${formData.landStatus}. Contact via: ${formData.preferredContact}.`;
 
         const payload = {
@@ -53,15 +49,10 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
             timestamp: new Date().toISOString(),
             is_qualified: true,
             quality_tier: "Qualified",
-            contact: {
-                name: fullName,
-                email: formData.email,
-                phone: formData.phone,
-                agreedToTerms: true
-            },
+            contact: { name: fullName, email: formData.email, phone: formData.phone, agreedToTerms: true },
             sales_note: salesNote,
             project: {
-                city: "Northern Colorado", // Default context
+                city: "Northern Colorado",
                 totalBudget: estimatedBudget,
                 landOwned: formData.landStatus === 'Yes',
                 timeline: formData.timeline,
@@ -75,31 +66,20 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
         };
 
         try {
-            // Updated Webhook
             const targetUrl = 'https://services.leadconnectorhq.com/hooks/cG3cesDKIajoyQPNPYZK/webhook-trigger/61e5d2ad-bff6-4dda-afe3-89b988885e8a';
-
             await fetch(targetUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),
             });
 
-            // Redirect to Booking
             const params = new URLSearchParams();
             if (fullName) params.append('full_name', fullName);
             if (formData.email) params.append('email', formData.email);
             if (formData.phone) params.append('phone', formData.phone);
-
-            navigate({
-                pathname: '/booking',
-                search: params.toString()
-            });
-
+            navigate({ pathname: '/booking', search: params.toString() });
         } catch (error) {
             console.error('Error submitting form:', error);
-            // alert('Something went wrong. Please try again.'); // Silent fail safe for tracking
-
-            // Still redirect on error to not block user
             const params = new URLSearchParams();
             if (fullName) params.append('full_name', fullName);
             navigate({ pathname: '/booking', search: params.toString() });
@@ -112,19 +92,24 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
         setStep(prev => Math.max(1, prev - 1));
     };
 
+    const optionClass = "w-full text-left px-5 py-4 rounded-lg border transition-all duration-200 group flex justify-between items-center bg-white/5 border-white/15 hover:bg-[#2B70B6] hover:border-[#2B70B6] hover:shadow-lg";
+    const optionText = "text-base font-semibold text-white/90 group-hover:text-white";
+    const iconBox = "p-2.5 bg-white/10 rounded-lg text-[#7bb8f0]";
+
     return (
         <div className="w-full max-w-2xl mx-auto">
-            {/* Progress bar — flush top of card */}
-            <div className="bg-white rounded-t-lg border border-b-0 border-slate-100 shadow-xl px-8 pt-4 pb-3">
-                <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+
+            {/* Progress bar header */}
+            <div className="bg-[#0d1f3c] rounded-t-xl px-8 pt-5 pb-4 border border-b-0 border-white/10 shadow-2xl">
+                <div className="h-1.5 bg-white/15 rounded-full overflow-hidden">
                     <div
-                        className="h-full bg-[#2B70B6] transition-all duration-500 ease-out"
+                        className="h-full bg-[#4a9eff] transition-all duration-500 ease-out rounded-full"
                         style={{ width: `${(step / TOTAL_STEPS) * 100}%` }}
-                    ></div>
+                    />
                 </div>
                 {step > 1 && (
                     <div className="mt-2 flex justify-end">
-                        <button onClick={goBack} className="flex items-center gap-1 text-xs font-bold text-slate-400 hover:text-primary transition-colors">
+                        <button onClick={goBack} className="flex items-center gap-1 text-xs font-bold text-white/40 hover:text-white/80 transition-colors">
                             <ArrowLeft size={13} /> Back
                         </button>
                     </div>
@@ -133,23 +118,16 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
 
             {/* Step 1: Project Type */}
             {step === 1 && (
-                <div className="bg-white p-8 md:p-12 rounded-b-lg shadow-xl border border-t-0 border-slate-100 animate-fadeIn">
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
-                            <Home size={28} />
-                        </div>
-                        <h1 className="text-xl font-serif font-bold text-primary">What type of project are you planning?</h1>
+                <div className="bg-[#0d1f3c] px-8 pb-8 pt-6 md:px-12 md:pb-10 rounded-b-xl border border-t-0 border-white/10 shadow-2xl animate-fadeIn">
+                    <div className="flex items-center gap-3 mb-6">
+                        <div className={iconBox}><Home size={22} /></div>
+                        <h1 className="text-lg font-serif font-bold text-white">What type of project are you planning?</h1>
                     </div>
-
-                    <div className="space-y-4">
+                    <div className="space-y-3">
                         {['Custom home build', 'Major renovation / addition', 'Tear-down and rebuild', 'Not sure yet, still exploring'].map((option) => (
-                            <button
-                                key={option}
-                                onClick={() => handleSelection('projectType', option)}
-                                className="w-full text-left p-6 rounded border transition-all duration-200 group flex justify-between items-center bg-white border-slate-200 hover:border-[#2B70B6] hover:shadow-md"
-                            >
-                                <span className="text-lg font-bold text-slate-700 group-hover:text-primary">{option}</span>
-                                <ArrowRight className="text-slate-300 group-hover:text-[#2B70B6] transition-colors" size={20} />
+                            <button key={option} onClick={() => handleSelection('projectType', option)} className={optionClass}>
+                                <span className={optionText}>{option}</span>
+                                <ArrowRight className="text-white/30 group-hover:text-white transition-colors flex-shrink-0" size={18} />
                             </button>
                         ))}
                     </div>
@@ -158,22 +136,16 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
 
             {/* Step 2: Timeline */}
             {step === 2 && (
-                <div className="bg-white p-8 md:p-12 rounded-b-lg shadow-xl border border-t-0 border-slate-100 animate-fadeIn">
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
-                            <Calendar size={28} />
-                        </div>
-                        <h2 className="text-xl font-serif font-bold text-primary">When are you hoping to begin construction?</h2>
+                <div className="bg-[#0d1f3c] px-8 pb-8 pt-6 md:px-12 md:pb-10 rounded-b-xl border border-t-0 border-white/10 shadow-2xl animate-fadeIn">
+                    <div className="flex items-center gap-3 mb-6">
+                        <div className={iconBox}><Calendar size={22} /></div>
+                        <h2 className="text-lg font-serif font-bold text-white">When are you hoping to begin construction?</h2>
                     </div>
-                    <div className="space-y-4">
+                    <div className="space-y-3">
                         {["Within 6 months", "6–12 months", "12–24 months", "Just researching"].map((option) => (
-                            <button
-                                key={option}
-                                onClick={() => handleSelection('timeline', option)}
-                                className="w-full text-left p-6 rounded border transition-all duration-200 group flex justify-between items-center bg-white border-slate-200 hover:border-[#2B70B6] hover:shadow-md"
-                            >
-                                <span className="text-lg font-bold text-slate-700 group-hover:text-primary">{option}</span>
-                                <ArrowRight className="text-slate-300 group-hover:text-[#2B70B6] transition-colors" size={20} />
+                            <button key={option} onClick={() => handleSelection('timeline', option)} className={optionClass}>
+                                <span className={optionText}>{option}</span>
+                                <ArrowRight className="text-white/30 group-hover:text-white transition-colors flex-shrink-0" size={18} />
                             </button>
                         ))}
                     </div>
@@ -182,22 +154,16 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
 
             {/* Step 3: Budget */}
             {step === 3 && (
-                <div className="bg-white p-8 md:p-12 rounded-b-lg shadow-xl border border-t-0 border-slate-100 animate-fadeIn">
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
-                            <DollarSign size={28} />
-                        </div>
-                        <h2 className="text-xl font-serif font-bold text-primary">What investment range do you anticipate for your project?</h2>
+                <div className="bg-[#0d1f3c] px-8 pb-8 pt-6 md:px-12 md:pb-10 rounded-b-xl border border-t-0 border-white/10 shadow-2xl animate-fadeIn">
+                    <div className="flex items-center gap-3 mb-6">
+                        <div className={iconBox}><DollarSign size={22} /></div>
+                        <h2 className="text-lg font-serif font-bold text-white">What investment range do you anticipate?</h2>
                     </div>
-                    <div className="space-y-4">
+                    <div className="space-y-3">
                         {["$750k – $1M", "$1M – $1.5M", "$1.5M – $2M", "$2M+", "Not sure yet"].map((option) => (
-                            <button
-                                key={option}
-                                onClick={() => handleSelection('budget', option)}
-                                className="w-full text-left p-6 rounded border transition-all duration-200 group flex justify-between items-center bg-white border-slate-200 hover:border-[#2B70B6] hover:shadow-md"
-                            >
-                                <span className="text-lg font-bold text-slate-700 group-hover:text-primary">{option}</span>
-                                <ArrowRight className="text-slate-300 group-hover:text-[#2B70B6] transition-colors" size={20} />
+                            <button key={option} onClick={() => handleSelection('budget', option)} className={optionClass}>
+                                <span className={optionText}>{option}</span>
+                                <ArrowRight className="text-white/30 group-hover:text-white transition-colors flex-shrink-0" size={18} />
                             </button>
                         ))}
                     </div>
@@ -206,21 +172,16 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
 
             {/* Step 4: Land Status */}
             {step === 4 && (
-                <div className="bg-white p-8 md:p-12 rounded-b-lg shadow-xl border border-t-0 border-slate-100 animate-fadeIn">
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
-                            <MapPin size={28} />
-                        </div>
-                        <h2 className="text-xl font-serif font-bold text-primary">Have you already secured land?</h2>
+                <div className="bg-[#0d1f3c] px-8 pb-8 pt-6 md:px-12 md:pb-10 rounded-b-xl border border-t-0 border-white/10 shadow-2xl animate-fadeIn">
+                    <div className="flex items-center gap-3 mb-6">
+                        <div className={iconBox}><MapPin size={22} /></div>
+                        <h2 className="text-lg font-serif font-bold text-white">Have you already secured land?</h2>
                     </div>
-                    <div className="grid grid-cols-1 gap-4">
+                    <div className="space-y-3">
                         {["Yes", "In the process", "Not yet"].map((option) => (
-                            <button
-                                key={option}
-                                onClick={() => handleSelection('landStatus', option)}
-                                className="p-6 rounded border text-left font-bold transition-all bg-white border-slate-200 text-slate-600 hover:border-[#2B70B6] hover:text-primary hover:shadow-md"
-                            >
-                                {option}
+                            <button key={option} onClick={() => handleSelection('landStatus', option)} className={optionClass}>
+                                <span className={optionText}>{option}</span>
+                                <ArrowRight className="text-white/30 group-hover:text-white transition-colors flex-shrink-0" size={18} />
                             </button>
                         ))}
                     </div>
@@ -229,35 +190,29 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
 
             {/* Step 5: Contact Details */}
             {step === 5 && (
-                <div className="bg-white p-8 md:p-12 rounded-b-lg shadow-xl border border-t-0 border-slate-100 animate-fadeIn">
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
-                            <User size={28} />
-                        </div>
+                <div className="bg-[#0d1f3c] px-8 pb-8 pt-6 md:px-12 md:pb-10 rounded-b-xl border border-t-0 border-white/10 shadow-2xl animate-fadeIn">
+                    <div className="flex items-center gap-3 mb-6">
+                        <div className={iconBox}><User size={22} /></div>
                         <div>
-                            <h2 className="text-2xl font-serif font-bold text-primary">Last step.</h2>
-                            <p className="text-slate-600">How can we contact you?</p>
+                            <h2 className="text-lg font-serif font-bold text-white">Last step.</h2>
+                            <p className="text-white/50 text-sm">How can we reach you?</p>
                         </div>
                     </div>
 
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-sm font-bold text-slate-700 mb-2">First Name</label>
-                                <input
-                                    required
-                                    type="text"
-                                    className="w-full px-4 py-3 rounded border border-slate-300 focus:outline-none focus:border-[#2B70B6] focus:ring-1 focus:ring-[#2B70B6] bg-white"
+                                <label className="block text-xs font-bold text-white/60 mb-1.5 uppercase tracking-wide">First Name</label>
+                                <input required type="text"
+                                    className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white/8 text-white placeholder-white/30 focus:outline-none focus:border-[#4a9eff] focus:ring-1 focus:ring-[#4a9eff] transition-colors"
                                     placeholder="John"
                                     onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-bold text-slate-700 mb-2">Last Name</label>
-                                <input
-                                    required
-                                    type="text"
-                                    className="w-full px-4 py-3 rounded border border-slate-300 focus:outline-none focus:border-[#2B70B6] focus:ring-1 focus:ring-[#2B70B6] bg-white"
+                                <label className="block text-xs font-bold text-white/60 mb-1.5 uppercase tracking-wide">Last Name</label>
+                                <input required type="text"
+                                    className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white/8 text-white placeholder-white/30 focus:outline-none focus:border-[#4a9eff] focus:ring-1 focus:ring-[#4a9eff] transition-colors"
                                     placeholder="Doe"
                                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                                 />
@@ -265,39 +220,33 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
                         </div>
 
                         <div>
-                            <label className="block text-sm font-bold text-slate-700 mb-2">Email Address</label>
-                            <input
-                                required
-                                type="email"
-                                className="w-full px-4 py-3 rounded border border-slate-300 focus:outline-none focus:border-[#2B70B6] focus:ring-1 focus:ring-[#2B70B6] bg-white"
+                            <label className="block text-xs font-bold text-white/60 mb-1.5 uppercase tracking-wide">Email Address</label>
+                            <input required type="email"
+                                className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white/8 text-white placeholder-white/30 focus:outline-none focus:border-[#4a9eff] focus:ring-1 focus:ring-[#4a9eff] transition-colors"
                                 placeholder="john@example.com"
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             />
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-sm font-bold text-slate-700 mb-2">Phone Number</label>
-                                <input
-                                    required
-                                    type="tel"
-                                    className="w-full px-4 py-3 rounded border border-slate-300 focus:outline-none focus:border-[#2B70B6] focus:ring-1 focus:ring-[#2B70B6] bg-white"
+                                <label className="block text-xs font-bold text-white/60 mb-1.5 uppercase tracking-wide">Phone Number</label>
+                                <input required type="tel"
+                                    className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white/8 text-white placeholder-white/30 focus:outline-none focus:border-[#4a9eff] focus:ring-1 focus:ring-[#4a9eff] transition-colors"
                                     placeholder="(555) 123-4567"
                                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-bold text-slate-700 mb-2">Preferred Contact Method</label>
-                                <select
-                                    required
-                                    className="w-full px-4 py-3 rounded border border-slate-300 focus:outline-none focus:border-[#2B70B6] focus:ring-1 focus:ring-[#2B70B6] bg-white"
+                                <label className="block text-xs font-bold text-white/60 mb-1.5 uppercase tracking-wide">Preferred Contact</label>
+                                <select required defaultValue=""
+                                    className="w-full px-4 py-3 rounded-lg border border-white/15 bg-[#0d1f3c] text-white focus:outline-none focus:border-[#4a9eff] focus:ring-1 focus:ring-[#4a9eff] transition-colors"
                                     onChange={(e) => setFormData({ ...formData, preferredContact: e.target.value })}
-                                    defaultValue=""
                                 >
-                                    <option value="" disabled>Select an option</option>
-                                    <option value="Phone Call">Phone Call</option>
-                                    <option value="Text Message">Text Message</option>
-                                    <option value="Email">Email</option>
+                                    <option value="" disabled className="bg-[#0d1f3c]">Select an option</option>
+                                    <option value="Phone Call" className="bg-[#0d1f3c]">Phone Call</option>
+                                    <option value="Text Message" className="bg-[#0d1f3c]">Text Message</option>
+                                    <option value="Email" className="bg-[#0d1f3c]">Email</option>
                                 </select>
                             </div>
                         </div>
@@ -305,15 +254,12 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full bg-[#2B70B6] text-white font-bold uppercase tracking-widest py-4 rounded hover:bg-[#2B4677] hover:text-white transition-all duration-300 shadow-md disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                            className="w-full bg-[#2B70B6] text-white font-bold uppercase tracking-widest py-4 rounded-lg hover:bg-[#4a9eff] transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2"
                         >
                             {loading ? (
-                                <>
-                                    <Loader2 className="animate-spin" size={20} />
-                                    Submitting...
-                                </>
+                                <><Loader2 className="animate-spin" size={20} /> Submitting...</>
                             ) : (
-                                "Complete Application"
+                                "Complete Application →"
                             )}
                         </button>
                     </form>
