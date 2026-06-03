@@ -1,5 +1,4 @@
 import ApplicationSurvey from '../components/ApplicationSurvey';
-import { Star } from 'lucide-react';
 import SEO from '../components/SEO';
 import FunnelHeader from '../components/FunnelHeader';
 import FunnelFooter from '../components/FunnelFooter';
@@ -24,22 +23,11 @@ const Application = () => {
 
                             {/* Hero Section */}
                             <div className="text-center mb-16">
-                                <div className="inline-flex items-center gap-2 bg-[#2B70B6]/5 border border-[#2B70B6]/20 px-4 py-2 rounded-full mb-8 animate-fadeIn">
-                                    <div className="flex gap-0.5">
-                                        {[1, 2, 3, 4, 5].map((i) => (
-                                            <Star key={i} size={16} className="fill-[#2B70B6] text-[#2B70B6]" />
-                                        ))}
-                                    </div>
-                                    <span className="text-sm font-bold text-slate-800">Rated 4.9/5 by 100+ Homeowners</span>
-                                </div>
-
-                                <div className="font-script text-2xl md:text-4xl text-[#2B70B6] mb-4">Quality you can see, people you can trust</div>
-
                                 <h1 className="text-3xl md:text-5xl font-serif font-bold text-primary mb-6 leading-tight">
                                     We Help Northern Colorado Families Build Their Dream Home <span className="text-[#2B70B6]">On-Budget, On-Time, and For a Fair Price!</span>
                                 </h1>
                                 <p className="text-base md:text-lg text-slate-600 max-w-3xl mx-auto mb-8 leading-relaxed">
-                                    This short survey helps us understand your project and determine whether a free Clarity Consultation is the right next step. We only work with a limited number of homeowners each year to ensure every project receives focused attention, accurate planning, and clear communication.
+                                    Fill out this short survey to see if you qualify for a free consultation.
                                 </p>
                             </div>
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, ArrowLeft, Check, AlertCircle, Home, MapPin, DollarSign, Calendar, User, Loader2, HelpCircle, MessagesSquare } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Home, MapPin, DollarSign, Calendar, User, Loader2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 interface ApplicationSurveyProps {
@@ -7,16 +7,13 @@ interface ApplicationSurveyProps {
 }
 
 const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
-    const TOTAL_STEPS = 7;
+    const TOTAL_STEPS = 5;
     const [step, setStep] = useState(1);
-    const [disqualified, setDisqualified] = useState(false);
     const [formData, setFormData] = useState({
         projectType: '',
-        timeline: '', // Swapped order to match user request if needed, but keeping field names consistent
+        timeline: '',
         budget: '',
         landStatus: '',
-        familiarity: '',
-        commitment: '',
         firstName: '',
         lastName: '',
         email: '',
@@ -29,15 +26,6 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
 
     const handleSelection = (field: string, value: string) => {
         setFormData(prev => ({ ...prev, [field]: value }));
-
-        // Qualification Logic
-        if (field === 'commitment') {
-            if (value === "I’m mostly price shopping") {
-                setDisqualified(true);
-                return;
-            }
-        }
-
         setStep(prev => prev + 1);
     };
 
@@ -57,7 +45,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
         if (formData.budget.includes('2M+')) estimatedBudget = 2000000;
 
         // Construct Sales Note
-        const salesNote = `${fullName} is planning a ${formData.projectType || 'Project'} (${formData.timeline}) with a budget range of ${formData.budget}. Land Status: ${formData.landStatus}. Familiarity: ${formData.familiarity}. Commitment Level: ${formData.commitment}. Contact via: ${formData.preferredContact}.`;
+        const salesNote = `${fullName} is planning a ${formData.projectType || 'Project'} (${formData.timeline}) with a budget range of ${formData.budget}. Land Status: ${formData.landStatus}. Contact via: ${formData.preferredContact}.`;
 
         const payload = {
             client: "Herman Boonstra - Homestead Home Builders",
@@ -121,33 +109,8 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
     };
 
     const goBack = () => {
-        if (disqualified) {
-            setDisqualified(false);
-            setStep(TOTAL_STEPS - 1); // Go back to the step before disqualification (Commitment)
-        } else {
-            setStep(prev => Math.max(1, prev - 1));
-        }
+        setStep(prev => Math.max(1, prev - 1));
     };
-
-    if (disqualified) {
-        return (
-            <div className="w-full bg-white p-10 rounded-lg shadow-xl text-center border border-slate-100">
-                <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6 text-red-500">
-                    <AlertCircle size={32} />
-                </div>
-                <h2 className="text-2xl font-serif font-bold text-primary mb-4">We might not be the best fit.</h2>
-                <p className="text-slate-600 mb-8">
-                    Our Clarity Consultation is designed for homeowners ready to move forward with a professional planning process. Since you're primarily price shopping right now, we recommend gathering more quotes to find a builder that aligns with your needs.
-                </p>
-                <button
-                    onClick={goBack}
-                    className="text-slate-500 hover:text-primary font-bold underline transition-colors"
-                >
-                    Wait, I selected the wrong option
-                </button>
-            </div>
-        );
-    }
 
     return (
         <div className="w-full max-w-2xl mx-auto">
@@ -267,67 +230,8 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
                 </div>
             )}
 
-            {/* Step 5: Familiarity */}
+            {/* Step 5: Contact Details */}
             {step === 5 && (
-                <div className="bg-white p-8 md:p-12 rounded-lg shadow-xl border border-slate-100 animate-fadeIn">
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
-                            <HelpCircle size={28} />
-                        </div>
-                        <h2 className="text-3xl font-serif font-bold text-primary">How familiar are you with the pre-construction process?</h2>
-                    </div>
-                    <div className="space-y-4">
-                        {["Very familiar", "Somewhat familiar", "Not familiar, looking for guidance"].map((option) => (
-                            <button
-                                key={option}
-                                onClick={() => handleSelection('familiarity', option)}
-                                className="w-full text-left p-6 rounded border transition-all duration-200 group flex justify-between items-center bg-white border-slate-200 hover:border-[#2B70B6] hover:shadow-md"
-                            >
-                                <span className="text-lg font-bold text-slate-700 group-hover:text-primary">{option}</span>
-                                <ArrowRight className="text-slate-300 group-hover:text-[#2B70B6] transition-colors" size={20} />
-                            </button>
-                        ))}
-                    </div>
-                </div>
-            )}
-
-            {/* Step 6: Soft Commitment / Filter */}
-            {step === 6 && (
-                <div className="bg-white p-8 md:p-12 rounded-lg shadow-xl border border-slate-100 animate-fadeIn">
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
-                            <MessagesSquare size={28} />
-                        </div>
-                        <div>
-                            <h2 className="text-2xl font-serif font-bold text-primary mb-2">One final check...</h2>
-                        </div>
-                    </div>
-
-                    <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                        Our Build Clarity Consultation is a professional planning conversation with our team, not a sales pitch. Does this align with what you’re looking for?
-                    </p>
-
-                    <div className="space-y-4">
-                        {[
-                            "Yes, that’s exactly what I want",
-                            "I’m open to learning more",
-                            "I’m mostly price shopping"
-                        ].map((option) => (
-                            <button
-                                key={option}
-                                onClick={() => handleSelection('commitment', option)}
-                                className="w-full text-left p-6 rounded border transition-all duration-200 group flex justify-between items-center bg-white border-slate-200 hover:border-[#2B70B6] hover:shadow-md"
-                            >
-                                <span className="text-lg font-bold text-slate-700 group-hover:text-primary">{option}</span>
-                                <ArrowRight className="text-slate-300 group-hover:text-[#2B70B6] transition-colors" size={20} />
-                            </button>
-                        ))}
-                    </div>
-                </div>
-            )}
-
-            {/* Step 7: Contact Details */}
-            {step === 7 && (
                 <div className="bg-white p-8 md:p-12 rounded-lg shadow-xl border border-slate-100 animate-fadeIn">
                     <div className="flex items-center gap-4 mb-8">
                         <div className="p-3 bg-[#2B70B6]/5 rounded-lg text-[#2B70B6]">
