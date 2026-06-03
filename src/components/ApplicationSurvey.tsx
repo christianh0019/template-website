@@ -51,7 +51,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
             client: "Herman Boonstra - Homestead Home Builders",
             source: "Partner Application",
             timestamp: new Date().toISOString(),
-            is_qualified: !disqualified, // If they reached this step, they aren't disqualified
+            is_qualified: true,
             quality_tier: "Qualified",
             contact: {
                 name: fullName,
@@ -198,9 +198,7 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
                                 className="w-full text-left p-6 rounded border transition-all duration-200 group flex justify-between items-center bg-white border-slate-200 hover:border-[#2B70B6] hover:shadow-md"
                             >
                                 <span className="text-lg font-bold text-slate-700 group-hover:text-primary">{option}</span>
-                                <div className={`w-6 h-6 rounded-full border-2 ${formData.budget === option ? 'border-[#2B70B6] bg-[#2B70B6]' : 'border-slate-200'} flex items-center justify-center`}>
-                                    {formData.budget === option && <Check size={14} className="text-white" />}
-                                </div>
+                                <ArrowRight className="text-slate-300 group-hover:text-[#2B70B6] transition-colors" size={20} />
                             </button>
                         ))}
                     </div>
