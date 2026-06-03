@@ -24,7 +24,7 @@ const Application = () => {
                             {/* Hero Section */}
                             <div className="text-center mb-10">
                                 <h1 className="text-3xl md:text-5xl font-serif font-bold text-primary mb-5 leading-tight">
-                                    Build Your Dream Home In Northern Colorado
+                                    We'll Build Your Dream Home In Northern Colorado
                                 </h1>
 
                                 {/* Trust bullets */}
