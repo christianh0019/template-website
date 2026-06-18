@@ -36,6 +36,7 @@ import ThankYou from './pages/ThankYou';
 import CostGuideOptIn from './pages/resources/CostGuideOptIn';
 import CostGuide from './pages/resources/CostGuide';
 import Resources from './pages/Resources';
+import WebinarRegistration from './pages/WebinarRegistration';
 
 // Placeholder components for other routes to prevent errors
 const Placeholder = ({ title }: { title: string }) => (
@@ -97,6 +98,7 @@ function App() {
           <Route path="application" element={<Application />} />
           <Route path="booking" element={<Booking />} />
           <Route path="thank-you" element={<ThankYou />} />
+          <Route path="webinar" element={<WebinarRegistration />} />
         </Routes>
       </BrowserRouter>
     </HelmetProvider>
