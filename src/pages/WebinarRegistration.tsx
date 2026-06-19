@@ -91,14 +91,13 @@ const WebinarRegistration: React.FC = () => {
 
     const RegistrationForm = () => (
         <div className="bg-white/5 border border-white/15 rounded-2xl p-6 md:p-8 shadow-2xl">
-            <p className="text-[#7bb8f0] text-xs font-bold uppercase tracking-widest text-center mb-1">Free Live Training &amp; Q&amp;A</p>
-            <div className="text-center text-white/80 text-sm space-y-1 mb-5">
-                <p>📅 <span className="font-semibold">Thursday, July 10, 2026</span></p>
-                <p>⏰ <span className="font-semibold">7:00 PM Mountain Time</span></p>
-                <p>📍 <span className="font-semibold">Live via Zoom</span></p>
+            <p className="text-[#7bb8f0] text-xs font-bold uppercase tracking-widest text-center mb-3">Free Live Training &amp; Q&amp;A</p>
+            <div className="text-center text-white/85 text-sm font-semibold mb-2">
+                <p>📅 Thursday, July 10 @ 7:00 PM MT</p>
+                <p className="mt-1">📍 Live via Zoom</p>
             </div>
-            <p className="text-white/45 text-xs text-center mb-6 leading-relaxed italic">
-                Herm dedicates 45 minutes to live Q&amp;A, so spots are strictly limited to ensure everyone gets their questions answered.
+            <p className="text-white/40 text-xs text-center mb-5 leading-relaxed italic">
+                Spots are strictly limited to ensure Herm can answer everyone's live questions.
             </p>
 
             {submitted ? (
@@ -160,52 +159,23 @@ const WebinarRegistration: React.FC = () => {
                 <div className="bg-[#0d1f3c] px-6 pt-10 pb-14">
                     <div className="container mx-auto max-w-6xl">
 
-                        {/* Pre-headline */}
-                        <p className="text-[#7bb8f0] text-xs font-bold uppercase tracking-widest text-center mb-6">
-                            For anyone planning to build a custom home in Northern Colorado in the next 12–24 months…
-                        </p>
-
-                        <div className="grid lg:grid-cols-[1fr_400px] gap-10 lg:gap-14 items-start">
+                        <div className="grid lg:grid-cols-[1fr_400px] gap-8 lg:gap-12 items-start">
 
                             {/* Left — copy */}
-                            <div>
-                                <h1 className="text-3xl md:text-4xl lg:text-[2.6rem] font-serif font-bold text-white mb-5 leading-tight">
+                            <div className="py-2 lg:py-6">
+                                <h1 className="text-3xl md:text-4xl lg:text-[2.6rem] font-serif font-bold text-white mb-4 leading-tight">
                                     How to Avoid the{' '}
                                     <span className="text-[#4a9eff]">"$390,000 Mistake"</span>{' '}
-                                    When Hiring a Custom Builder
-                                    <span className="block text-2xl md:text-3xl lg:text-[2rem] text-white/75 font-serif font-semibold mt-3 leading-snug">
-                                        (And Exactly How to Know if You're Being Overcharged)
-                                    </span>
+                                    When Hiring a Custom Home Builder
                                 </h1>
 
-                                <p className="text-base md:text-lg text-white/65 mb-7 leading-relaxed max-w-lg">
-                                    Join 35-year veteran builder <strong className="text-white/85 font-semibold">Herman Boonstra</strong> for a live, no-holds-barred breakdown of where your money <em>really</em> goes — plus, get your specific floor plans or builder quotes reviewed live.
+                                <p className="text-base md:text-lg text-white/75 font-semibold mb-3 leading-snug">
+                                    One builder quotes $320/sqft. Another quotes $450. On a 3,000 sq ft home, that's a $390,000 gap.
                                 </p>
 
-                                {/* Hook callout */}
-                                <div className="bg-white/5 border border-white/10 rounded-xl p-5 mb-7 max-w-lg">
-                                    <p className="text-white/80 leading-relaxed text-sm md:text-base">
-                                        Same size home. Same finishes on paper.<br />
-                                        One builder quotes you <strong className="text-white">$320/sqft</strong>. The other quotes <strong className="text-white">$450</strong>.<br />
-                                        <span className="block mt-2 font-semibold text-white">On a 3,000 sq ft home, that gap is nearly $390,000.</span>
-                                    </p>
-                                    <p className="text-white/55 text-sm mt-3 leading-relaxed">
-                                        Is the cheaper builder cutting corners? Or is the expensive builder ripping you off? In this free 60-minute live session, we're pulling back the curtain on the custom home industry.
-                                    </p>
-                                </div>
-
-                                {/* Home image strip */}
-                                <div className="flex items-end -space-x-5 mb-8">
-                                    <div className="w-28 md:w-32 h-20 rounded-xl overflow-hidden shadow-md rotate-[-5deg] relative z-0 flex-shrink-0">
-                                        <img src="/images/home1.png" alt="Custom home" className="w-full h-full object-cover object-top" />
-                                    </div>
-                                    <div className="w-32 md:w-44 h-24 rounded-xl overflow-hidden shadow-xl relative z-10 flex-shrink-0">
-                                        <img src="/images/home2.png" alt="Custom home" className="w-full h-full object-cover object-top" />
-                                    </div>
-                                    <div className="w-28 md:w-32 h-20 rounded-xl overflow-hidden shadow-md rotate-[5deg] relative z-0 flex-shrink-0">
-                                        <img src="/images/home3.png" alt="Custom home" className="w-full h-full object-cover object-top" />
-                                    </div>
-                                </div>
+                                <p className="text-sm md:text-base text-white/55 leading-relaxed">
+                                    Join 35-year veteran <strong className="text-white/80">Herm Boonstra</strong> to uncover exactly where that money goes — and get your questions answered live.
+                                </p>
                             </div>
 
                             {/* Right — registration form */}
