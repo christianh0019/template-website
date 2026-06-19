@@ -169,13 +169,22 @@ const WebinarRegistration: React.FC = () => {
                                     When Hiring a Custom Home Builder
                                 </h1>
 
-                                <p className="text-base md:text-lg text-white/75 font-semibold mb-3 leading-snug">
-                                    One builder quotes $320/sqft. Another quotes $450. On a 3,000 sq ft home, that's a $390,000 gap.
-                                </p>
-
-                                <p className="text-sm md:text-base text-white/55 leading-relaxed">
+                                <p className="text-sm md:text-base text-white/55 leading-relaxed mb-8">
                                     Join 35-year veteran <strong className="text-white/80">Herm Boonstra</strong> to uncover exactly where that money goes — and get your questions answered live.
                                 </p>
+
+                                {/* Overlapping home images */}
+                                <div className="flex items-end -space-x-5">
+                                    <div className="w-28 md:w-32 h-20 rounded-xl overflow-hidden shadow-md rotate-[-5deg] relative z-0 flex-shrink-0">
+                                        <img src="/images/home1.png" alt="Custom home" className="w-full h-full object-cover object-top" />
+                                    </div>
+                                    <div className="w-32 md:w-44 h-24 rounded-xl overflow-hidden shadow-xl relative z-10 flex-shrink-0">
+                                        <img src="/images/home2.png" alt="Custom home" className="w-full h-full object-cover object-top" />
+                                    </div>
+                                    <div className="w-28 md:w-32 h-20 rounded-xl overflow-hidden shadow-md rotate-[5deg] relative z-0 flex-shrink-0">
+                                        <img src="/images/home3.png" alt="Custom home" className="w-full h-full object-cover object-top" />
+                                    </div>
+                                </div>
                             </div>
 
                             {/* Right — registration form */}
