@@ -1,34 +1,35 @@
 import React, { useState } from 'react';
-import { CheckCircle, Users, Star, ArrowRight, Lock, Loader2, Quote } from 'lucide-react';
+import { CheckCircle, Lock, Loader2, Star } from 'lucide-react';
 import FunnelHeader from '../components/FunnelHeader';
 import FunnelFooter from '../components/FunnelFooter';
 import SEO from '../components/SEO';
 
-const LEARN_ITEMS = [
+const FASCINATIONS = [
     {
-        title: "Why two quotes for the 'same home' can be $390,000 apart",
-        desc: "On a 3,000 sq ft home, $130/sqft is nearly $400K. We'll show you exactly where that gap comes from — and how to land on the right side of it."
+        emoji: "🛑",
+        title: 'The "Denominator Trap"',
+        desc: "The sneaky mathematical trick builders use to inflate your square footage and make their price look artificially low. (Hint: Not every builder counts the same things).",
     },
     {
-        title: "The denominator trap — how builders inflate sq footage to look cheaper",
-        desc: "The cheapest way to make a price look low is to inflate the number you divide by. Garage, porch, unfinished basement — not every builder counts the same things."
+        emoji: "🔍",
+        title: "The $390k Gap, Deconstructed",
+        desc: "A line-by-line, open-book breakdown of a $350 vs. $450/sqft quote. You'll see exactly how the gap accumulates — and realize what is actually driving your number.",
     },
     {
-        title: "The 5 places where the money actually goes",
-        desc: "Finishes, your lot, plan complexity, materials quality, builder overhead. We walk each one so you can see exactly what's driving your number."
+        emoji: "🕳️",
+        title: 'The 5 "Black Holes" of Your Budget',
+        desc: "The exact places your money vanishes (finishes, lot prep, plan complexity, materials, overhead) — and how to take back control of them.",
     },
     {
-        title: "A $350 vs $450/sqft breakdown — line by line",
-        desc: "Cabinets, flooring, countertops, windows, rooflines. See how the gap accumulates — and realize that most of it is your choices, not a builder ripping you off."
+        emoji: "❓",
+        title: 'The 3 "Dreaded" Questions',
+        desc: "Ask these three specific questions before signing any contract. If a builder stutters or deflects, walk away immediately.",
     },
     {
-        title: "The 3 questions to ask any builder before you sign",
-        desc: "What's in your square footage? Cost-plus or fixed price? What's not in this number? These are the questions builders dread — and you should always ask."
+        emoji: "🔥",
+        title: 'LIVE "Hot Seat" Consulting',
+        desc: "Bring your lot details, your floor plans, or even a competitor's quote. Herm will give you his unfiltered, 35-year expert opinion on your exact situation.",
     },
-    {
-        title: "40+ minutes of live Q&A with Herm — ask anything",
-        desc: "This is the main event. Herm opens the floor after about 15 minutes of teaching. Bring your lot, your plan, your quote — he'll tell you what he sees."
-    }
 ];
 
 const TRUST_STATS = [
@@ -40,21 +41,25 @@ const TRUST_STATS = [
 
 const TESTIMONIALS = [
     {
-        text: "From the initial soil test to the final walk-through, the team explained every cost and timeline adjustment clearly. No surprises, just a beautiful home.",
-        author: "James & Rebecca Miller",
-        location: "Fort Collins, CO"
-    },
-    {
         text: "We interviewed five builders. Homestead was the only team that truly listened to our vision and delivered significantly under budget.",
         author: "Dr. Sarah Chen",
-        location: "Boulder, CO"
+        location: "Verified Homeowner, Boulder, CO",
+    },
+    {
+        text: "From the initial soil test to the final walk-through, the team explained every cost and timeline adjustment clearly. No surprises, just a beautiful home.",
+        author: "James & Rebecca Miller",
+        location: "Verified Homeowners, Fort Collins, CO",
     },
     {
         text: "When lumber prices spiked, they were open about it and helped us value engineer other areas to keep the total flat. You can trust them.",
         author: "Robert Evans",
-        location: "Berthoud, CO"
-    }
+        location: "Verified Homeowner, Berthoud, CO",
+    },
 ];
+
+const inputClass =
+    "w-full px-4 py-3 rounded-lg bg-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#4a9eff] transition-colors text-sm";
+const labelClass = "block text-xs font-bold text-white/50 uppercase tracking-wide mb-1.5";
 
 const WebinarRegistration: React.FC = () => {
     const [formData, setFormData] = useState({ firstName: '', email: '', phone: '' });
@@ -70,7 +75,7 @@ const WebinarRegistration: React.FC = () => {
             timestamp: new Date().toISOString(),
             contact: { name: formData.firstName, email: formData.email, phone: formData.phone },
             webinar: { title: "What It Really Costs to Build a Custom Home in Colorado", date: "July 10, 2026", time: "7:00 PM MT" },
-            headers: { host: window.location.host, userAgent: navigator.userAgent, referer: document.referrer }
+            headers: { host: window.location.host, userAgent: navigator.userAgent, referer: document.referrer },
         };
         try {
             await fetch('https://services.leadconnectorhq.com/hooks/cG3cesDKIajoyQPNPYZK/webhook-trigger/webinar-registration', {
@@ -84,15 +89,65 @@ const WebinarRegistration: React.FC = () => {
         }
     };
 
-    const scrollToTop = (e: React.MouseEvent) => {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
+    const RegistrationForm = () => (
+        <div className="bg-white/5 border border-white/15 rounded-2xl p-6 md:p-8 shadow-2xl">
+            <p className="text-[#7bb8f0] text-xs font-bold uppercase tracking-widest text-center mb-1">Free Live Training &amp; Q&amp;A</p>
+            <div className="text-center text-white/80 text-sm space-y-1 mb-5">
+                <p>📅 <span className="font-semibold">Thursday, July 10, 2026</span></p>
+                <p>⏰ <span className="font-semibold">7:00 PM Mountain Time</span></p>
+                <p>📍 <span className="font-semibold">Live via Zoom</span></p>
+            </div>
+            <p className="text-white/45 text-xs text-center mb-6 leading-relaxed italic">
+                Herm dedicates 45 minutes to live Q&amp;A, so spots are strictly limited to ensure everyone gets their questions answered.
+            </p>
+
+            {submitted ? (
+                <div className="text-center py-6">
+                    <div className="w-14 h-14 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <CheckCircle size={28} className="text-green-400" />
+                    </div>
+                    <h3 className="text-lg font-serif font-bold text-white mb-2">You're Registered!</h3>
+                    <p className="text-white/55 text-sm">Check your inbox for the Zoom link. We'll also send a reminder before the event.</p>
+                </div>
+            ) : (
+                <form onSubmit={handleSubmit} className="space-y-3">
+                    <div>
+                        <label className={labelClass}>First Name</label>
+                        <input required type="text" value={formData.firstName}
+                            onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                            placeholder="John" className={inputClass} />
+                    </div>
+                    <div>
+                        <label className={labelClass}>Email Address</label>
+                        <input required type="email" value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                            placeholder="john@example.com" className={inputClass} />
+                    </div>
+                    <div>
+                        <label className={labelClass}>Phone <span className="normal-case font-normal text-white/30">(optional — for text reminder only)</span></label>
+                        <input type="tel" value={formData.phone}
+                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                            placeholder="(555) 123-4567" className={inputClass} />
+                    </div>
+                    <button type="submit" disabled={loading}
+                        className="w-full mt-1 bg-[#2B70B6] text-white font-bold uppercase tracking-widest py-4 rounded-xl hover:bg-[#4a9eff] transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm">
+                        {loading
+                            ? <><Loader2 className="animate-spin" size={18} /> Registering...</>
+                            : 'YES! Reserve My Free Seat Now'}
+                    </button>
+                    <div className="flex items-center justify-center gap-1.5 text-white/35 text-xs pt-1">
+                        <Lock size={11} />
+                        <span>Only your Zoom link — no spam, ever. 47 Northern Colorado homeowners already registered.</span>
+                    </div>
+                </form>
+            )}
+        </div>
+    );
 
     return (
         <>
             <SEO
-                title="Free Webinar: What It Really Costs to Build a Custom Home | Homestead"
+                title="Free Webinar: How to Avoid the $390,000 Mistake When Building a Custom Home | Homestead"
                 description="Same size. Same finishes. One builder quotes $320/sqft, the other $450. Join Herm Boonstra live to find out exactly why — and which side of that gap you want to be on."
                 canonical="https://homesteadhomebuilders.com/webinar"
             />
@@ -101,285 +156,195 @@ const WebinarRegistration: React.FC = () => {
 
             <div className="min-h-screen bg-slate-50 flex flex-col pt-14">
 
-                {/* ── Hero ──────────────────────────────────────────── */}
-                <div className="bg-[#0d1f3c] px-6 pt-12 pb-16">
+                {/* ── Hero ─────────────────────────────────────────────── */}
+                <div className="bg-[#0d1f3c] px-6 pt-10 pb-14">
                     <div className="container mx-auto max-w-6xl">
-                        <div className="grid lg:grid-cols-[1fr_400px] gap-10 lg:gap-14 items-center">
 
-                            {/* Left — copy + home images */}
-                            <div className="py-4 lg:py-10">
-                                <div className="inline-flex items-center gap-2 bg-[#2B70B6]/20 border border-[#2B70B6]/30 px-4 py-2 rounded-full mb-7">
-                                    <span className="w-1.5 h-1.5 bg-[#4a9eff] rounded-full animate-pulse flex-shrink-0" />
-                                    <span className="text-xs font-bold text-[#7bb8f0] uppercase tracking-widest">Free Live Webinar · July 10, 2026</span>
-                                </div>
+                        {/* Pre-headline */}
+                        <p className="text-[#7bb8f0] text-xs font-bold uppercase tracking-widest text-center mb-6">
+                            For anyone planning to build a custom home in Northern Colorado in the next 12–24 months…
+                        </p>
 
-                                <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] font-serif font-bold text-white mb-5 leading-tight">
-                                    Same size home. Same finishes on paper.
-                                    <br className="hidden md:block" />
-                                    <span className="text-[#4a9eff]"> One builder quotes $320/sqft.
-                                    <br className="hidden lg:block" /> The other quotes $450.</span>
+                        <div className="grid lg:grid-cols-[1fr_400px] gap-10 lg:gap-14 items-start">
+
+                            {/* Left — copy */}
+                            <div>
+                                <h1 className="text-3xl md:text-4xl lg:text-[2.6rem] font-serif font-bold text-white mb-5 leading-tight">
+                                    How to Avoid the{' '}
+                                    <span className="text-[#4a9eff]">"$390,000 Mistake"</span>{' '}
+                                    When Hiring a Custom Builder
+                                    <span className="block text-2xl md:text-3xl lg:text-[2rem] text-white/75 font-serif font-semibold mt-3 leading-snug">
+                                        (And Exactly How to Know if You're Being Overcharged)
+                                    </span>
                                 </h1>
 
-                                <p className="text-base md:text-lg text-white/60 mb-8 leading-relaxed max-w-lg">
-                                    On a 3,000 sq ft home, that gap is nearly <strong className="text-white/80 font-semibold">$390,000</strong>. In this free 60-minute session,
-                                    Herman Boonstra breaks down exactly where it comes from — and which side of it you should be on.
+                                <p className="text-base md:text-lg text-white/65 mb-7 leading-relaxed max-w-lg">
+                                    Join 35-year veteran builder <strong className="text-white/85 font-semibold">Herman Boonstra</strong> for a live, no-holds-barred breakdown of where your money <em>really</em> goes — plus, get your specific floor plans or builder quotes reviewed live.
                                 </p>
 
-                                {/* Overlapping home images */}
-                                <div className="flex items-end mb-8 -space-x-5">
-                                    <div className="w-28 md:w-32 h-20 md:h-22 rounded-xl overflow-hidden shadow-md rotate-[-5deg] relative z-0 flex-shrink-0">
+                                {/* Hook callout */}
+                                <div className="bg-white/5 border border-white/10 rounded-xl p-5 mb-7 max-w-lg">
+                                    <p className="text-white/80 leading-relaxed text-sm md:text-base">
+                                        Same size home. Same finishes on paper.<br />
+                                        One builder quotes you <strong className="text-white">$320/sqft</strong>. The other quotes <strong className="text-white">$450</strong>.<br />
+                                        <span className="block mt-2 font-semibold text-white">On a 3,000 sq ft home, that gap is nearly $390,000.</span>
+                                    </p>
+                                    <p className="text-white/55 text-sm mt-3 leading-relaxed">
+                                        Is the cheaper builder cutting corners? Or is the expensive builder ripping you off? In this free 60-minute live session, we're pulling back the curtain on the custom home industry.
+                                    </p>
+                                </div>
+
+                                {/* Home image strip */}
+                                <div className="flex items-end -space-x-5 mb-8">
+                                    <div className="w-28 md:w-32 h-20 rounded-xl overflow-hidden shadow-md rotate-[-5deg] relative z-0 flex-shrink-0">
                                         <img src="/images/home1.png" alt="Custom home" className="w-full h-full object-cover object-top" />
                                     </div>
-                                    <div className="w-32 md:w-44 h-24 md:h-30 rounded-xl overflow-hidden shadow-xl relative z-10 flex-shrink-0">
+                                    <div className="w-32 md:w-44 h-24 rounded-xl overflow-hidden shadow-xl relative z-10 flex-shrink-0">
                                         <img src="/images/home2.png" alt="Custom home" className="w-full h-full object-cover object-top" />
                                     </div>
-                                    <div className="w-28 md:w-32 h-20 md:h-22 rounded-xl overflow-hidden shadow-md rotate-[5deg] relative z-0 flex-shrink-0">
+                                    <div className="w-28 md:w-32 h-20 rounded-xl overflow-hidden shadow-md rotate-[5deg] relative z-0 flex-shrink-0">
                                         <img src="/images/home3.png" alt="Custom home" className="w-full h-full object-cover object-top" />
                                     </div>
                                 </div>
-
-                                <div className="flex flex-wrap gap-x-6 gap-y-2">
-                                    {["35+ years building in Northern Colorado", "100+ custom homes delivered", "5.0★ on Google"].map(point => (
-                                        <div key={point} className="flex items-center gap-2">
-                                            <CheckCircle size={12} className="text-[#4a9eff] flex-shrink-0" />
-                                            <span className="text-sm text-white/50 font-medium">{point}</span>
-                                        </div>
-                                    ))}
-                                </div>
                             </div>
 
-                            {/* Right — light-themed registration form */}
-                            <div className="py-4 lg:py-10">
-                                <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
-                                    <div className="px-7 pt-7 pb-6 border-b border-slate-100">
-                                        <h2 className="text-lg font-serif font-bold text-primary mb-1">Reserve Your Free Seat</h2>
-                                        <p className="text-slate-400 text-sm">Thu, July 10 · 7:00 PM MT · Free via Zoom</p>
-                                    </div>
-
-                                    <div className="px-7 py-6">
-                                        {submitted ? (
-                                            <div className="text-center py-6">
-                                                <div className="w-14 h-14 bg-[#2B70B6]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                                                    <CheckCircle size={28} className="text-[#2B70B6]" />
-                                                </div>
-                                                <h3 className="text-lg font-serif font-bold text-primary mb-2">You're In!</h3>
-                                                <p className="text-slate-500 text-sm leading-relaxed">
-                                                    Check your email for the Zoom link. See you July 10th.
-                                                </p>
-                                            </div>
-                                        ) : (
-                                            <form onSubmit={handleSubmit} className="space-y-3.5">
-                                                <div>
-                                                    <label className="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wide">First Name</label>
-                                                    <input
-                                                        required type="text"
-                                                        value={formData.firstName}
-                                                        onChange={e => setFormData({ ...formData, firstName: e.target.value })}
-                                                        className="w-full px-4 py-2.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-300 focus:outline-none focus:border-[#2B70B6] focus:ring-1 focus:ring-[#2B70B6] focus:bg-white transition-colors text-sm"
-                                                        placeholder="Jane"
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <label className="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wide">Email</label>
-                                                    <input
-                                                        required type="email"
-                                                        value={formData.email}
-                                                        onChange={e => setFormData({ ...formData, email: e.target.value })}
-                                                        className="w-full px-4 py-2.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-300 focus:outline-none focus:border-[#2B70B6] focus:ring-1 focus:ring-[#2B70B6] focus:bg-white transition-colors text-sm"
-                                                        placeholder="jane@example.com"
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <label className="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wide">
-                                                        Phone <span className="text-slate-300 normal-case font-normal">(optional)</span>
-                                                    </label>
-                                                    <input
-                                                        type="tel"
-                                                        value={formData.phone}
-                                                        onChange={e => setFormData({ ...formData, phone: e.target.value })}
-                                                        className="w-full px-4 py-2.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-300 focus:outline-none focus:border-[#2B70B6] focus:ring-1 focus:ring-[#2B70B6] focus:bg-white transition-colors text-sm"
-                                                        placeholder="(970) 555-1234"
-                                                    />
-                                                </div>
-                                                <button
-                                                    type="submit" disabled={loading}
-                                                    className="w-full bg-[#2B70B6] text-white font-bold uppercase tracking-widest py-3.5 rounded-lg hover:bg-[#1a5a9e] transition-all duration-200 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm mt-1"
-                                                >
-                                                    {loading ? <><Loader2 className="animate-spin" size={17} /> Saving your seat...</> : "Reserve My Free Seat →"}
-                                                </button>
-                                                <div className="flex items-center justify-center gap-1.5">
-                                                    <Lock size={10} className="text-slate-300" />
-                                                    <p className="text-xs text-slate-300">Only your Zoom link — no spam, ever.</p>
-                                                </div>
-                                            </form>
-                                        )}
-                                    </div>
-                                </div>
-
-                                <div className="mt-3 flex items-center gap-2 justify-center">
-                                    <Users size={12} className="text-white/25" />
-                                    <p className="text-xs text-white/35">
-                                        <span className="font-semibold text-white/50">47 homeowners</span> already registered
-                                    </p>
-                                </div>
+                            {/* Right — registration form */}
+                            <div className="lg:sticky lg:top-20">
+                                <RegistrationForm />
                             </div>
-
                         </div>
                     </div>
                 </div>
 
-                {/* ── What You'll Learn ─────────────────────────────── */}
-                <div className="py-20 px-6 bg-slate-50">
-                    <div className="container mx-auto max-w-5xl">
-                        <div className="text-center mb-12">
-                            <p className="text-xs font-bold uppercase tracking-widest text-[#2B70B6] mb-3">What's Covered</p>
-                            <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary mb-4">
-                                ~15 Minutes of Teaching. 40+ Minutes of Q&amp;A.
-                            </h2>
-                            <p className="text-slate-500 max-w-xl mx-auto leading-relaxed">
-                                Herm spends about 15 minutes on the material below, then opens the floor. Your questions are the main event.
-                            </p>
-                        </div>
-
-                        <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
-                            {LEARN_ITEMS.map((item) => (
-                                <div key={item.title} className="flex gap-4">
-                                    <div className="mt-0.5 flex-shrink-0 w-6 h-6 bg-[#2B70B6] rounded-full flex items-center justify-center">
-                                        <CheckCircle size={13} className="text-white" />
-                                    </div>
-                                    <div>
-                                        <h3 className="font-bold text-primary text-base mb-1">{item.title}</h3>
-                                        <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="text-center mt-12">
-                            <a href="#" onClick={scrollToTop}
-                                className="inline-flex items-center gap-2 px-8 py-4 bg-[#2B70B6] text-white font-bold uppercase tracking-widest hover:bg-white hover:text-[#2B70B6] border-2 border-transparent hover:border-[#2B70B6] transition-all shadow-lg hover:shadow-xl rounded-full">
-                                Reserve My Free Seat <ArrowRight size={16} />
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                {/* ── Portfolio image strip ─────────────────────────── */}
-                <div className="bg-white border-t border-b border-slate-100 py-14 px-6 overflow-hidden">
-                    <div className="container mx-auto max-w-5xl">
-                        <p className="text-center text-xs font-bold uppercase tracking-widest text-slate-400 mb-10">
-                            A Sample of Our Work in Northern Colorado
+                {/* ── Fascination Bullets ──────────────────────────────── */}
+                <div className="bg-white py-16 px-6 border-b border-slate-200">
+                    <div className="container mx-auto max-w-3xl">
+                        <p className="text-[#2B70B6] text-xs font-bold uppercase tracking-widest text-center mb-3">Inside This Free Masterclass</p>
+                        <h2 className="text-2xl md:text-3xl font-serif font-bold text-primary text-center mb-3">
+                            What You'll Discover
+                        </h2>
+                        <p className="text-slate-500 text-sm text-center mb-10 max-w-xl mx-auto">
+                            Herm spends 15 minutes revealing the industry's closely guarded pricing secrets, then opens the floor for <strong>45 minutes of live Q&amp;A</strong>.
                         </p>
-                        <div className="grid grid-cols-3 gap-4 md:gap-6">
-                            <div className="aspect-[4/3] rounded-xl overflow-hidden shadow-md">
-                                <img src="/images/spotlights/spotlight-4.jpg" alt="Custom home — Northern Colorado" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-                            </div>
-                            <div className="aspect-[4/3] rounded-xl overflow-hidden shadow-xl md:-mt-5">
-                                <img src="/images/spotlights/spotlight-5.jpg" alt="Custom home — Northern Colorado" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-                            </div>
-                            <div className="aspect-[4/3] rounded-xl overflow-hidden shadow-md">
-                                <img src="/images/spotlights/spotlight-6.png" alt="Custom home — Northern Colorado" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                        <div className="space-y-4">
+                            {FASCINATIONS.map((item) => (
+                                <div key={item.title} className="flex items-start gap-4 bg-slate-50 rounded-xl p-5 border border-slate-100">
+                                    <span className="text-2xl flex-shrink-0 mt-0.5">{item.emoji}</span>
+                                    <div>
+                                        <p className="font-bold text-primary mb-1">{item.title}</p>
+                                        <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="mt-10 text-center">
+                            <a href="#register"
+                                className="inline-block px-8 py-4 bg-[#2B70B6] text-white font-bold uppercase tracking-widest rounded-full hover:bg-[#4a9eff] transition-all duration-300 shadow-md text-sm">
+                                Click Here to Claim Your Spot →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                {/* ── Why Listen to Us ─────────────────────────────────── */}
+                <div className="bg-slate-50 py-16 px-6 border-b border-slate-200">
+                    <div className="container mx-auto max-w-3xl">
+                        <p className="text-[#2B70B6] text-xs font-bold uppercase tracking-widest text-center mb-3">Why Listen to Us?</p>
+                        <h2 className="text-2xl md:text-3xl font-serif font-bold text-primary text-center mb-2">
+                            35 Years. 100+ Homes. Zero Hidden Agendas.
+                        </h2>
+                        <p className="text-slate-500 text-sm text-center mb-10 max-w-lg mx-auto">
+                            We've built custom homes across Northern Colorado since 1990. We know what things really cost, where the industry hides the markups, and how to protect homeowners from overpaying.
+                        </p>
+
+                        <div className="space-y-4 mb-10">
+                            {[
+                                { icon: "📖", title: "100% Open Book Policy", desc: "Every client sees the actual cost breakdown — every line item, every subcontractor invoice. No padding, no guessing." },
+                                { icon: "🤝", title: "No Commissioned Salespeople", desc: "The person who answers your questions is the same one who manages your build. We have no incentive to oversell you." },
+                                { icon: "🎓", title: "Free For a Reason", desc: "Informed homeowners make better clients. We'd rather you walk in with confidence than sign a bad contract with someone else." },
+                            ].map((item) => (
+                                <div key={item.title} className="flex items-start gap-4 bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+                                    <span className="text-2xl flex-shrink-0 mt-0.5">{item.icon}</span>
+                                    <div>
+                                        <p className="font-bold text-primary mb-1">{item.title}</p>
+                                        <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Trust stats */}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            {TRUST_STATS.map((stat) => (
+                                <div key={stat.value} className="bg-white rounded-xl p-5 text-center border border-slate-200 shadow-sm">
+                                    <p className="text-2xl md:text-3xl font-serif font-bold text-[#2B70B6] mb-1">{stat.value}</p>
+                                    <p className="text-slate-500 text-xs leading-tight whitespace-pre-line">{stat.label}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                {/* ── Meet Your Host ───────────────────────────────────── */}
+                <div className="bg-white py-16 px-6 border-b border-slate-200">
+                    <div className="container mx-auto max-w-3xl">
+                        <p className="text-[#2B70B6] text-xs font-bold uppercase tracking-widest text-center mb-3">Meet Your Host</p>
+                        <h2 className="text-2xl md:text-3xl font-serif font-bold text-primary text-center mb-2">
+                            Herman Boonstra
+                        </h2>
+                        <p className="text-slate-400 text-sm text-center mb-8 italic">
+                            Founder &amp; Lead Builder · Homestead Home Builders · Est. 1990
+                        </p>
+                        <div className="bg-slate-50 rounded-2xl p-7 border border-slate-200 max-w-2xl mx-auto">
+                            <p className="text-slate-700 leading-relaxed text-sm md:text-base">
+                                Herm has been building custom homes in Northern Colorado for over three decades. He started Homestead on one simple commitment: <strong className="text-primary">no surprises.</strong>
+                            </p>
+                            <p className="text-slate-600 leading-relaxed text-sm md:text-base mt-4">
+                                During this webinar, he's going to walk you through exactly how he prices every project — the same open-book framework he's used on over 100 homes — so you can hold <em>any</em> builder accountable.
+                            </p>
+                            <div className="flex justify-center mt-6">
+                                <img src="/logo.png" alt="Homestead Home Builders" className="h-10 w-auto opacity-80" />
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {/* ── Why Trust Us ──────────────────────────────────── */}
-                <div className="bg-white py-20 px-6">
-                    <div className="container mx-auto max-w-5xl">
-
-                        <div className="text-center mb-14">
-                            <p className="text-xs font-bold uppercase tracking-widest text-[#2B70B6] mb-4">Why Listen To Us</p>
-                            <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary mb-5">
-                                35 Years. 100+ Homes. No Hidden Agendas.
-                            </h2>
-                            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                                We've built custom homes across Northern Colorado since 1990. We know what things really cost,
-                                where the industry hides the markups, and how to protect homeowners from overpaying.
-                            </p>
+                {/* ── Testimonials ─────────────────────────────────────── */}
+                <div className="bg-slate-50 py-16 px-6 border-b border-slate-200">
+                    <div className="container mx-auto max-w-3xl">
+                        <p className="text-[#2B70B6] text-xs font-bold uppercase tracking-widest text-center mb-3">What Our Homeowners Are Saying</p>
+                        <div className="flex justify-center gap-0.5 mb-2">
+                            {[...Array(5)].map((_, i) => <Star key={i} size={16} className="text-yellow-400 fill-yellow-400" />)}
                         </div>
-
-                        {/* Stats */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-14">
-                            {TRUST_STATS.map(stat => (
-                                <div key={stat.label} className="text-center p-6 bg-slate-50 rounded-xl border border-slate-100">
-                                    <div className="text-3xl md:text-4xl font-serif font-bold text-[#2B70B6] mb-2">{stat.value}</div>
-                                    <div className="text-xs text-slate-500 font-medium leading-snug whitespace-pre-line">{stat.label}</div>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Herman Boonstra card */}
-                        <div className="bg-[#0d1f3c] rounded-2xl p-8 mb-14 flex flex-col md:flex-row gap-8 items-center md:items-start">
-                            <div className="w-24 h-24 rounded-2xl overflow-hidden flex-shrink-0 shadow-lg bg-slate-700">
-                                <img
-                                    src="/images/spotlights/spotlight-1.png"
-                                    alt="Herman Boonstra — Homestead Home Builders"
-                                    className="w-full h-full object-cover object-top"
-                                />
-                            </div>
-                            <div className="text-center md:text-left">
-                                <p className="text-xs font-bold uppercase tracking-widest text-[#7bb8f0] mb-2">Your Host</p>
-                                <h3 className="text-xl font-serif font-bold text-white mb-1">Herman Boonstra</h3>
-                                <p className="text-white/50 text-sm mb-4">Founder &amp; Lead Builder · Homestead Home Builders · Est. 1990</p>
-                                <p className="text-white/65 text-sm leading-relaxed max-w-xl">
-                                    Herm has been building custom homes in Northern Colorado for over 35 years. He started Homestead on one commitment: no surprises.
-                                    He'll walk you through exactly how he prices every project — the same open-book framework he's used on 100+ homes —
-                                    so you can hold any builder accountable.
-                                </p>
-                                <div className="flex items-center gap-1 mt-4 justify-center md:justify-start">
-                                    {[1,2,3,4,5].map(i => <Star key={i} size={13} className="fill-[#2B70B6] text-[#2B70B6]" />)}
-                                    <span className="text-xs text-white/35 ml-2">5.0 · Google Verified · 100+ Reviews</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Trust bullets */}
-                        <div className="grid md:grid-cols-3 gap-6 mb-14">
-                            {[
-                                { title: "Open Book Policy", desc: "Every client sees the actual cost breakdown — every line item, every subcontractor invoice. No padding, no guessing." },
-                                { title: "No Commissioned Salespeople", desc: "The person who answers your questions is the same one who manages your build. We have no incentive to oversell you." },
-                                { title: "Free For A Reason", desc: "Informed homeowners make better clients. We'd rather you walk in with confidence than sign a bad contract with someone else." }
-                            ].map(item => (
-                                <div key={item.title} className="p-6 bg-slate-50 rounded-xl border border-slate-100">
-                                    <CheckCircle size={20} className="text-[#2B70B6] mb-3" />
-                                    <h3 className="font-bold text-primary mb-2">{item.title}</h3>
-                                    <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Testimonials */}
-                        <div className="grid md:grid-cols-3 gap-6 mb-14">
-                            {TESTIMONIALS.map(review => (
-                                <div key={review.author} className="bg-white p-7 rounded-xl shadow-sm border border-slate-100 flex flex-col">
-                                    <div className="flex gap-0.5 mb-4">
-                                        {[1,2,3,4,5].map(i => <Star key={i} size={15} className="fill-[#2B70B6] text-[#2B70B6]" />)}
+                        <p className="text-slate-400 text-xs text-center mb-10">5.0 ★ Google Verified · 100+ Reviews</p>
+                        <div className="space-y-5">
+                            {TESTIMONIALS.map((t) => (
+                                <div key={t.author} className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+                                    <div className="flex gap-0.5 mb-3">
+                                        {[...Array(5)].map((_, i) => <Star key={i} size={13} className="text-yellow-400 fill-yellow-400" />)}
                                     </div>
-                                    <Quote className="w-6 h-6 text-primary/10 mb-3" />
-                                    <p className="text-slate-600 text-sm leading-relaxed italic flex-grow mb-5">"{review.text}"</p>
-                                    <div className="pt-4 border-t border-slate-50">
-                                        <h4 className="font-bold text-primary text-sm">{review.author}</h4>
-                                        <div className="flex items-center gap-1.5 text-xs font-medium text-slate-400 mt-1">
-                                            <CheckCircle size={11} className="text-[#2B70B6]" />
-                                            Verified Homeowner · {review.location}
-                                        </div>
-                                    </div>
+                                    <p className="text-slate-700 text-sm leading-relaxed mb-4">"{t.text}"</p>
+                                    <p className="text-primary font-bold text-sm">— {t.author}</p>
+                                    <p className="text-slate-400 text-xs">{t.location}</p>
                                 </div>
                             ))}
                         </div>
+                    </div>
+                </div>
 
-                        {/* Final CTA */}
-                        <div className="text-center">
-                            <a href="#" onClick={scrollToTop}
-                                className="inline-flex items-center gap-2 px-8 py-4 bg-[#2B70B6] text-white font-bold uppercase tracking-widest hover:bg-white hover:text-[#2B70B6] border-2 border-transparent hover:border-[#2B70B6] transition-all shadow-lg hover:shadow-xl rounded-full">
-                                Reserve My Free Seat <ArrowRight size={16} />
-                            </a>
-                            <p className="mt-3 text-sm text-slate-400">
-                                Thursday, July 10, 2026 · 7:00 PM Mountain Time · Free via Zoom
-                            </p>
-                        </div>
-
+                {/* ── Final CTA ────────────────────────────────────────── */}
+                <div id="register" className="bg-[#0d1f3c] py-16 px-6 scroll-mt-14">
+                    <div className="container mx-auto max-w-xl">
+                        <p className="text-[#7bb8f0] text-xs font-bold uppercase tracking-widest text-center mb-4">
+                            Don't Sign A Custom Home Contract Until You've Watched This.
+                        </p>
+                        <h2 className="text-2xl md:text-3xl font-serif font-bold text-white text-center mb-3">
+                            Join 47 other smart homeowners who are taking control of their build process.
+                        </h2>
+                        <p className="text-white/50 text-sm text-center mb-8">
+                            📅 Thursday, July 10, 2026 · 7:00 PM MT
+                        </p>
+                        <RegistrationForm />
                     </div>
                 </div>
 
