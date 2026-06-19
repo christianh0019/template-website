@@ -57,9 +57,6 @@ const TESTIMONIALS = [
     },
 ];
 
-const inputClass =
-    "w-full px-4 py-3 rounded-lg bg-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#4a9eff] transition-colors text-sm";
-const labelClass = "block text-xs font-bold text-white/50 uppercase tracking-wide mb-1.5";
 
 const WebinarRegistration: React.FC = () => {
     const [formData, setFormData] = useState({ firstName: '', email: '', phone: '' });
@@ -90,43 +87,46 @@ const WebinarRegistration: React.FC = () => {
     };
 
     const RegistrationForm = () => (
-        <div className="bg-white/5 border border-white/15 rounded-2xl p-6 md:p-8 shadow-2xl">
-            <p className="text-[#7bb8f0] text-xs font-bold uppercase tracking-widest text-center mb-3">Free Live Training &amp; Q&amp;A</p>
-            <div className="text-center text-white/85 text-sm font-semibold mb-2">
+        <div className="bg-white rounded-2xl p-6 md:p-8 shadow-2xl">
+            <p className="text-[#2B70B6] text-xs font-bold uppercase tracking-widest text-center mb-3">Free Live Training &amp; Q&amp;A</p>
+            <div className="text-center text-slate-700 text-sm font-semibold mb-2">
                 <p>📅 Thursday, July 10 @ 7:00 PM MT</p>
                 <p className="mt-1">📍 Live via Zoom</p>
             </div>
-            <p className="text-white/40 text-xs text-center mb-5 leading-relaxed italic">
+            <p className="text-slate-400 text-xs text-center mb-5 leading-relaxed italic">
                 Spots are strictly limited to ensure Herm can answer everyone's live questions.
             </p>
 
             {submitted ? (
                 <div className="text-center py-6">
-                    <div className="w-14 h-14 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <CheckCircle size={28} className="text-green-400" />
+                    <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <CheckCircle size={28} className="text-green-500" />
                     </div>
-                    <h3 className="text-lg font-serif font-bold text-white mb-2">You're Registered!</h3>
-                    <p className="text-white/55 text-sm">Check your inbox for the Zoom link. We'll also send a reminder before the event.</p>
+                    <h3 className="text-lg font-serif font-bold text-primary mb-2">You're Registered!</h3>
+                    <p className="text-slate-500 text-sm">Check your inbox for the Zoom link. We'll also send a reminder before the event.</p>
                 </div>
             ) : (
                 <form onSubmit={handleSubmit} className="space-y-3">
                     <div>
-                        <label className={labelClass}>First Name</label>
+                        <label className="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1.5">First Name</label>
                         <input required type="text" value={formData.firstName}
                             onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                            placeholder="John" className={inputClass} />
+                            placeholder="John"
+                            className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#2B70B6] focus:border-transparent transition-colors text-sm" />
                     </div>
                     <div>
-                        <label className={labelClass}>Email Address</label>
+                        <label className="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1.5">Email Address</label>
                         <input required type="email" value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            placeholder="john@example.com" className={inputClass} />
+                            placeholder="john@example.com"
+                            className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#2B70B6] focus:border-transparent transition-colors text-sm" />
                     </div>
                     <div>
-                        <label className={labelClass}>Phone <span className="normal-case font-normal text-white/30">(optional — for text reminder only)</span></label>
+                        <label className="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1.5">Phone <span className="normal-case font-normal text-slate-400">(optional — for text reminder only)</span></label>
                         <input type="tel" value={formData.phone}
                             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                            placeholder="(555) 123-4567" className={inputClass} />
+                            placeholder="(555) 123-4567"
+                            className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#2B70B6] focus:border-transparent transition-colors text-sm" />
                     </div>
                     <button type="submit" disabled={loading}
                         className="w-full mt-1 bg-[#2B70B6] text-white font-bold uppercase tracking-widest py-4 rounded-xl hover:bg-[#4a9eff] transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm">
@@ -134,7 +134,7 @@ const WebinarRegistration: React.FC = () => {
                             ? <><Loader2 className="animate-spin" size={18} /> Registering...</>
                             : 'YES! Reserve My Free Seat Now'}
                     </button>
-                    <div className="flex items-center justify-center gap-1.5 text-white/35 text-xs pt-1">
+                    <div className="flex items-center justify-center gap-1.5 text-slate-400 text-xs pt-1">
                         <Lock size={11} />
                         <span>Only your Zoom link — no spam, ever. 47 Northern Colorado homeowners already registered.</span>
                     </div>
@@ -170,7 +170,7 @@ const WebinarRegistration: React.FC = () => {
                                 </h1>
 
                                 <p className="text-sm md:text-base text-white/55 leading-relaxed mb-8">
-                                    Join 35-year veteran <strong className="text-white/80">Herm Boonstra</strong> to uncover exactly where that money goes — and get your questions answered live.
+                                    Join 35-year veteran <strong className="text-white/80">Herm Boonstra</strong> to uncover exactly where that money goes — and how to avoid costly mistakes that could cost you a fortune.
                                 </p>
 
                                 {/* Overlapping home images */}
