@@ -88,14 +88,8 @@ const WebinarRegistration: React.FC = () => {
 
     const RegistrationForm = () => (
         <div className="bg-white rounded-2xl p-6 md:p-8 shadow-2xl">
-            <p className="text-[#2B70B6] text-xs font-bold uppercase tracking-widest text-center mb-3">Free Live Training &amp; Q&amp;A</p>
-            <div className="text-center text-slate-700 text-sm font-semibold mb-2">
-                <p>📅 Thursday, July 10 @ 7:00 PM MT</p>
-                <p className="mt-1">📍 Live via Zoom</p>
-            </div>
-            <p className="text-slate-400 text-xs text-center mb-5 leading-relaxed italic">
-                Spots are strictly limited to ensure Herm can answer everyone's live questions.
-            </p>
+            <p className="text-[#2B70B6] text-xs font-bold uppercase tracking-widest text-center mb-2">Free Live Training &amp; Q&amp;A</p>
+            <p className="text-center text-slate-600 text-xs mb-3">📅 Thu, July 10 @ 7PM MT &nbsp;·&nbsp; 📍 Zoom &nbsp;·&nbsp; <em>Limited spots</em></p>
 
             {submitted ? (
                 <div className="text-center py-6">
@@ -170,7 +164,7 @@ const WebinarRegistration: React.FC = () => {
                                 </h1>
 
                                 <p className="text-sm md:text-base text-white/55 leading-relaxed mb-8">
-                                    Join 35-year veteran <strong className="text-white/80">Herm Boonstra</strong> to uncover exactly where that money goes — and how to avoid costly mistakes that could cost you a fortune.
+                                    Join 35-year veteran <strong className="text-white/80">Herm Boonstra</strong> to uncover exactly where that money goes — and how to avoid hidden mistakes that could cost you a fortune.
                                 </p>
 
                                 {/* Overlapping home images */}
