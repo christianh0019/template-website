@@ -66,7 +66,22 @@ const reviews = [
     }
 ];
 
-const SocialProof = () => {
+interface SocialProofProps {
+    /** Label for the closing call to action button */
+    ctaLabel?: string;
+    /** Runs when the call to action is clicked. Falls back to scrolling to the survey. */
+    onCtaClick?: () => void;
+}
+
+const SocialProof = ({ ctaLabel = 'Book Your Free Planning Call', onCtaClick }: SocialProofProps) => {
+    const handleCtaClick = () => {
+        if (onCtaClick) {
+            onCtaClick();
+            return;
+        }
+        document.getElementById('application-survey')?.scrollIntoView({ behavior: 'smooth' });
+    };
+
     return (
         <section className="py-24 bg-slate-50 border-t border-slate-200">
             <div className="container mx-auto px-6">
@@ -137,10 +152,10 @@ const SocialProof = () => {
 
             <div className="mt-16 text-center">
                 <button
-                    onClick={() => document.getElementById('application-survey')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={handleCtaClick}
                     className="px-6 py-3 text-sm md:px-8 md:py-4 md:text-base bg-[#2B70B6] text-white font-bold uppercase tracking-widest hover:bg-white hover:text-[#2B70B6] border-2 border-transparent hover:border-[#2B70B6] transition-all shadow-lg hover:shadow-xl rounded-full"
                 >
-                    Book Your Build Clarity Consultation
+                    {ctaLabel}
                 </button>
             </div>
         </section>
