@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ArrowRight, ArrowLeft, Home, MapPin, DollarSign, Calendar, User, Loader2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { sendLeadToBluBuilder } from '../utils/blubuilder';
+import { getAttribution } from '../utils/attribution';
 
 interface ApplicationSurveyProps {
     webhookUrl?: string;
@@ -44,21 +45,53 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
 
         const salesNote = `${fullName} is planning a ${formData.projectType || 'Project'} (${formData.timeline}) with a budget range of ${formData.budget}. Land Status: ${formData.landStatus}. Contact via: ${formData.preferredContact}.`;
 
-        try {
-            await sendLeadToBluBuilder({
-                first_name: formData.firstName,
-                last_name: formData.lastName,
-                email: formData.email,
-                phone: formData.phone,
-                source: 'Partner Application',
-                notes: salesNote,
-                value: estimatedBudget || undefined,
-                project_type: formData.projectType,
+        const ghlPayload = {
+            client: "Herman Boonstra - Homestead Home Builders",
+            source: "Partner Application",
+            timestamp: new Date().toISOString(),
+            is_qualified: true,
+            quality_tier: "Qualified",
+            contact: { name: fullName, email: formData.email, phone: formData.phone, agreedToTerms: true },
+            sales_note: salesNote,
+            project: {
+                city: "Northern Colorado",
+                totalBudget: estimatedBudget,
+                landOwned: formData.landStatus === 'Yes',
                 timeline: formData.timeline,
-                budget_range: formData.budget,
-                land_status: formData.landStatus,
-                preferred_contact: formData.preferredContact,
-            });
+                type: formData.projectType
+            },
+            headers: {
+                host: window.location.host,
+                userAgent: navigator.userAgent,
+                referer: document.referrer
+            },
+            ...getAttribution()
+        };
+
+        try {
+            // BluBuilder and GoHighLevel run alongside each other; neither
+            // send blocks or cancels the other.
+            await Promise.allSettled([
+                sendLeadToBluBuilder({
+                    first_name: formData.firstName,
+                    last_name: formData.lastName,
+                    email: formData.email,
+                    phone: formData.phone,
+                    source: 'Partner Application',
+                    notes: salesNote,
+                    value: estimatedBudget || undefined,
+                    project_type: formData.projectType,
+                    timeline: formData.timeline,
+                    budget_range: formData.budget,
+                    land_status: formData.landStatus,
+                    preferred_contact: formData.preferredContact,
+                }),
+                fetch('https://services.leadconnectorhq.com/hooks/cG3cesDKIajoyQPNPYZK/webhook-trigger/61e5d2ad-bff6-4dda-afe3-89b988885e8a', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(ghlPayload),
+                }),
+            ]);
 
             const params = new URLSearchParams();
             if (fullName) params.append('full_name', fullName);
