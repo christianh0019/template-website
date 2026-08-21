@@ -3,7 +3,7 @@ import { CheckCircle, Lock, Loader2, Star } from 'lucide-react';
 import FunnelHeader from '../components/FunnelHeader';
 import FunnelFooter from '../components/FunnelFooter';
 import SEO from '../components/SEO';
-import { getAttribution } from '../utils/attribution';
+import { sendLeadToBluBuilder } from '../utils/blubuilder';
 
 const FASCINATIONS = [
     {
@@ -66,20 +66,13 @@ const WebinarRegistration2: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        const payload = {
-            client: "Herman Boonstra - Homestead Home Builders",
-            source: "Webinar 2 Registration",
-            timestamp: new Date().toISOString(),
-            contact: { name: formData.firstName, email: formData.email, phone: formData.phone },
-            webinar: { title: "Thinking About Building a Custom Home? Here's Where It Quietly Goes Wrong", date: "July 10, 2026", time: "7:00 PM MT" },
-            headers: { host: window.location.host, userAgent: navigator.userAgent, referer: document.referrer },
-            ...getAttribution(),
-        };
         try {
-            await fetch('https://services.leadconnectorhq.com/hooks/cG3cesDKIajoyQPNPYZK/webhook-trigger/webinar-registration', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload),
+            await sendLeadToBluBuilder({
+                first_name: formData.firstName,
+                email: formData.email,
+                phone: formData.phone,
+                source: 'Webinar 2 Registration',
+                notes: 'Registered for webinar: "Thinking About Building a Custom Home? Here\'s Where It Quietly Goes Wrong" (July 10, 2026, 7:00 PM MT)',
             });
         } catch (_) { /* silent fail */ } finally {
             setLoading(false);
