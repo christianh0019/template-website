@@ -49,8 +49,14 @@ const Placeholder = ({ title }: { title: string }) => (
 
 import ScrollToTop from './components/ScrollToTop';
 import MetaPixel from './components/MetaPixel';
+import { useEffect } from 'react';
+import { captureAttribution } from './utils/attribution';
 
 function App() {
+  useEffect(() => {
+    captureAttribution();
+  }, []);
+
   return (
     <HelmetProvider>
       <BrowserRouter>

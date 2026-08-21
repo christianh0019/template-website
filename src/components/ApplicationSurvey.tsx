@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, ArrowLeft, Home, MapPin, DollarSign, Calendar, User, Loader2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { getAttribution } from '../utils/attribution';
 
 interface ApplicationSurveyProps {
     webhookUrl?: string;
@@ -62,7 +63,8 @@ const ApplicationSurvey: React.FC<ApplicationSurveyProps> = () => {
                 host: window.location.host,
                 userAgent: navigator.userAgent,
                 referer: document.referrer
-            }
+            },
+            ...getAttribution()
         };
 
         try {
