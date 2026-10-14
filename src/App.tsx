@@ -38,6 +38,8 @@ import CostGuide from './pages/resources/CostGuide';
 import Resources from './pages/Resources';
 import WebinarRegistration from './pages/WebinarRegistration';
 import WebinarRegistration2 from './pages/WebinarRegistration2';
+import ApplyVsl from './pages/apply/ApplyVsl';
+import ApplyThankYou from './pages/apply/ApplyThankYou';
 
 // Placeholder components for other routes to prevent errors
 const Placeholder = ({ title }: { title: string }) => (
@@ -107,6 +109,10 @@ function App() {
           <Route path="thank-you" element={<ThankYou />} />
           <Route path="webinar" element={<WebinarRegistration />} />
           <Route path="webinar2" element={<WebinarRegistration2 />} />
+
+          {/* VSL application funnel: video, application, custom call picker */}
+          <Route path="apply" element={<ApplyVsl />} />
+          <Route path="apply/thank-you" element={<ApplyThankYou />} />
         </Routes>
       </BrowserRouter>
     </HelmetProvider>
