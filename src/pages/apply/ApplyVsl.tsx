@@ -1,30 +1,20 @@
 import { useCallback, useState } from 'react';
-import { ArrowRight, ShieldCheck } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
+import { ShieldCheck } from 'lucide-react';
 import SEO from '../../components/SEO';
 import FunnelTracking from '../../components/FunnelTracking';
 import { ApplyFooter, ApplyHeader } from '../../components/apply/ApplyChrome';
 import ApplyModal from '../../components/apply/ApplyModal';
+import CaseStudyCard from '../../components/apply/CaseStudyCard';
+import CaseStudyModal from '../../components/apply/CaseStudyModal';
+import CtaButton from '../../components/apply/CtaButton';
 import GoogleReviews from '../../components/apply/GoogleReviews';
-import { ProjectCard } from '../../components/ProjectSpotlights';
 import VideoSlot from '../../components/apply/VideoSlot';
 import { APPLY_FUNNEL } from '../../config/applyFunnel';
-import { SPOTLIGHT_PROJECTS } from '../../data/spotlightProjects';
-
-const CTA_LABEL = 'Tell Us About Your Project';
+import { CASE_STUDIES, HAS_SAMPLE_STORIES } from '../../data/caseStudies';
 
 const pill = 'inline-block rounded-full bg-[#2B70B6] px-3 py-1.5 sm:px-3.5 text-[10.5px] sm:text-[11px] md:text-xs font-bold uppercase tracking-[0.03em] sm:tracking-[0.06em] text-white whitespace-nowrap';
 const sectionHeading = 'mt-5 text-[28px] md:text-4xl font-semibold tracking-[-0.02em] leading-tight text-[#0F172A]';
-
-const CtaButton = ({ onClick }: { onClick: () => void }) => (
-    <button
-        type="button"
-        onClick={onClick}
-        className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 rounded-lg bg-[#0F172A] px-7 py-4 md:px-9 md:py-5 text-base md:text-lg font-semibold text-white shadow-[0_14px_30px_-12px_rgba(15,23,42,0.6)] hover:bg-[#2B70B6] transition-colors"
-    >
-        {CTA_LABEL}
-        <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
-    </button>
-);
 
 const TransparencyBadge = () => (
     <p className="inline-flex items-center gap-2.5 rounded-2xl sm:rounded-full border border-[#E3DDD1] bg-white px-4 py-2.5 text-left text-sm font-semibold text-[#0F172A] shadow-sm">
@@ -45,6 +35,14 @@ const ApplyVsl = () => {
     const openApply = useCallback(() => setApplyOpen(true), []);
     const closeApply = useCallback(() => setApplyOpen(false), []);
 
+    const [storyIndex, setStoryIndex] = useState<number | null>(null);
+    const closeStory = useCallback(() => setStoryIndex(null), []);
+    const nextStory = useCallback(() => setStoryIndex((i) => (i === null ? 0 : (i + 1) % CASE_STUDIES.length)), []);
+    const applyFromStory = useCallback(() => {
+        setStoryIndex(null);
+        setApplyOpen(true);
+    }, []);
+
     return (
         <div className="bg-[#FAF8F4] text-[#0F172A] antialiased">
             <SEO
@@ -52,6 +50,12 @@ const ApplyVsl = () => {
                 description="Custom homes across Northern Colorado since 1990, with open-book, cost-plus pricing and the founder involved from first sketch to final walkthrough."
                 canonical="https://homesteadhomebuilders.com/apply"
             />
+            {/* The case studies are placeholders until the real stories come in. */}
+            {HAS_SAMPLE_STORIES && (
+                <Helmet>
+                    <meta name="robots" content="noindex" />
+                </Helmet>
+            )}
             <FunnelTracking />
             <ApplyHeader />
 
@@ -69,6 +73,7 @@ const ApplyVsl = () => {
                         src={APPLY_FUNNEL.videos.vsl}
                         title="How Homestead Home Builders prices and builds"
                         caption="Herman Boonstra, Founder"
+                        poster="/images/case-studies/loveland-design/00.webp"
                     />
                 </div>
 
@@ -78,19 +83,19 @@ const ApplyVsl = () => {
                 </div>
             </section>
 
-            {/* Recent projects */}
+            {/* Case studies, one for every home on the portfolio page */}
             <section className="bg-white border-y border-[#E9E4DA] py-16 md:py-24 px-4 md:px-6">
                 <div className="max-w-6xl mx-auto">
                     <div className="text-center max-w-2xl mx-auto">
                         <p className={pill}>Our work</p>
-                        <h2 className={sectionHeading}>Recent project spotlights</h2>
+                        <h2 className={`${sectionHeading} text-balance`}>What these homes actually cost to build</h2>
                         <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-600">
-                            See how we turn vision into reality. Each home we build is custom-tailored to the land, the budget, and the family who lives there.
+                            Every family here saw the real bids from every vendor and subcontractor before we broke ground. Open any home to see the photos, the timeline, and the real numbers behind it.
                         </p>
                     </div>
                     <div className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                        {SPOTLIGHT_PROJECTS.map((project) => (
-                            <ProjectCard key={project.id} project={project} />
+                        {CASE_STUDIES.map((study, i) => (
+                            <CaseStudyCard key={study.id} study={study} onOpen={() => setStoryIndex(i)} />
                         ))}
                     </div>
                     <div className="mt-12 text-center">
@@ -140,6 +145,15 @@ const ApplyVsl = () => {
             </section>
 
             <ApplyFooter />
+            {storyIndex !== null && (
+                <CaseStudyModal
+                    study={CASE_STUDIES[storyIndex]}
+                    next={CASE_STUDIES[(storyIndex + 1) % CASE_STUDIES.length]}
+                    onClose={closeStory}
+                    onNext={nextStory}
+                    onApply={applyFromStory}
+                />
+            )}
             <ApplyModal open={applyOpen} onClose={closeApply} />
         </div>
     );

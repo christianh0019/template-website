@@ -22,19 +22,19 @@ const HOMEWORK = [
         title: 'How Our 100% Transparency Policy Actually Works, Bid by Bid',
         text: 'See a real cost-plus breakdown and how every bid reaches you.',
         src: APPLY_FUNNEL.videos.transparency,
-        poster: '/images/spotlights/spotlight-2.png',
+        poster: '/images/case-studies/longmont/09.webp',
     },
     {
         title: 'How Long a Custom Build Really Takes in Northern Colorado',
         text: 'Design, permitting, and construction, including what pushes dates.',
         src: APPLY_FUNNEL.videos.timeline,
-        poster: '/images/spotlights/spotlight-4.jpg',
+        poster: '/images/case-studies/loveland/30.webp',
     },
     {
         title: 'How Change Orders Work With Us (No Black Box)',
         text: "What triggers one, how it's priced, and how you approve it.",
         src: APPLY_FUNNEL.videos.changeOrders,
-        poster: '/images/spotlights/spotlight-5.jpg',
+        poster: '/images/case-studies/fort-collins/22.webp',
     },
 ];
 

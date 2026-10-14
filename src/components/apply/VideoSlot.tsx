@@ -10,7 +10,7 @@ interface VideoSlotProps {
     size?: 'lg' | 'sm';
 }
 
-const VideoSlot = ({ src, title, caption, poster = '/images/spotlights/spotlight-5.jpg', size = 'lg' }: VideoSlotProps) => {
+const VideoSlot = ({ src, title, caption, poster = '/images/case-studies/loveland-design/00.webp', size = 'lg' }: VideoSlotProps) => {
     const frame = 'relative w-full aspect-video overflow-hidden bg-[#0F172A] ' +
         (size === 'lg'
             ? 'rounded-xl shadow-[0_30px_80px_-30px_rgba(15,23,42,0.55)] ring-1 ring-black/5'
