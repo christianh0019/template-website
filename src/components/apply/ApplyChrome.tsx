@@ -19,7 +19,7 @@ export const ApplyHeader = () => (
 export const ApplyFooter = ({ question = 'Questions before applying? Call' }: { question?: string }) => (
     <footer className="bg-[#0F172A] text-white">
         <div className="max-w-4xl mx-auto px-4 md:px-6 py-14 text-center">
-            <p className="font-serif text-2xl md:text-3xl">Quality you can see, people you can trust.</p>
+            <p className="text-2xl md:text-3xl font-semibold tracking-[-0.02em]">Quality you can see, people you can trust.</p>
             <p className="mt-4 text-sm md:text-base text-white/70">
                 Loveland, Fort Collins, Windsor, Cheyenne, and the entire Front Range.
             </p>

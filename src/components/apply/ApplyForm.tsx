@@ -187,7 +187,7 @@ const ApplyForm = () => {
     const field = 'w-full rounded-lg border border-[#DCD5C8] bg-white px-4 text-[#0F172A] placeholder-slate-400 focus:outline-none focus:border-[#2B70B6] focus:ring-2 focus:ring-[#2B70B6]/15 transition';
     const input = `${field} h-12`;
     const label = 'block text-sm font-medium text-slate-700 mb-1.5';
-    const heading = 'font-serif text-xl md:text-2xl text-[#0F172A] leading-snug';
+    const heading = 'text-xl md:text-2xl font-semibold tracking-[-0.01em] text-[#0F172A] leading-snug';
     const primary = 'w-full mt-6 rounded-lg bg-[#0F172A] text-white font-semibold py-4 hover:bg-[#2B70B6] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-[#0F172A]';
 
     const choices = (key: keyof typeof answers, list: string[]) => (

@@ -38,7 +38,7 @@ const HOMEWORK = [
     },
 ];
 
-const eyebrow = 'text-xs font-semibold uppercase tracking-[0.2em] text-[#2B70B6]';
+const eyebrow = 'inline-block rounded-full bg-[#2B70B6] px-3.5 py-1.5 text-[11px] md:text-xs font-bold uppercase tracking-[0.06em] text-white';
 
 const ApplyThankYou = () => {
     const location = useLocation();
@@ -107,7 +107,7 @@ const ApplyThankYou = () => {
                         </span>
                         Application received
                     </span>
-                    <h1 className="mt-6 font-serif text-[30px] leading-[1.2] md:text-5xl md:leading-[1.15]">
+                    <h1 className="mt-6 text-[28px] leading-[1.2] md:text-[42px] md:leading-[1.15] font-semibold tracking-[-0.02em] text-balance">
                         You're in. Your application is on Herman's desk.
                     </h1>
                     <p className="mt-5 text-base md:text-lg leading-relaxed text-slate-600 max-w-2xl mx-auto">
@@ -120,7 +120,7 @@ const ApplyThankYou = () => {
                     {event ? (
                         <>
                             <p className={eyebrow}>Your call</p>
-                            <p className="mt-3 font-serif text-2xl md:text-3xl leading-snug">
+                            <p className="mt-3 text-2xl md:text-3xl font-semibold tracking-[-0.02em] leading-snug">
                                 {formatCallDay(result!.startTime, result!.timezone)}{' '}
                                 <span className="whitespace-nowrap">at {formatTime(result!.startTime, result!.timezone)}</span>
                             </p>
@@ -162,7 +162,7 @@ const ApplyThankYou = () => {
                 <div className="max-w-3xl mx-auto">
                     <div className="text-center">
                         <p className={eyebrow}>Step 1</p>
-                        <h2 className="mt-3 font-serif text-3xl md:text-4xl leading-tight">Watch this before your call.</h2>
+                        <h2 className="mt-3 text-[28px] md:text-4xl font-semibold tracking-[-0.02em] leading-tight">Watch this before your call.</h2>
                     </div>
                     <div className="mt-8">
                         <VideoSlot src={APPLY_FUNNEL.videos.expectations} title="What happens next" caption="What happens next, from Herman" />
@@ -171,7 +171,7 @@ const ApplyThankYou = () => {
                     <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-5">
                         {PREP.map((item) => (
                             <div key={item.title} className="rounded-xl bg-[#FAF8F4] border border-[#E9E4DA] p-6">
-                                <p className="font-serif text-lg text-[#2B70B6]">{item.title}</p>
+                                <p className="text-lg font-semibold text-[#0F172A]">{item.title}</p>
                                 <p className="mt-2 text-slate-700 leading-relaxed">{item.text}</p>
                             </div>
                         ))}
@@ -200,13 +200,13 @@ const ApplyThankYou = () => {
                 <div className="max-w-5xl mx-auto">
                     <div className="text-center max-w-2xl mx-auto">
                         <p className={eyebrow}>Step 2</p>
-                        <h2 className="mt-3 font-serif text-3xl md:text-4xl leading-tight">Do your homework on us.</h2>
+                        <h2 className="mt-3 text-[28px] md:text-4xl font-semibold tracking-[-0.02em] leading-tight">Do your homework on us.</h2>
                     </div>
                     <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
                         {HOMEWORK.map((video) => (
                             <div key={video.title}>
                                 <VideoSlot src={video.src} title={video.title} poster={video.poster} size="sm" />
-                                <h3 className="mt-4 font-serif text-lg leading-snug">{video.title}</h3>
+                                <h3 className="mt-4 text-lg font-semibold leading-snug">{video.title}</h3>
                                 <p className="mt-1 text-sm text-slate-600 leading-relaxed">{video.text}</p>
                             </div>
                         ))}
@@ -219,7 +219,7 @@ const ApplyThankYou = () => {
                 <div className="max-w-5xl mx-auto">
                     <div className="text-center max-w-2xl mx-auto">
                         <p className={eyebrow}>From our Google reviews</p>
-                        <h2 className="mt-3 font-serif text-3xl md:text-4xl leading-tight">What homeowners say after the build.</h2>
+                        <h2 className="mt-3 text-[28px] md:text-4xl font-semibold tracking-[-0.02em] leading-tight">What homeowners say after the build.</h2>
                     </div>
                     <div className="mt-10">
                         <GoogleReviews />
@@ -231,7 +231,7 @@ const ApplyThankYou = () => {
             <section className="py-16 md:py-20 px-4 md:px-6">
                 <div className="max-w-2xl mx-auto text-center">
                     <p className={eyebrow}>Why the timing matters</p>
-                    <p className="mt-5 font-serif text-xl md:text-2xl leading-relaxed">
+                    <p className="mt-5 text-xl md:text-2xl leading-relaxed text-[#0F172A]">
                         Custom builds in Northern Colorado run on seasons. Design and permitting lead time means the people breaking ground next spring are making their builder decision now.
                     </p>
                     <p className="mt-5 text-base md:text-lg leading-relaxed text-slate-600">
