@@ -1,4 +1,4 @@
-import { ArrowRight, ShieldCheck } from 'lucide-react';
+import { ArrowRight, MapPin, ShieldCheck } from 'lucide-react';
 import SEO from '../../components/SEO';
 import FunnelTracking from '../../components/FunnelTracking';
 import { ApplyFooter, ApplyHeader } from '../../components/apply/ApplyChrome';
@@ -50,6 +50,15 @@ const STEPS = [
     'We walk through your land, your timeline, and a realistic budget together.',
 ];
 
+// A pill from tablet width up. On a phone the line has to wrap, so it's plain
+// centered text with the pin inline instead of a two-line pill.
+const Callout = () => (
+    <p className="mx-auto max-w-[20rem] text-balance text-[13px] font-semibold text-slate-700 sm:max-w-none sm:inline-flex sm:items-center sm:gap-2 sm:rounded-full sm:border sm:border-[#E3DDD1] sm:bg-white sm:px-4 sm:py-2 sm:shadow-sm md:text-sm">
+        <MapPin size={14} className="inline-block align-[-2px] mr-1.5 sm:mr-0 flex-shrink-0 text-[#2B70B6]" />
+        For homeowners building a custom home in Northern Colorado
+    </p>
+);
+
 const ApplyVsl = () => (
     <div className="bg-[#FAF8F4] text-[#0F172A] antialiased">
         <SEO
@@ -63,14 +72,12 @@ const ApplyVsl = () => (
         {/* Hero and video */}
         <section className="pt-24 md:pt-28 pb-16 md:pb-20 px-4 md:px-6">
             <div className="max-w-4xl mx-auto text-center">
-                <p className="inline-flex items-center gap-3 text-[11px] md:text-xs font-semibold uppercase tracking-[0.2em] text-[#2B70B6]">
-                    <span className="hidden sm:block h-px w-8 bg-[#2B70B6]/40" />
-                    For homeowners building a custom home in Northern Colorado
-                    <span className="hidden sm:block h-px w-8 bg-[#2B70B6]/40" />
+                <Callout />
+                <p className="mt-5 md:mt-8 font-serif italic text-[19px] leading-snug md:text-2xl text-slate-800 text-balance">
+                    You already know what you want your home to be.
                 </p>
-
-                <h1 className="mt-5 md:mt-6 font-serif text-[27px] leading-[1.22] md:text-[36px] md:leading-[1.2] lg:text-[40px] text-[#0F172A]">
-                    You already know what you want your home to be. The question is whether your builder will show you what it actually costs to build it.
+                <h1 className="mt-2 md:mt-3 font-serif font-semibold tracking-[-0.01em] text-[30px] leading-[1.15] md:text-[42px] md:leading-[1.12] lg:text-[48px] text-[#0F172A] text-balance">
+                    The question is whether your builder will show you what it <em className="italic text-[#2B70B6]">actually costs</em> to build it.
                 </h1>
             </div>
 
