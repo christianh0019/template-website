@@ -1,15 +1,33 @@
 // Settings for the /apply VSL funnel. Swapping in a finished video, or
 // changing the phone number or reviews, is a one-line change here.
 
+// The five breakout videos and Jann's interview already live on
+// homesteadhomebuilders.com/about. These are those same files.
+const ABOUT_PAGE_VIDEOS = 'https://homesteadhomebuilders.com/wp-content/uploads';
+
 export const APPLY_FUNNEL = {
-    // Paste an embed URL (Vimeo player or YouTube embed) to replace a
-    // placeholder. Left empty, the page shows a framed "coming soon" slot.
+    // Paste a video file URL (.mp4), a Vimeo player URL, or a YouTube embed
+    // URL to replace a placeholder. Left empty, the page shows a framed
+    // "coming soon" slot.
     videos: {
         vsl: '',
+
+        // Thank-you page, in the order the copy doc puts them.
+        urgency: '',
         expectations: '',
+        landFirst: `${ABOUT_PAGE_VIDEOS}/2026/08/Do-I-Need-Land-First_.mp4`,
+        getStarted: `${ABOUT_PAGE_VIDEOS}/2026/08/How-To-Get-Started-with-Homestead.mp4`,
+        designProcess: `${ABOUT_PAGE_VIDEOS}/2026/08/What-Does-Homestead_s-Design-Process-Look-Like_.mp4`,
+        whoIsHomestead: `${ABOUT_PAGE_VIDEOS}/2026/08/Tell-me-about-Homestead-and-Their-Building-Experience.mp4`,
+        whatSetsApart: `${ABOUT_PAGE_VIDEOS}/2026/08/What-Sets-Homestead-Apart-From-All-The-Other-Builders_.mp4`,
         transparency: '',
         timeline: '',
         changeOrders: '',
+        team: '',
+        cost: '',
+        consultationCall: '',
+        outOfState: '',
+        jannInterview: `${ABOUT_PAGE_VIDEOS}/2026/07/Jann-S-Interview.mp4`,
     },
 
     phone: '970.775.3796',

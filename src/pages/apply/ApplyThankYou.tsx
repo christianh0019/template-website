@@ -17,28 +17,98 @@ const PREP = [
     { title: 'Know your non-negotiables', text: 'Write down your three non-negotiables, the things that would make this build a win for you.' },
 ];
 
-const HOMEWORK = [
+interface Breakout {
+    title: string;
+    text: string;
+    src: string;
+    poster: string;
+    length?: string;
+}
+
+// Stacked from the question we hear most to the one we hear least. The first
+// five are the videos on Herman's About page. The rest are still to be filmed.
+const BREAKOUTS: Breakout[] = [
+    {
+        title: 'Do I Need to Buy Land First?',
+        text: "Most of our clients don't have land yet. Herman will look at lots with you for free and check the soil, utilities, water, and driveway before you buy.",
+        src: APPLY_FUNNEL.videos.landFirst,
+        poster: '/images/apply/videos/landFirst.webp',
+        length: '1:32',
+    },
+    {
+        title: 'How Do I Get Started?',
+        text: "What happens after you reach out, from the first call to sitting down with Herman. There's no pressure, and we never sell your number.",
+        src: APPLY_FUNNEL.videos.getStarted,
+        poster: '/images/apply/videos/getStarted.webp',
+        length: '1:47',
+    },
+    {
+        title: 'What Does the Homestead Design-Build Process Look Like?',
+        text: "You don't need plans to start. We'll connect you with architects and draftsmen we trust at no extra charge, or you can bring your own.",
+        src: APPLY_FUNNEL.videos.designProcess,
+        poster: '/images/apply/videos/designProcess.webp',
+        length: '2:06',
+    },
+    {
+        title: 'Who Is Homestead, and How Long Have You Been Building?',
+        text: 'How Herman got started more than thirty years ago, what we build today, and the area we cover from our Loveland office.',
+        src: APPLY_FUNNEL.videos.whoIsHomestead,
+        poster: '/images/apply/videos/whoIsHomestead.webp',
+        length: '2:56',
+    },
+    {
+        title: 'What Sets Homestead Apart From Other Builders?',
+        text: 'Why you see every bid and a copy of every bill we pay, and how getting three to five quotes on each phase can save you six figures.',
+        src: APPLY_FUNNEL.videos.whatSetsApart,
+        poster: '/images/apply/videos/whatSetsApart.webp',
+        length: '4:50',
+    },
     {
         title: 'How Our 100% Transparency Policy Actually Works, Bid by Bid',
-        text: 'See a real cost-plus breakdown and how every bid reaches you.',
+        text: 'What cost-plus pricing looks like in practice. You see every real bid, and our fee is one clear percentage on top.',
         src: APPLY_FUNNEL.videos.transparency,
         poster: '/images/case-studies/longmont/09.webp',
     },
     {
         title: 'How Long a Custom Build Really Takes in Northern Colorado',
-        text: 'Design, permitting, and construction, including what pushes dates.',
+        text: 'Honest ranges for design, permitting, and construction, and what can push a date.',
         src: APPLY_FUNNEL.videos.timeline,
-        poster: '/images/case-studies/loveland/30.webp',
+        poster: '/images/case-studies/loveland/22.webp',
     },
     {
         title: 'How Change Orders Work With Us (No Black Box)',
-        text: "What triggers one, how it's priced, and how you approve it.",
+        text: "You see what a change costs before it happens, you approve it in writing, and you can check our math.",
         src: APPLY_FUNNEL.videos.changeOrders,
         poster: '/images/case-studies/fort-collins/22.webp',
+    },
+    {
+        title: 'Who Will Actually Be Working On Your Home',
+        text: 'Meet the people who will be on your project, from Herman to the person who picks up your first call.',
+        src: APPLY_FUNNEL.videos.team,
+        poster: '/images/case-studies/fort-collins-new/02.webp',
+    },
+    {
+        title: 'What Will a Home Like Yours Actually Cost?',
+        text: 'What really moves the price of a custom home, and why the finishes matter more than the square footage.',
+        src: APPLY_FUNNEL.videos.cost,
+        poster: '/images/case-studies/longmont/08.webp',
+    },
+    {
+        title: 'What Happens On Your Consultation Call',
+        text: "It's a working session, not a sales pitch. Here's what we'll cover and what you'll know by the end of it.",
+        src: APPLY_FUNNEL.videos.consultationCall,
+        poster: '/images/case-studies/loveland-design/00.webp',
+    },
+    {
+        title: 'Building From Out of State (Yes, People Do It)',
+        text: 'How families build here from far away, with weekly photos, a shared cost ledger, and video walkthroughs.',
+        src: APPLY_FUNNEL.videos.outOfState,
+        poster: '/images/case-studies/loveland/01.webp',
     },
 ];
 
 const eyebrow = 'inline-block rounded-full bg-[#2B70B6] px-3.5 py-1.5 text-[11px] md:text-xs font-bold uppercase tracking-[0.06em] text-white';
+const sectionTitle = 'mt-3 text-[26px] md:text-4xl font-semibold tracking-[-0.02em] leading-tight text-balance';
 
 const ApplyThankYou = () => {
     const location = useLocation();
@@ -92,14 +162,14 @@ const ApplyThankYou = () => {
         <div className="bg-[#FAF8F4] text-[#0F172A] antialiased">
             <SEO
                 title="Application Received | Homestead Home Builders"
-                description="Your application is in. Here's what happens next."
+                description="Your application is in. Everything you need to be ready for your call is on this page."
                 canonical="https://homesteadhomebuilders.com/apply/thank-you"
             />
             <FunnelTracking />
             <ApplyHeader />
 
-            {/* Hero */}
-            <section className="pt-24 md:pt-32 pb-12 md:pb-16 px-4 md:px-6">
+            {/* Hero, then the urgency video. It is always the first video they see. */}
+            <section className="pt-24 md:pt-32 pb-14 md:pb-20 px-4 md:px-6">
                 <div className="max-w-3xl mx-auto text-center">
                     <span className="inline-flex items-center gap-2 rounded-full bg-white border border-[#E3DDD1] px-4 py-1.5 text-sm font-medium text-slate-700">
                         <span className="w-5 h-5 rounded-full bg-[#2B70B6] text-white flex items-center justify-center">
@@ -110,9 +180,26 @@ const ApplyThankYou = () => {
                     <h1 className="mt-6 text-[28px] leading-[1.2] md:text-[42px] md:leading-[1.15] font-semibold tracking-[-0.02em] text-balance">
                         You're in. Your application is on Herman's desk.
                     </h1>
-                    <p className="mt-5 text-base md:text-lg leading-relaxed text-slate-600 max-w-2xl mx-auto">
-                        Someone from our team reviews every application personally. Here's exactly what happens next, and what to have ready for your call.
+                    <p className="mt-5 text-base md:text-lg leading-relaxed text-slate-700 max-w-2xl mx-auto">
+                        Someone from our team reviews every application personally. Everything you need to be ready for your call is on this page, and every question we hear from homeowners is answered in the videos below.
                     </p>
+                </div>
+
+                <div className="mt-12 md:mt-14 max-w-4xl mx-auto">
+                    <div className="text-center">
+                        <p className={eyebrow}>Watch this first</p>
+                        <h2 className="mt-3 text-xl md:text-2xl font-semibold tracking-[-0.01em] leading-snug text-balance">
+                            Why the Timing of Your Decision Matters More Than Anything Else
+                        </h2>
+                    </div>
+                    <div className="mt-6">
+                        <VideoSlot
+                            src={APPLY_FUNNEL.videos.urgency}
+                            title="Why the Timing of Your Decision Matters More Than Anything Else"
+                            caption="Herman Boonstra, Founder"
+                            poster="/images/apply/videos/herman.webp"
+                        />
+                    </div>
                 </div>
 
                 {/* The call */}
@@ -124,7 +211,7 @@ const ApplyThankYou = () => {
                                 {formatCallDay(result!.startTime, result!.timezone)}{' '}
                                 <span className="whitespace-nowrap">at {formatTime(result!.startTime, result!.timezone)}</span>
                             </p>
-                            <p className="mt-1 text-sm text-slate-500">
+                            <p className="mt-1 text-sm text-slate-600">
                                 {timezoneLabel(result!.timezone)}. A {APPLY_FUNNEL.callLengthMinutes}-minute phone call with our team. We'll confirm your time once we've reviewed your application.
                             </p>
                             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -157,88 +244,105 @@ const ApplyThankYou = () => {
                 </div>
             </section>
 
-            {/* What happens next */}
+            {/* The expectations video and what to bring */}
             <section className="bg-white border-y border-[#E9E4DA] py-16 md:py-20 px-4 md:px-6">
-                <div className="max-w-3xl mx-auto">
+                <div className="max-w-4xl mx-auto">
                     <div className="text-center">
-                        <p className={eyebrow}>Step 1</p>
-                        <h2 className="mt-3 text-[28px] md:text-4xl font-semibold tracking-[-0.02em] leading-tight">Watch this before your call.</h2>
+                        <p className={eyebrow}>Then watch this</p>
+                        <h2 className={sectionTitle}>What Happens Next, and How to Get the Most Out of Your Call</h2>
                     </div>
                     <div className="mt-8">
-                        <VideoSlot src={APPLY_FUNNEL.videos.expectations} title="What happens next" caption="What happens next, from Herman" />
+                        <VideoSlot
+                            src={APPLY_FUNNEL.videos.expectations}
+                            title="What Happens Next, and How to Get the Most Out of Your Call"
+                            poster="/images/case-studies/longmont/01.webp"
+                        />
                     </div>
 
-                    <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-5">
-                        {PREP.map((item) => (
-                            <div key={item.title} className="rounded-xl bg-[#FAF8F4] border border-[#E9E4DA] p-6">
-                                <p className="text-lg font-semibold text-[#0F172A]">{item.title}</p>
-                                <p className="mt-2 text-slate-700 leading-relaxed">{item.text}</p>
-                            </div>
-                        ))}
-                    </div>
-
-                    {event && (
-                        <div className="mt-5 rounded-xl border border-[#2B70B6]/25 bg-[#2B70B6]/[0.04] p-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
-                            <div className="flex-grow">
-                                <p className="font-semibold">Building this decision together?</p>
-                                <p className="mt-1 text-slate-600">Add your spouse, partner, or architect to the call with one click.</p>
-                            </div>
-                            <button
-                                type="button"
-                                onClick={invite}
-                                className="flex-shrink-0 inline-flex items-center justify-center gap-2 rounded-lg bg-[#2B70B6] text-white font-semibold py-3.5 px-5 hover:bg-[#0F172A] transition-colors"
-                            >
-                                <UserPlus size={18} /> Invite them to the call
-                            </button>
-                        </div>
-                    )}
-                </div>
-            </section>
-
-            {/* Due diligence */}
-            <section className="py-16 md:py-20 px-4 md:px-6">
-                <div className="max-w-5xl mx-auto">
-                    <div className="text-center max-w-2xl mx-auto">
-                        <p className={eyebrow}>Step 2</p>
-                        <h2 className="mt-3 text-[28px] md:text-4xl font-semibold tracking-[-0.02em] leading-tight">Do your homework on us.</h2>
-                    </div>
-                    <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {HOMEWORK.map((video) => (
-                            <div key={video.title}>
-                                <VideoSlot src={video.src} title={video.title} poster={video.poster} size="sm" />
-                                <h3 className="mt-4 text-lg font-semibold leading-snug">{video.title}</h3>
-                                <p className="mt-1 text-sm text-slate-600 leading-relaxed">{video.text}</p>
+                    <p className="mt-12 text-center text-lg md:text-xl font-semibold">Two things will make your call ten times more valuable.</p>
+                    <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-5">
+                        {PREP.map((item, i) => (
+                            <div key={item.title} className="rounded-xl bg-[#FAF8F4] border border-[#E9E4DA] p-6 flex gap-4">
+                                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#0F172A] text-white text-sm font-bold flex items-center justify-center">{i + 1}</span>
+                                <div>
+                                    <p className="text-lg font-semibold text-[#0F172A]">{item.title}</p>
+                                    <p className="mt-1.5 text-slate-700 leading-relaxed">{item.text}</p>
+                                </div>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Reviews */}
-            <section className="bg-white border-y border-[#E9E4DA] py-16 md:py-20 px-4 md:px-6">
-                <div className="max-w-5xl mx-auto">
+            {/* Breakout videos */}
+            <section className="py-16 md:py-24 px-4 md:px-6">
+                <div className="max-w-6xl mx-auto">
                     <div className="text-center max-w-2xl mx-auto">
-                        <p className={eyebrow}>From our Google reviews</p>
-                        <h2 className="mt-3 text-[28px] md:text-4xl font-semibold tracking-[-0.02em] leading-tight">What homeowners say after the build.</h2>
+                        <p className={eyebrow}>Your questions, answered</p>
+                        <h2 className={sectionTitle}>Every question homeowners ask us, answered by Herman.</h2>
+                        <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-700">
+                            Watch the ones that matter to you. Most of them are under three minutes.
+                        </p>
                     </div>
-                    <div className="mt-10">
+                    <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10 md:gap-y-12">
+                        {BREAKOUTS.map((video) => (
+                            <article key={video.title}>
+                                <VideoSlot src={video.src} title={video.title} poster={video.poster} length={video.length} size="sm" />
+                                <h3 className="mt-4 text-lg font-semibold leading-snug tracking-[-0.01em] text-balance">{video.title}</h3>
+                                <p className="mt-1.5 text-[15px] text-slate-700 leading-relaxed">{video.text}</p>
+                            </article>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Trust */}
+            <section className="bg-white border-y border-[#E9E4DA] py-16 md:py-24 px-4 md:px-6">
+                <div className="max-w-4xl mx-auto">
+                    <div className="text-center max-w-2xl mx-auto">
+                        <p className={eyebrow}>In our clients' words</p>
+                        <h2 className={sectionTitle}>Hear it from one of our clients.</h2>
+                        <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-700">
+                            Jann interviewed other builders before she hired us. Here's why she chose Herman, and what it was like having our crew in her home.
+                        </p>
+                    </div>
+                    <div className="mt-8">
+                        <VideoSlot
+                            src={APPLY_FUNNEL.videos.jannInterview}
+                            title="Jann S. on why she chose Homestead"
+                            caption="Jann S., Homestead client"
+                            poster="/images/apply/videos/jannInterview.webp"
+                            length="4:51"
+                        />
+                    </div>
+                </div>
+                <div className="mt-16 md:mt-20 max-w-5xl mx-auto">
+                    <h3 className="text-center text-xl md:text-2xl font-semibold tracking-[-0.01em]">From our Google reviews</h3>
+                    <div className="mt-8">
                         <GoogleReviews />
                     </div>
                 </div>
             </section>
 
-            {/* Timing */}
-            <section className="py-16 md:py-20 px-4 md:px-6">
-                <div className="max-w-2xl mx-auto text-center">
-                    <p className={eyebrow}>Why the timing matters</p>
-                    <p className="mt-5 text-xl md:text-2xl leading-relaxed text-[#0F172A]">
-                        Custom builds in Northern Colorado run on seasons. Design and permitting lead time means the people breaking ground next spring are making their builder decision now.
-                    </p>
-                    <p className="mt-5 text-base md:text-lg leading-relaxed text-slate-600">
-                        Every month a project waits pushes the move-in date back, so if your timeline matters, this is the window.
-                    </p>
-                </div>
-            </section>
+            {/* Decision-maker add */}
+            {event && (
+                <section className="py-16 md:py-20 px-4 md:px-6">
+                    <div className="max-w-2xl mx-auto bg-white rounded-xl border border-[#E9E4DA] shadow-[0_24px_70px_-30px_rgba(15,23,42,0.35)] p-6 md:p-10 text-center">
+                        <span className="mx-auto w-12 h-12 rounded-full bg-[#2B70B6]/10 text-[#2B70B6] flex items-center justify-center">
+                            <UserPlus size={22} />
+                        </span>
+                        <p className="mt-5 text-2xl md:text-3xl font-semibold tracking-[-0.02em] leading-snug">Building this decision together?</p>
+                        <p className="mt-3 text-base md:text-lg text-slate-700 leading-relaxed">Add your spouse, partner, or architect to the call with one click.</p>
+                        <button
+                            type="button"
+                            onClick={invite}
+                            className="mt-7 w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-[#0F172A] text-white font-semibold py-4 px-7 hover:bg-[#2B70B6] transition-colors"
+                        >
+                            <UserPlus size={18} /> Invite them to the call
+                        </button>
+                    </div>
+                </section>
+            )}
 
             <ApplyFooter question="Questions before your call? Call us directly at" />
         </div>
