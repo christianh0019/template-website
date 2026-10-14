@@ -107,12 +107,27 @@ const BREAKOUTS: Breakout[] = [
     },
 ];
 
+// ?sample shows the page the way a booked applicant sees it, for sharing a
+// preview. It never fires the Schedule pixel, which only follows a real application.
+const sampleResult = (): ApplyResult => {
+    const day = new Date();
+    day.setUTCDate(day.getUTCDate() + 1);
+    do {
+        day.setUTCDate(day.getUTCDate() + 1);
+    } while (day.getUTCDay() === 0 || day.getUTCDay() === 6);
+    day.setUTCHours(20, 0, 0, 0);
+    return { firstName: 'Sample', startTime: day.toISOString(), timezone: 'America/Denver', booked: true };
+};
+
 const eyebrow = 'inline-block rounded-full bg-[#2B70B6] px-3.5 py-1.5 text-[11px] md:text-xs font-bold uppercase tracking-[0.06em] text-white';
 const sectionTitle = 'mt-3 text-[26px] md:text-4xl font-semibold tracking-[-0.02em] leading-tight text-balance';
 
 const ApplyThankYou = () => {
     const location = useLocation();
-    const [result] = useState<ApplyResult | null>(() => (location.state as ApplyResult | null) || readApplyResult());
+    const [result] = useState<ApplyResult | null>(() =>
+        new URLSearchParams(location.search).has('sample')
+            ? sampleResult()
+            : (location.state as ApplyResult | null) || readApplyResult());
     const hasCall = Boolean(result?.startTime);
 
     useEffect(() => {
