@@ -25,15 +25,27 @@ interface Breakout {
     length?: string;
 }
 
-// Stacked from the question we hear most to the one we hear least. The first
-// five are the videos on Herman's About page. The rest are still to be filmed.
+// Stacked from the question we hear most to the one we hear least. Five are
+// the videos on Herman's About page. Cost and timeline are still to be filmed.
 const BREAKOUTS: Breakout[] = [
+    {
+        title: 'What Will a Home Like Yours Actually Cost?',
+        text: 'What really moves the price of a custom home, and why the finishes matter more than the square footage.',
+        src: APPLY_FUNNEL.videos.cost,
+        poster: '/images/case-studies/longmont/08.webp',
+    },
     {
         title: 'Do I Need to Buy Land First?',
         text: "Most of our clients don't have land yet. Herman will look at lots with you for free and check the soil, utilities, water, and driveway before you buy.",
         src: APPLY_FUNNEL.videos.landFirst,
         poster: '/images/apply/videos/landFirst.webp',
         length: '1:32',
+    },
+    {
+        title: 'How Long a Custom Build Really Takes in Northern Colorado',
+        text: 'Honest ranges for design, permitting, and construction, and what can push a date.',
+        src: APPLY_FUNNEL.videos.timeline,
+        poster: '/images/case-studies/loveland/22.webp',
     },
     {
         title: 'How Do I Get Started?',
@@ -43,7 +55,7 @@ const BREAKOUTS: Breakout[] = [
         length: '1:47',
     },
     {
-        title: 'What Does the Homestead Design-Build Process Look Like?',
+        title: "What Does Homestead's Design Process Look Like?",
         text: "You don't need plans to start. We'll connect you with architects and draftsmen we trust at no extra charge, or you can bring your own.",
         src: APPLY_FUNNEL.videos.designProcess,
         poster: '/images/apply/videos/designProcess.webp',
@@ -62,48 +74,6 @@ const BREAKOUTS: Breakout[] = [
         src: APPLY_FUNNEL.videos.whatSetsApart,
         poster: '/images/apply/videos/whatSetsApart.webp',
         length: '4:50',
-    },
-    {
-        title: 'How Our 100% Transparency Policy Actually Works, Bid by Bid',
-        text: 'What cost-plus pricing looks like in practice. You see every real bid, and our fee is one clear percentage on top.',
-        src: APPLY_FUNNEL.videos.transparency,
-        poster: '/images/case-studies/longmont/09.webp',
-    },
-    {
-        title: 'How Long a Custom Build Really Takes in Northern Colorado',
-        text: 'Honest ranges for design, permitting, and construction, and what can push a date.',
-        src: APPLY_FUNNEL.videos.timeline,
-        poster: '/images/case-studies/loveland/22.webp',
-    },
-    {
-        title: 'How Change Orders Work With Us (No Black Box)',
-        text: "You see what a change costs before it happens, you approve it in writing, and you can check our math.",
-        src: APPLY_FUNNEL.videos.changeOrders,
-        poster: '/images/case-studies/fort-collins/22.webp',
-    },
-    {
-        title: 'Who Will Actually Be Working On Your Home',
-        text: 'Meet the people who will be on your project, from Herman to the person who picks up your first call.',
-        src: APPLY_FUNNEL.videos.team,
-        poster: '/images/case-studies/fort-collins-new/02.webp',
-    },
-    {
-        title: 'What Will a Home Like Yours Actually Cost?',
-        text: 'What really moves the price of a custom home, and why the finishes matter more than the square footage.',
-        src: APPLY_FUNNEL.videos.cost,
-        poster: '/images/case-studies/longmont/08.webp',
-    },
-    {
-        title: 'What Happens On Your Consultation Call',
-        text: "It's a working session, not a sales pitch. Here's what we'll cover and what you'll know by the end of it.",
-        src: APPLY_FUNNEL.videos.consultationCall,
-        poster: '/images/case-studies/loveland-design/00.webp',
-    },
-    {
-        title: 'Building From Out of State (Yes, People Do It)',
-        text: 'How families build here from far away, with weekly photos, a shared cost ledger, and video walkthroughs.',
-        src: APPLY_FUNNEL.videos.outOfState,
-        poster: '/images/case-studies/loveland/01.webp',
     },
 ];
 
@@ -183,7 +153,7 @@ const ApplyThankYou = () => {
             <FunnelTracking />
             <ApplyHeader />
 
-            {/* Hero, then the urgency video. It is always the first video they see. */}
+            {/* Hero, then the due diligence video. It is always the first video they see. */}
             <section className="pt-24 md:pt-32 pb-14 md:pb-20 px-4 md:px-6">
                 <div className="max-w-3xl mx-auto text-center">
                     <span className="inline-flex items-center gap-2 rounded-full bg-white border border-[#E3DDD1] px-4 py-1.5 text-sm font-medium text-slate-700">
@@ -204,13 +174,13 @@ const ApplyThankYou = () => {
                     <div className="text-center">
                         <p className={eyebrow}>Watch this first</p>
                         <h2 className="mt-3 text-xl md:text-2xl font-semibold tracking-[-0.01em] leading-snug text-balance">
-                            Why the Timing of Your Decision Matters More Than Anything Else
+                            How to Research Any Builder, Including Us
                         </h2>
                     </div>
                     <div className="mt-6">
                         <VideoSlot
-                            src={APPLY_FUNNEL.videos.urgency}
-                            title="Why the Timing of Your Decision Matters More Than Anything Else"
+                            src={APPLY_FUNNEL.videos.dueDiligence}
+                            title="How to Research Any Builder, Including Us"
                             caption="Herman Boonstra, Founder"
                             poster="/images/apply/videos/herman.webp"
                         />

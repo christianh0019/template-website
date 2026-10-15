@@ -13,20 +13,15 @@ export const APPLY_FUNNEL = {
         vsl: '',
 
         // Thank-you page, in the order the copy doc puts them.
-        urgency: '',
+        dueDiligence: '',
         expectations: '',
         landFirst: `${ABOUT_PAGE_VIDEOS}/2026/08/Do-I-Need-Land-First_.mp4`,
         getStarted: `${ABOUT_PAGE_VIDEOS}/2026/08/How-To-Get-Started-with-Homestead.mp4`,
         designProcess: `${ABOUT_PAGE_VIDEOS}/2026/08/What-Does-Homestead_s-Design-Process-Look-Like_.mp4`,
         whoIsHomestead: `${ABOUT_PAGE_VIDEOS}/2026/08/Tell-me-about-Homestead-and-Their-Building-Experience.mp4`,
         whatSetsApart: `${ABOUT_PAGE_VIDEOS}/2026/08/What-Sets-Homestead-Apart-From-All-The-Other-Builders_.mp4`,
-        transparency: '',
-        timeline: '',
-        changeOrders: '',
-        team: '',
         cost: '',
-        consultationCall: '',
-        outOfState: '',
+        timeline: '',
         jannInterview: `${ABOUT_PAGE_VIDEOS}/2026/07/Jann-S-Interview.mp4`,
     },
 
