@@ -44,11 +44,11 @@ export const GOOGLE_REVIEWS = [
         text: 'Herman and his staff were the best. His office generated a detailed floor plan within days of the consultation and every trade was on time, courteous, efficient and performed brilliant, quality work.',
     },
     {
-        name: 'Jo L.',
+        name: 'Kate P.',
         text: 'He was so fast with communication and was always honest and upfront with cost. They finished everything in about 7 weeks. I was very impressed with the outcome.',
     },
     {
-        name: 'Carol K.',
+        name: 'Deborah F.',
         text: 'If you are looking for honest work with a professional company I highly and strongly recommend Homestead Home Services for both new construction and remodeling.',
     },
 ];
